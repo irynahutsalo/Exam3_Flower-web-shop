@@ -1,0 +1,23 @@
+name: Deploy WP-Content to Simply.com
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v4
+
+      - name: Sync files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          
+          local-dir: wp-content/
+          
+          server-dir: public_html/wp-content/
