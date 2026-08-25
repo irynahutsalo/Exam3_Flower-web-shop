@@ -6,11 +6,11 @@ Description: Web-shop for flowers
 */
 
 :root {
-  --color-bg: red; /* Змінили бежевий на яскраво-рожевий для перевірки */
+  --color-bg: blue; /* Змінили бежевий на яскраво-рожевий для перевірки */
   --color-text: #1A1817;
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --max-width: 1200px;
-  --grid-gap: 10px; 
+  --grid-gap: 10px;
 }
  
 * {
@@ -19,12 +19,12 @@ Description: Web-shop for flowers
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0 !important;
   padding: 0 !important;
   background-color: var(--color-bg);
 }
-
 
 /* html {
   margin-top: 0 !important;
@@ -43,7 +43,7 @@ html, body {
   margin: 0 auto;
   height: 70px;
   padding: 0 calc(var(--grid-gap) * 4);
-  
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -88,8 +88,6 @@ html, body {
   opacity: 0.6;
 }
 
-
-
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -116,7 +114,7 @@ html, body {
 }
 
 .hero-bg::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.45);
