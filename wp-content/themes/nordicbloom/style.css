@@ -6,7 +6,7 @@ Description: Web-shop for flowers
 */
 
 :root {
-  --color-bg: blue; /* Змінили бежевий на яскраво-рожевий для перевірки */
+  --color-bg: orange; /* Змінили бежевий на яскраво-рожевий для перевірки */
   --color-text: #1A1817;
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --max-width: 1200px;
