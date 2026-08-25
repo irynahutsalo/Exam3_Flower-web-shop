@@ -6,13 +6,13 @@ Description: Web-shop for flowers
 */
 
 :root {
-  --color-bg: #F6F2EC;
+  --color-bg: red; /* Змінили бежевий на яскраво-рожевий для перевірки */
   --color-text: #1A1817;
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --max-width: 1200px;
   --grid-gap: 10px; 
 }
-
+ 
 * {
   margin: 0;
   padding: 0;
