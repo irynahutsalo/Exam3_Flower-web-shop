@@ -1,110 +1,78 @@
-<?php
-get_header();
+<?php 
+get_header(); 
 
-$blogPageId = get_option('page_for_posts');
-$heroBg       = get_field("hero_bg_image", $blogPageId);
-$heroTitle    = get_field("hero_title", $blogPageId);
-$heroSubtitle = get_field("hero_subtitle", $blogPageId);
-$cardPhoto    = get_field("hero_card_image", $blogPageId);
+$blog_page_id    = get_option('page_for_posts');
+$blogTitle       = get_field('blog_title', $blog_page_id);
+$blogDescription = get_field('blog_description', $blog_page_id);
+$blogHeroImage   = get_field('blog_hero_image', $blog_page_id);
+$heroBgUrl       = is_array($blogHeroImage) ? $blogHeroImage['url'] : $blogHeroImage;
 ?>
 
 <main class="blog-page">
 
-    <!-- BLOG HERO -->
-    <section
-        class="hero-section"
-        style="background-image: url('<?= esc_url($heroBg["url"]); ?>');"
-    >
+  <!-- Hero секція через ACF -->
+  <section class="blog-hero" <?php if($heroBgUrl): ?> style="background-image: url(<?= esc_url($heroBgUrl); ?>);" <?php endif; ?>>
+    <div class="blog-hero-content">
+      <h1><?= esc_html($blogTitle ? $blogTitle : 'Our Blog'); ?></h1>
+      <?php if ($blogDescription): ?>
+        <p><?= esc_html($blogDescription); ?></p>
+      <?php endif; ?>
+    </div>
+  </section>
 
-        <div class="hero-container">
+  <!-- Сітка ка картка автоматично з розділу Posts -->
+  <div class="blog-container">
+    <div class="blog-main">
+      <div class="blog-grid">
+        
+        <?php if ( have_posts() ) : ?>
+          <?php while ( have_posts() ) : the_post(); ?>
+            
+            <article class="blog-card">
+              <!-- Обгортка із зображенням -->
+              <a href="<?php the_permalink(); ?>" class="card-image-wrap">
+                <?php if ( has_post_thumbnail() ) : ?>
+                  <?php the_post_thumbnail('medium'); ?>
+                <?php else : ?>
+                  <img src="https://via.placeholder.com/400x280" alt="<?php the_title_attribute(); ?>">
+                <?php endif; ?>
+              </a>
 
-            <div class="hero-content">
+              <div class="card-body">
+                <!-- Категорія -->
+                <span class="card-category">
+                  <?php 
+                  $cats = get_the_category();
+                  echo !empty($cats) ? esc_html($cats[0]->name) : 'Blog'; 
+                  ?>
+                </span>
 
-                <h1>
-                    <?= esc_html($heroTitle); ?>
-                </h1>
+                <!-- Заголовок статті зі посиланням на single.php -->
+                <h3 class="card-title">
+                  <a href="<?php the_permalink(); ?>"><?= esc_html( get_the_title() ); ?></a>
+                </h3>
 
-                <p>
-                    <?= esc_html($heroSubtitle); ?>
+                <!-- Короткий опис (Excerpt) -->
+                <p class="card-excerpt">
+                  <?= esc_html( wp_trim_words( get_the_excerpt(), 14, '...' ) ); ?>
                 </p>
 
-            </div>
-
-
-            <div class="hero-media">
-
-                <div class="hero-card">
-
-                    <img
-                        src="<?= esc_url($cardPhoto["url"]); ?>"
-                        alt=""
-                    >
-
+                <!-- Футер картки -->
+                <div class="card-footer">
+                  <span class="card-date"><?= esc_html( get_the_date('M j, Y') ); ?></span>
+                  <a href="<?php the_permalink(); ?>" class="card-arrow">&rarr;</a>
                 </div>
+              </div>
+            </article>
 
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- BLOG POSTS -->
-    <section class="blog-grid">
-
-        <?php if (have_posts()): ?>
-
-            <?php while (have_posts()): the_post(); ?>
-
-                <article class="blog-card">
-
-                    <!-- POST IMAGE -->
-                    <?php if (has_post_thumbnail()): ?>
-
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('large'); ?>
-                        </a>
-
-                    <?php endif; ?>
-
-
-                    <!-- DATE -->
-                    <p>
-                        <?php echo get_the_date('M d, Y'); ?>
-                    </p>
-
-
-                    <!-- POST TITLE -->
-                    <h2>
-
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_title(); ?>
-                        </a>
-
-                    </h2>
-
-
-                    <!-- LINK TO single.php -->
-                    <a href="<?php the_permalink(); ?>">
-                        Read More →
-                    </a>
-
-                </article>
-
-            <?php endwhile; ?>
-
-
-        <?php else: ?>
-
-            <p>No posts found.</p>
-
+          <?php endwhile; ?>
+        <?php else : ?>
+          <p>Статей ще немає.</p>
         <?php endif; ?>
 
-    </section>
-
-
-    <!-- PAGINATION -->
-    <?php the_posts_pagination(); ?>
+      </div>
+    </div>
+  </div>
 
 </main>
 

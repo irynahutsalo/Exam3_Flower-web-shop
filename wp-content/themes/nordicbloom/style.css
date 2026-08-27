@@ -6,8 +6,9 @@ Description: Web-shop for flowers
 */
 
 :root {
-  --color-bg: orange; /* Змінили бежевий на яскраво-рожевий для перевірки */
+  --color-bg: #F6F2EC;
   --color-text: #1A1817;
+  --color-accent: #D4A39A;
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --max-width: 1200px;
   --grid-gap: 10px;
@@ -176,4 +177,517 @@ body {
   height: auto;
   display: block;
   object-fit: contain;
+}
+
+/* ==========================================================================
+    BLOG PAGES STYLES (home.php & single.php)
+   ========================================================================== */
+
+.blog-page {
+  background-color: var(--color-bg);
+  padding-bottom: 80px;
+}
+
+/* Hero Section Блогу */
+.blog-hero {
+  position: relative;
+  background-color: var(--color-accent);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 80px 20px;
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+
+.blog-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.blog-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.blog-hero-content h1 {
+  font-family: var(--font-main, serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+}
+
+.blog-hero-content p {
+  font-size: 1.05rem;
+  color: #f9f9f9;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Blog Layout Container */
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 40px;
+}
+
+.blog-main {
+  flex: 1;
+}
+
+/* Blog Cards Grid (3 Columns) */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.blog-card {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #EAE5DD;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-image-wrap {
+  display: block;
+  overflow: hidden;
+}
+
+.card-image-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .card-image-wrap img {
+  transform: scale(1.03);
+}
+
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888888;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.card-title {
+  font-family: var(--font-main, serif);
+  font-size: 1.2rem;
+  line-height: 1.35;
+  margin: 0 0 10px 0;
+}
+
+.card-title a {
+  color: #222222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card-title a:hover {
+  color: var(--color-accent);
+}
+
+.card-excerpt {
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.55;
+  margin: 0 0 20px 0;
+  flex: 1;
+}
+
+/* Футер картки зі звичайним білим фоном */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; 
+  border-top: 1px solid #EAE5DD;
+  padding: 14px 20px;
+}
+
+/* Дата оформлена точно як кнопка Post Comment */
+.card-date {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.card-arrow {
+  color: var(--color-accent) !important;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover .card-arrow {
+  transform: translateX(4px);
+}
+
+/* Sidebar */
+.blog-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.sidebar-box {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border: 1px solid #EAE5DD;
+}
+
+.sidebar-box h4 {
+  font-family: var(--font-main, serif);
+  font-size: 1.2rem;
+  margin: 0 0 12px 0;
+  color: var(--color-text);
+}
+
+.sidebar-box p {
+  font-size: 0.9rem;
+  color: #555555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Pagination */
+.blog-pagination {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-pagination .nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.blog-pagination a, 
+.blog-pagination span {
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid #EFEFEF;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.blog-pagination .current, 
+.blog-pagination a:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+    2. SINGLE POST PAGE (single.php)
+   -------------------------------------------------------------------------- */
+
+.single-post-page {
+  padding-bottom: 80px;
+  background-color: var(--color-bg);
+}
+
+.single-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.single-post-header {
+  text-align: center;
+  padding: 50px 0 20px;
+}
+
+.single-post-meta {
+  font-size: 0.8rem;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 15px;
+}
+
+.single-post-meta .post-category {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.meta-separator {
+  margin: 0 8px;
+}
+
+.single-post-title {
+  font-family: var(--font-main, serif);
+  font-size: 2.6rem;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin: 0 0 15px 0;
+}
+
+.post-author {
+  font-size: 0.9rem;
+  color: #666666;
+  font-style: italic;
+}
+
+.single-featured-image {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+.single-featured-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.single-post-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333333;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  border: 1px solid #EAE5DD;
+}
+
+.single-post-content p {
+  margin-bottom: 24px;
+}
+
+.single-post-content h2, 
+.single-post-content h3 {
+  font-family: var(--font-main, serif);
+  margin-top: 40px;
+  margin-bottom: 18px;
+  color: var(--color-text);
+}
+
+.single-post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+  margin-top: 50px;
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.post-navigation a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.post-navigation a:hover {
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+    COMMENTS SECTION & CHAT STYLES (single.php)
+   ========================================================================== */
+
+.single-comments-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #EFEFEF;
+}
+
+.comments-header-acf {
+  margin-bottom: 30px;
+}
+
+.comments-main-title {
+  font-family: var(--font-main, serif);
+  font-size: 1.8rem;
+  color: var(--color-text);
+  margin: 0 0 8px 0;
+}
+
+.comments-subtitle-text {
+  font-size: 0.95rem;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.comments-chat-list, 
+.comments-chat-list .children {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-item {
+  margin-bottom: 20px;
+}
+
+.comment-message-box {
+  display: flex;
+  gap: 16px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #EAE5DD;
+}
+
+.comment-avatar img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-content-wrap {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comment-author-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  color: #888888;
+}
+
+.comment-text {
+  font-size: 0.95rem;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.comment-reply-btn a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  transition: opacity 0.2s;
+}
+
+.comments-chat-list .children {
+  margin-top: 16px;
+  padding-left: 32px;
+  border-left: 2px solid var(--color-accent);
+}
+
+.comment-respond {
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #EAE5DD;
+}
+
+.comment-form p {
+  margin-bottom: 16px;
+}
+
+.comment-form label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.comment-form textarea,
+.comment-form input[type="text"],
+.comment-form input[type="email"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  background-color: #FAFAFA;
+  font-size: 0.95rem;
+  color: #1F2937;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.comment-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.comment-form textarea:focus,
+.comment-form input:focus {
+  border-color: var(--color-accent);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(212, 163, 154, 0.15);
+}
+
+.form-submit input[type="submit"] {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.form-submit input[type="submit"]:hover {
+  background-color: #C28E85;
 }
