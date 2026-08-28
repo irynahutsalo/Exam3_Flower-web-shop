@@ -12,7 +12,7 @@ Description: Web-shop for flowers
   --color-footer-bg: #1B2A22;
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --max-width: 1200px;
-  --grid-gap: 10px;
+  --grid-gap: 10px; 
 }
  
 * {
@@ -21,19 +21,11 @@ Description: Web-shop for flowers
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0 !important;
   padding: 0 !important;
   background-color: var(--color-bg);
 }
-
-/* html {
-  margin-top: 0 !important;
-}
-#wpadminbar {
-  display: none;
-} */
 
 .site-header {
   background-color: var(--color-bg);
@@ -45,7 +37,6 @@ body {
   margin: 0 auto;
   height: 70px;
   padding: 0 calc(var(--grid-gap) * 4);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -116,7 +107,7 @@ body {
 }
 
 .hero-bg::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.45);
@@ -181,15 +172,15 @@ body {
 }
 
 /* ==========================================================================
-    BLOG PAGES STYLES (home.php & single.php)
-   ========================================================================== */
+     BLOG PAGES STYLES (home.php & single.php)
+     ========================================================================== */
 
 .blog-page {
   background-color: var(--color-bg);
   padding-bottom: 80px;
 }
 
-/* Hero Section Блогу */
+/* Blog Hero Section */
 .blog-hero {
   position: relative;
   background-color: var(--color-accent);
@@ -268,6 +259,7 @@ body {
 }
 
 .card-image-wrap {
+  width: 100%;
   display: block;
   overflow: hidden;
 }
@@ -285,10 +277,17 @@ body {
 }
 
 .card-body {
-  padding: 20px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+.card-category,
+.card-title,
+.card-excerpt {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .card-category {
@@ -297,6 +296,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #888888;
+  margin-top: 20px;
   margin-bottom: 8px;
   display: block;
 }
@@ -305,7 +305,7 @@ body {
   font-family: var(--font-main, serif);
   font-size: 1.2rem;
   line-height: 1.35;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
 }
 
 .card-title a {
@@ -326,7 +326,7 @@ body {
   flex: 1;
 }
 
-/* Футер картки зі звичайним білим фоном */
+/* Card Footer with clean background */
 .card-footer {
   display: flex;
   justify-content: space-between;
@@ -334,9 +334,10 @@ body {
   background-color: #ffffff; 
   border-top: 1px solid #EAE5DD;
   padding: 14px 20px;
+  margin-top: auto;
 }
 
-/* Дата оформлена точно як кнопка Post Comment */
+/* Date styled precisely like the Post Comment button */
 .card-date {
   display: inline-block;
   background-color: var(--color-accent);
@@ -419,8 +420,8 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-    2. SINGLE POST PAGE (single.php)
-   -------------------------------------------------------------------------- */
+     2. SINGLE POST PAGE (single.php)
+     -------------------------------------------------------------------------- */
 
 .single-post-page {
   padding-bottom: 80px;
@@ -533,8 +534,8 @@ body {
 }
 
 /* ==========================================================================
-    COMMENTS SECTION & CHAT STYLES (single.php)
-   ========================================================================== */
+     COMMENTS SECTION & CHAT STYLES (single.php)
+     ========================================================================== */
 
 .single-comments-section {
   margin-top: 60px;
@@ -694,8 +695,8 @@ body {
 }
 
 /* ==========================================================================
-    BRAND MESSAGE SECTION (Front Page)
-   ========================================================================== */
+     BRAND MESSAGE SECTION (Front Page)
+     ========================================================================== */
 
 .brand-section {
   background-color: var(--color-accent);
@@ -776,8 +777,8 @@ body {
 }
 
 /* ==========================================================================
-    FOOTER STYLES
-   ========================================================================== */
+     FOOTER STYLES
+     ========================================================================== */
 
 .site-footer {
   background-color: var(--color-footer-bg);
@@ -790,7 +791,7 @@ body {
   max-width: var(--max-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr; /* 3 columns according to the structure */
+  grid-template-columns: 1.5fr 1fr 1fr;
   gap: 50px;
 }
 
@@ -854,7 +855,7 @@ body {
   color: var(--color-accent);
 }
 
-/* Badges (e.g., for B2B) */
+/* Badges */
 .footer-badge {
   font-size: 0.6rem;
   background-color: rgba(212, 163, 154, 0.2);
@@ -865,7 +866,7 @@ body {
   vertical-align: middle;
 }
 
-/* Footer Bottom Row (Copyright and additional text) */
+/* Footer Bottom Row */
 .footer-bottom {
   max-width: var(--max-width);
   margin: 60px auto 0 auto;
