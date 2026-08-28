@@ -1,10 +1,14 @@
-<?php
-$brandName    = get_field('footer_brand_name');
-$brandAddress = get_field('footer_brand_address');
-$brandSlogan  = get_field('footer_brand_slogan');
-$csTitle      = get_field('cs_title');
-$socialTitle  = get_field('social_title');
-$copyright    = get_field('copyright_text');
+<?php 
+// Get the front page ID so the footer pulls data everywhere
+$front_page_id = get_option('page_on_front');
+$footer_source = $front_page_id ? $front_page_id : '';
+
+$brandName    = get_field('footer_brand_name', $footer_source);
+$brandAddress = get_field('footer_brand_address', $footer_source);
+$brandSlogan  = get_field('footer_brand_slogan', $footer_source);
+$csTitle      = get_field('cs_title', $footer_source);
+$socialTitle  = get_field('social_title', $footer_source);
+$copyright    = get_field('copyright_text', $footer_source);
 ?>
 
 <footer class="site-footer">
@@ -31,10 +35,9 @@ $copyright    = get_field('copyright_text');
                 <h4 class="footer-title"><?= esc_html($csTitle); ?></h4>
             <?php endif; ?>
 
-            <?php if (have_rows('customer_service_links')) : ?>
+            <?php if (have_rows('customer_service_links', $footer_source)) : ?>
                 <ul class="footer-links">
-                    <?php while (have_rows('customer_service_links')) : the_row(); 
-                        // Fetching items from the repeater fields
+                    <?php while (have_rows('customer_service_links', $footer_source)) : the_row(); 
                         $delivery      = get_sub_field('delivery_item');
                         $subscriptions = get_sub_field('subscriptions_item');
                         $faq           = get_sub_field('faq_item');
@@ -66,9 +69,9 @@ $copyright    = get_field('copyright_text');
                 <h4 class="footer-title"><?= esc_html($socialTitle); ?></h4>
             <?php endif; ?>
 
-            <?php if (have_rows('footer_social_links')) : ?>
+            <?php if (have_rows('footer_social_links', $footer_source)) : ?>
                 <ul class="footer-links">
-                    <?php while (have_rows('footer_social_links')) : the_row(); 
+                    <?php while (have_rows('footer_social_links', $footer_source)) : the_row(); 
                         $name  = get_sub_field('platform_name');
                         $url   = get_sub_field('platform_url');
                         $badge = get_sub_field('platform_badge');
