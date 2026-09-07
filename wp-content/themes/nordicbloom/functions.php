@@ -10,6 +10,18 @@ function nordicbloom_theme_setup() {
 }
 add_action( 'after_setup_theme', 'nordicbloom_theme_setup' );
 
+function nordicbloom_enqueue_front_page_styles() {
+    if ( is_front_page() ) {
+        wp_enqueue_style(
+            'nordicbloom-benefits',
+            get_template_directory_uri() . '/benefits.css',
+            array(),
+            filemtime( get_template_directory() . '/benefits.css' )
+        );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'nordicbloom_enqueue_front_page_styles' );
+
 function nordicbloom_enqueue_comment_reply_script() {
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
