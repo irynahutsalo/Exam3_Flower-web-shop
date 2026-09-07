@@ -58,32 +58,39 @@ $description = get_field('brand_description');
 <section class="benefits-section">
   <div class="benefits-container">
 
-    <?php 
-      $title = get_field('benefits_title');
-      if ($title) : ?>
-        <h2 class="section-title"><?php echo esc_html($title); ?></h2>
+    <?php
+      $benefitsTitle = get_field('benefits_title');
+      $benefitsDescription = get_field('benefits_desc');
+    ?>
+
+    <?php if ($benefitsTitle) : ?>
+      <h2 class="benefits-title"><?php echo esc_html($benefitsTitle); ?></h2>
+    <?php endif; ?>
+
+    <?php if ($benefitsDescription) : ?>
+      <p class="benefits-description"><?php echo esc_html($benefitsDescription); ?></p>
     <?php endif; ?>
 
     <?php if (have_rows('benefits')) : ?>
       <div class="benefits-row">
         <?php while (have_rows('benefits')) : the_row(); 
-          $icon        = get_sub_field('benefit_icon');
-          $item_title  = get_sub_field('benefit_name');
-          $desc        = get_sub_field('benefit_desc');
+          $icon  = get_sub_field('benefit_icon');
+          $name  = get_sub_field('benefit_name');
+          $about = get_sub_field('benefit_about');
         ?>
-          <div class="benefits-card">
+          <div class="benefit-card">
             <?php if ($icon) : ?>
-              <div class="benefit-icon-wrapper">
-                <img src="<?php echo esc_url($icon); ?>" alt="<?php echo esc_attr($item_title); ?>" />
+              <div class="benefit-icon-wrap">
+                <img src="<?php echo esc_url(is_array($icon) ? $icon['url'] : $icon); ?>" alt="<?php echo esc_attr($name); ?>" />
               </div>
             <?php endif; ?>
 
-            <?php if ($item_title) : ?>
-              <h3 class="benefits-name"><?php echo esc_html($item_title); ?></h3>
+            <?php if ($name) : ?>
+              <h3 class="benefit-name"><?php echo esc_html($name); ?></h3>
             <?php endif; ?>
 
-            <?php if ($desc) : ?>
-              <p class="benefits-desc"><?php echo esc_html($desc); ?></p>
+            <?php if ($about) : ?>
+              <p class="benefit-about"><?php echo esc_html($about); ?></p>
             <?php endif; ?>
           </div>
         <?php endwhile; ?>
