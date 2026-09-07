@@ -55,37 +55,42 @@ $description = get_field('brand_description');
 
 
 <!-- Brand Benefits -->
- <section class="brand-benefits">
-    <div class="benefits-container">
-        <?php if (have_rows('brand_benefits')) : ?>
-            <?php while (have_rows('brand_benefits')) : the_row(); 
-                $benefitTitle = get_sub_field('ou_benefits_hero');
-                $benefitDescription = get_sub_field('our_benefits_desc');
-            ?>
-                <div class="benefit-card">
-                    <?php if (have_rows('benefit_icon')) : ?>
-                        <?php while (have_rows('benefit_icon')) : the_row(); 
-                            $icon = get_sub_field('benefit_icon');
-                        ?>
-                            <div class="benefit-icon">
-                                <img src="<?= esc_url($icon['url']); ?>" alt="">
-                            </div>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                    
-                    <?php if ($benefitTitle) : ?>
-                        <h3 class="benefit-title"><?php echo esc_html($benefitTitle); ?></h3>
-                    <?php endif; ?>
+<section class="benefits-section">
+  <div class="benefits-container">
 
-                    
-                    <?php if ($benefitDescription) : ?>
-                        <p class="benefit-description"><?php echo esc_html($benefitDescription); ?></p>
-                    <?php endif; ?>
-                </div>
-            <?php endwhile; ?>
-        <?php endif; ?>
-    </div>
+    <?php 
+      $title = get_field('benefits_title');
+      if ($title) : ?>
+        <h2 class="section-title"><?php echo esc_html($title); ?></h2>
+    <?php endif; ?>
 
- </section>
+    <?php if (have_rows('benefits')) : ?>
+      <div class="benefits-row">
+        <?php while (have_rows('benefits')) : the_row(); 
+          $icon        = get_sub_field('benefit_icon');
+          $item_title  = get_sub_field('benefit_name');
+          $desc        = get_sub_field('benefit_desc');
+        ?>
+          <div class="benefits-card">
+            <?php if ($icon) : ?>
+              <div class="benefit-icon-wrapper">
+                <img src="<?php echo esc_url($icon); ?>" alt="<?php echo esc_attr($item_title); ?>" />
+              </div>
+            <?php endif; ?>
+
+            <?php if ($item_title) : ?>
+              <h3 class="benefits-name"><?php echo esc_html($item_title); ?></h3>
+            <?php endif; ?>
+
+            <?php if ($desc) : ?>
+              <p class="benefits-desc"><?php echo esc_html($desc); ?></p>
+            <?php endif; ?>
+          </div>
+        <?php endwhile; ?>
+      </div>
+    <?php endif; ?>
+
+  </div>
+</section>
 
 <?php get_footer(); ?>
