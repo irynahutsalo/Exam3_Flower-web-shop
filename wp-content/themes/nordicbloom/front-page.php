@@ -53,4 +53,39 @@ $description = get_field('brand_description');
     </div>
 </section>
 
+
+<!-- Brand Benefits -->
+ <section class="brand-benefits">
+    <div class="benefits-container">
+        <?php if (have_rows('brand_benefits')) : ?>
+            <?php while (have_rows('brand_benefits')) : the_row(); 
+                $benefitTitle = get_sub_field('ou_benefits_hero');
+                $benefitDescription = get_sub_field('our_benefits_desc');
+            ?>
+                <div class="benefit-card">
+                    <?php if (have_rows('benefit_icon')) : ?>
+                        <?php while (have_rows('benefit_icon')) : the_row(); 
+                            $icon = get_sub_field('benefit_icon');
+                        ?>
+                            <div class="benefit-icon">
+                                <img src="<?= esc_url($icon['url']); ?>" alt="">
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    
+                    <?php if ($benefitTitle) : ?>
+                        <h3 class="benefit-title"><?php echo esc_html($benefitTitle); ?></h3>
+                    <?php endif; ?>
+
+                    
+                    <?php if ($benefitDescription) : ?>
+                        <p class="benefit-description"><?php echo esc_html($benefitDescription); ?></p>
+                    <?php endif; ?>
+                </div>
+            <?php endwhile; ?>
+        <?php endif; ?>
+    </div>
+
+ </section>
+
 <?php get_footer(); ?>
