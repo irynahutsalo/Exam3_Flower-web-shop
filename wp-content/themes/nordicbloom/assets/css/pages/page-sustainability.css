@@ -1,0 +1,581 @@
+.sustainability-page {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.sustainability-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Hero */
+.sustainability-hero {
+    position: relative;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.sustainability-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.32);
+}
+
+.sustainability-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.sustainability-hero-content h1 {
+    max-width: 650px;
+    margin: 0 0 18px;
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.sustainability-hero-content p {
+    max-width: 650px;
+    margin: 0;
+    color: #fff;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.small-line {
+    display: block;
+    width: 35px;
+    height: 2px;
+    margin-bottom: 20px;
+    background-color: var(--color-accent);
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6f6a63;
+}
+
+.section-intro h2,
+.approach-content h2,
+.future-intro h2 {
+    margin: 0;
+    font-size: clamp(2.1rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.section-description,
+.future-intro p:last-child {
+    color: #6f7068;
+    line-height: 1.65;
+}
+
+/* ---------------------------------------------------- Our Impact Section ------------------------------------------------- */
+.sustainability-impact {
+    padding: 90px 0 100px;
+}
+
+.section-intro {
+    margin-bottom: 50px;
+}
+
+.section-description {
+    max-width: 540px;
+    margin: 15px 0 0;
+}
+
+.bouquet-impact-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(350px, 480px) 260px;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+}
+
+.impact-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+.impact-item {
+    max-width: 260px;
+}
+
+.impact-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1d8d3;
+    border-radius: 50%;
+}
+
+.impact-icon svg {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.impact-item h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.impact-item p {
+    margin: 0;
+    color: #6f7068;
+    font-size: 0.875rem;
+    line-height: 1.55;
+}
+
+/* Bouquet */
+.bouquet-center {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sustainability-bouquet {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 470px;
+    height: auto;
+}
+
+.sustainability-button {
+    position: relative;
+    z-index: 4;
+    margin-top: 15px;
+    padding: 14px 26px;
+    background-color: var(--color-primary);
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+}
+
+.sustainability-button:hover {
+    background-color: var(--color-secondary);
+}
+
+/* Arrows */
+.impact-arrow {
+    position: absolute;
+    z-index: 3;
+    width: 120px;
+    height: auto;
+    pointer-events: none;
+}
+
+/* Left Top Arrow */
+.arrow-left-top {
+    top: 40px;
+    left: -90px;
+}
+
+/* Left Middle Arrow */
+.arrow-left-middle {
+    top: 250px;
+    left: -100px;
+    width: 125px;
+}
+
+/* Left Bottom Arrow */
+.arrow-left-bottom {
+    bottom: 90px;
+    left: -95px;
+    width: 135px;
+    transform: rotate(20deg);
+}
+
+/* Right Top Arrow */
+.arrow-right-top {
+    top: 20px;
+    right: -40px;
+    transform: scaleX(-1);
+}
+
+/* Right Middle Arrow */
+.arrow-right-middle {
+    top: 270px;
+    right: -50px;
+    width: 125px;
+    transform: scaleX(-1);
+}
+
+/* Right Bottom Arrow */
+.arrow-right-bottom {
+    bottom: 90px;
+    right: -20px;
+    width: 135px;
+    transform: scaleX(-1) rotate(20deg);
+}
+
+/* ------------------------------------------------------ Our Approach -------------------------------------------------- */
+.sustainability-approach {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 430px;
+    background-color: var(--color-accent-secondary);
+}
+
+.approach-image {
+    overflow: hidden;
+}
+
+.approach-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.approach-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px 9%;
+}
+
+.approach-content p:not(.eyebrow) {
+    max-width: 540px;
+    margin: 18px 0 28px;
+    line-height: 1.65;
+}
+
+.outline-button {
+    align-self: flex-start;
+    padding: 13px 26px;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.outline-button:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+/* --------------------------------------------------What's Next Section --------------------------------------------- */
+.sustainability-future {
+    padding: 80px 0 90px;
+}
+
+.future-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.6fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.future-intro {
+    max-width: 390px;
+}
+
+.future-intro p:last-child {
+    margin: 16px 0 0;
+    font-size: 0.95rem;
+}
+
+.future-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(190px, 230px));
+    justify-content: end;
+    gap: 16px;
+}
+
+.future-card {
+    width: 100%;
+    max-width: 230px;
+    padding: 24px 20px;
+    background-color: #fffdf9;
+    border: 1px solid #e5dfd6;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.future-card-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0d7d2;
+    border-radius: 50%;
+}
+
+.future-card-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.future-card h3 {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+.future-card p {
+    margin: 0;
+    color: #747975;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+/* ---------------------------------------------------- Responsiveness -------------------------------------------------- */
+@media (max-width: 1000px) {
+
+    .bouquet-impact-layout,
+    .future-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .bouquet-impact-layout {
+        gap: 50px;
+    }
+
+    .bouquet-center {
+        grid-row: 1;
+    }
+
+    .impact-facts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .impact-item {
+        max-width: none;
+    }
+
+    .impact-arrow {
+        display: none;
+    }
+
+    .future-layout {
+        gap: 40px;
+    }
+
+    .future-intro {
+        max-width: 550px;
+    }
+
+    .future-cards {
+        grid-template-columns: repeat(3, minmax(180px, 220px));
+        justify-content: start;
+    }
+
+    .future-card {
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .sustainability-approach {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-image {
+        min-height: 340px;
+    }
+
+    .future-cards {
+        width: 100%;
+        max-width: none;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .future-card {
+        max-width: none;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .sustainability-container {
+        padding: 0 20px;
+    }
+
+    /* Hero */
+    .sustainability-hero {
+        min-height: 300px;
+        background-position: 60% center;
+    }
+
+    .sustainability-hero-overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .sustainability-hero-content {
+        padding-top: 45px;
+        padding-bottom: 45px;
+        text-align: center;
+    }
+
+    .sustainability-hero-content h1,
+    .sustainability-hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .sustainability-hero-content h1 {
+        margin-bottom: 14px;
+        font-size: 2.25rem;
+    }
+
+    .sustainability-hero-content p {
+        max-width: 390px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* Sections */
+    .sustainability-impact,
+    .sustainability-future {
+        padding: 55px 0 65px;
+    }
+
+    .section-intro,
+    .future-intro {
+        text-align: center;
+    }
+
+    .small-line,
+    .section-description,
+    .future-intro p:last-child {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Impact */
+    .impact-facts {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .impact-item {
+        max-width: 420px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .impact-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .sustainability-bouquet {
+        max-width: 330px;
+    }
+
+    /* Approach */
+    .approach-content {
+        align-items: center;
+        padding: 55px 20px;
+        text-align: center;
+    }
+
+    .outline-button {
+        align-self: center;
+    }
+
+    /* Future */
+    .future-layout {
+        gap: 35px;
+    }
+
+    .future-intro {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .future-cards {
+        grid-template-columns: minmax(190px, 360px);
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .future-card {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .sustainability-container {
+        padding: 0 18px;
+    }
+
+    .sustainability-hero {
+        min-height: 280px;
+        background-position: 65% center;
+    }
+
+    .sustainability-hero-content {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .sustainability-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .sustainability-hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .section-intro h2,
+    .approach-content h2,
+    .future-intro h2 {
+        font-size: 1.8rem;
+    }
+
+    .future-card {
+        padding: 20px 18px;
+    }
+
+    .future-card-icon {
+        width: 46px;
+        height: 46px;
+        margin-bottom: 13px;
+    }
+
+    .future-card-icon svg {
+        width: 21px;
+        height: 21px;
+    }
+}

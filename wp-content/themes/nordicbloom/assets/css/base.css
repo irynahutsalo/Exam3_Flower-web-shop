@@ -1,0 +1,77 @@
+/*
+Theme Name: Nordic bloom
+Author: Group-6 CMS
+Version: 1.0
+Description: Web-shop for flowers
+*/
+
+
+/* Variables */
+:root {
+    --color-bg: #F6F2EC;
+    --color-text: #1A1817;
+    --color-text-secondary: #ffffff;
+    --color-text-tertiary: #F8F5F0; /* for footer text*/
+
+    --color-accent: #D4A39A;
+    --color-accent-secondary: #e9bfb8;
+
+    /* Buttons */
+    --color-primary: #8d3c57;
+    --color-secondary: #743047;
+    --color-tertiary: #ffffff;
+
+
+    --color-footer-bg: #1B2A22;
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --max-width: 1200px;
+    --grid-gap: 10px;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-main);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
