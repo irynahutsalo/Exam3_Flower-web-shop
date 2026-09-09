@@ -23,7 +23,7 @@ Description: Web-shop for flowers
 
 
     --color-footer-bg: #1B2A22;
-    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-main: 'Inter', sans-serif;
     --max-width: 1200px;
     --grid-gap: 10px;
 }
