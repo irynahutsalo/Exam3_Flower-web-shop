@@ -85,3 +85,86 @@ function nordicbloom_comment_template( $comment, $args, $depth ) {
     <?php
 }
 
+function nordicbloom_enqueue_scripts() {
+    wp_enqueue_script('jquery');
+
+    wp_enqueue_script(
+        'parsley',
+        'https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js',
+        array('jquery'),
+        '2.9.2',
+        true
+    );
+}
+
+add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_scripts');
+function nordicbloom_handle_contact_form() {
+
+    if (
+        !isset($_POST['contact_form_nonce']) ||
+        !wp_verify_nonce(
+            $_POST['contact_form_nonce'],
+            'contact_form_action'
+        )
+    ) {
+        wp_die('Security check failed.');
+    }
+
+    $name = sanitize_text_field($_POST['name']);
+    $email = sanitize_email($_POST['email']);
+    $subject = sanitize_text_field($_POST['subject']);
+    $message = sanitize_textarea_field($_POST['message']);
+
+    if (
+        empty($name) ||
+        empty($email) ||
+        empty($subject) ||
+        empty($message)
+    ) {
+        wp_die('Please fill in all required fields.');
+    }
+
+    if (!is_email($email)) {
+        wp_die('Invalid email address.');
+    }
+
+    $to = get_option('admin_email');
+
+    $mail_subject = 'Contact form: ' . $subject;
+
+    $mail_message =
+        "Name: " . $name . "\n" .
+        "Email: " . $email . "\n\n" .
+        "Message:\n" . $message;
+
+    $headers = array(
+        'Reply-To: ' . $name . ' <' . $email . '>'
+    );
+
+    wp_mail(
+        $to,
+        $mail_subject,
+        $mail_message,
+        $headers
+    );
+
+    wp_safe_redirect(
+        add_query_arg(
+            'sent',
+            '1',
+            wp_get_referer()
+        )
+    );
+
+    exit;
+}
+
+add_action(
+    'admin_post_nopriv_submit_contact_form',
+    'nordicbloom_handle_contact_form'
+);
+
+add_action(
+    'admin_post_submit_contact_form',
+    'nordicbloom_handle_contact_form'
+);
