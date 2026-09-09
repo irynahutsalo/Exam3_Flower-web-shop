@@ -317,7 +317,7 @@ $contact_phone_link = $contact_phone
                         <div class="form-progress">
 
                             <!-- Shows the Steps -->
-                            <span class="form-progress-text">Step <span id="currentStepNumber">1</span>of 4</span>
+                            <span class="form-progress-text">Step <span id="currentStepNumber">1</span> of 4</span>
 
                             <!-- Progress Bar -->
                             <div class="form-progress-bar">
