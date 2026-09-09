@@ -1,5 +1,5 @@
 <?php 
-// Get the front page ID so the footer pulls data everywhere
+// Gets the Front Page ID so the footer pulls data everywhere
 $front_page_id = get_option('page_on_front');
 $footer_source = $front_page_id ? $front_page_id : '';
 
@@ -14,7 +14,7 @@ $copyright    = get_field('copyright_text', $footer_source);
 <footer class="site-footer">
     <div class="footer-container footer-3-cols">
         
-        <!-- 1. Brand Column (Left) -->
+        <!-- Brand Column (Left) -->
         <div class="footer-col footer-brand-col">
             <?php if ($brandName) : ?>
                 <h3 class="footer-logo"><?= esc_html($brandName); ?></h3>
@@ -29,7 +29,7 @@ $copyright    = get_field('copyright_text', $footer_source);
             <?php endif; ?>
         </div>
 
-        <!-- 2. Customer Service Column (from admin repeater) -->
+        <!-- Customer Service Column (from admin repeater) -->
         <div class="footer-col">
             <?php if ($csTitle) : ?>
                 <h4 class="footer-title"><?= esc_html($csTitle); ?></h4>
@@ -63,7 +63,7 @@ $copyright    = get_field('copyright_text', $footer_source);
             <?php endif; ?>
         </div>
 
-        <!-- 3. Social Media Column (from admin repeater) -->
+        <!-- Social Media Column (from admin repeater) -->
         <div class="footer-col">
             <?php if ($socialTitle) : ?>
                 <h4 class="footer-title"><?= esc_html($socialTitle); ?></h4>
