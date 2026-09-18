@@ -41,7 +41,7 @@ $future_cards       = get_field('sustainability_future_cards');
 ?>
 
 <!-- Sustainability Page -->
-<main class="sustainability-page">
+<main id="primary" class="sustainability-page">
 
     <!-- If a hero image exists, use it as the background image -->
     <section class="sustainability-hero" <?php if ($hero_image_url): ?>

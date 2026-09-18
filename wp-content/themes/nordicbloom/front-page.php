@@ -26,7 +26,7 @@ $newsletter_image       = get_field('newsletter_image');
 
 
 <!-- Entire Main Page -->
-<main class="front-page">
+<main id="primary" class="front-page">
 
     <!-- Hero Section -->
     <section class="hero-section"

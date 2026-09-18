@@ -13,6 +13,11 @@
 <!-- This allows WordPress and plugins to add content after the body opens -->
 <?php wp_body_open(); ?>
 
+<!-- Skip to main content link for accessibility -->
+<a class="skip-link screen-reader-text" href="#primary">
+    <?php esc_html_e('Skip to main content', 'nordicbloom'); ?>
+</a>
+
 <?php
 
 // ACF

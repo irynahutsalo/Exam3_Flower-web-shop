@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="single-post-page">
+<main id="primary" class="single-post-page">
   <?php while ( have_posts() ) : the_post(); ?>
 
     <article id="post-<?php the_ID(); ?>" <?php post_class('single-article'); ?>>

@@ -49,7 +49,7 @@ $contact_phone_link = $contact_phone
 
 
 <!-- Contact Page -->
-<main class="contact-page">
+<main id="primary" class="contact-page">
 
     <!-- Contact Hero -->
 
