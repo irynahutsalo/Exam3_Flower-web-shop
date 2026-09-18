@@ -1,9 +1,3 @@
-#wpadminbar #adminbarsearch,
-#wpadminbar .ab-item[class*="search"] {
-    min-width: 24px;
-    min-height: 24px;
-}
-
 /* -------------------------------------------------------------- Hero Section ------------------------------------------------- */
 .hero-section {
   position: relative;

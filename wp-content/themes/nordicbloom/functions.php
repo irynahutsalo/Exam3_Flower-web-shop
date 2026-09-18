@@ -379,3 +379,11 @@ add_action(
     'admin_post_submit_contact_form',
     'nordicbloom_handle_contact_form'
 );
+
+
+// search inspection
+function remove_admin_bar_search() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('search');
+}
+add_action('wp_before_admin_bar_render', 'remove_admin_bar_search');
