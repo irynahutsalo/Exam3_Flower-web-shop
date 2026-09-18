@@ -105,8 +105,11 @@ body.admin-bar .site-header {
 
 .menu-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
+  /* width: 42px;
+  height: 42px; */
+  min-width: 24px;
+  min-height: 24px;
+  padding: 8px;
   flex-shrink: 0;
   padding: 0;
   border: 0;
