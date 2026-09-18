@@ -128,7 +128,8 @@
 /* Tagline */
 .brand-tagline {
   margin-bottom: 25px;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: var(--color-text);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -234,7 +235,8 @@
 .testimonials-description {
   max-width: 720px;
   margin: 24px auto 0;
-  color: #777168;
+  color: #5C554E; /* new */
+  /* color: #777168; */
   font-size: 1.15rem;
   line-height: 1.55;
 }
@@ -330,7 +332,8 @@
 
 .newsletter-label {
     margin: 0 0 16px;
-    color: #927f74;
+    color: #5C5046; /* new */
+    /* color: #927f74; */
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.25em;
@@ -412,7 +415,8 @@
 
 .newsletter-privacy {
     margin: 10px 0 0;
-    color: #8a8580;
+    color: #5C5046; /* new */
+    /* color: #8a8580; */
     font-size: 0.72rem;
     line-height: 1.5;
 }
