@@ -1,3 +1,7 @@
+#wpadminbar #wp-admin-bar-search {
+    display: none !important;
+}
+
 /* -------------------------------------------------------------- Hero Section ------------------------------------------------- */
 .hero-section {
   position: relative;
