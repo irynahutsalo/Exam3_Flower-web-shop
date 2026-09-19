@@ -72,7 +72,17 @@ function nordicbloom_enqueue_styles()
         );
     }
 
-    
+        // Flower Club Page
+    if (is_page('flower-club')) {
+        wp_enqueue_style(
+            'nordicbloom-flower-club',
+            get_template_directory_uri() . '/assets/css/pages/page-flower-club.css',
+            ['nordicbloom-base'],
+            filemtime(
+                get_template_directory() . '/assets/css/pages/page-flower-club.css'
+            )
+        );
+    }
 
     // Sustainability Page
     if (is_page('sustainability')) {

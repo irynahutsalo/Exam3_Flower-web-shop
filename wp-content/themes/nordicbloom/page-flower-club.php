@@ -10,7 +10,6 @@ $hero_description = get_field('flower_club_hero_description', $page_id);
 $hero_image = get_field('flower_club_hero_image', $page_id);
 $hero_primary_text = get_field('flower_club_hero_primary_text', $page_id);
 $hero_secondary_text = get_field('flower_club_hero_secondary_text', $page_id);
-$hero_note = get_field('flower_club_hero_note', $page_id);
 
 // get its ID in the media library
 $hero_image_id = is_array($hero_image)
