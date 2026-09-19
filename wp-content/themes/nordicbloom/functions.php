@@ -72,6 +72,8 @@ function nordicbloom_enqueue_styles()
         );
     }
 
+    
+
     // Sustainability Page
     if (is_page('sustainability')) {
         wp_enqueue_style(
