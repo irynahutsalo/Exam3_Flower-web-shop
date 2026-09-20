@@ -26,7 +26,6 @@ if (!$hero_title) {
 
     <section
         class="flower-club-hero"
-        aria-labelledby="flower-club-hero-title"
     >
 
         <?php if ($hero_image_id) : ?>
