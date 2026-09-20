@@ -204,16 +204,16 @@
 }
 
 .flower-club-how__steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  list-style: none;
   gap: 40px;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 .flower-club-how__step {
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
   padding-top: 24px;
   border-top: 1px solid #d9ccc4;
 }
