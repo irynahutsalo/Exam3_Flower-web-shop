@@ -31,6 +31,15 @@ $benefits_image_id = 0;
 if (is_array($benefits_image)) {
     $benefits_image_id = absint($benefits_image['ID']);
 }
+
+// Section: How it works
+$how_title = get_field('flower_club_how_title', $page_id);
+$how_image = get_field('flower_club_how_image', $page_id);
+$how_image_id = 0;
+
+if (is_array($how_image)) {
+    $how_image_id = absint($how_image['ID'] ?? 0);
+}
 ?>
 
 <main class="flower-club-page">
@@ -106,78 +115,174 @@ if (is_array($benefits_image)) {
     </section>
 
     <!-- Benefits: block 2 -->
-<section class="flower-club-benefits">
+    <section class="flower-club-benefits">
 
-    <div class="container flower-club-benefits__container">
+        <div class="container flower-club-benefits__container">
 
-        <!-- Left column: title and benefits -->
-        <div class="flower-club-benefits__content">
+            <!-- Left column: title and benefits -->
+            <div class="flower-club-benefits__content">
 
-            <?php if ($benefits_title) : ?>
-                <h2 class="flower-club-benefits__title">
-                    <?php echo esc_html($benefits_title); ?>
-                </h2>
-            <?php endif; ?>
+                <?php if ($benefits_title) : ?>
+                    <h2 class="flower-club-benefits__title">
+                        <?php echo esc_html($benefits_title); ?>
+                    </h2>
+                <?php endif; ?>
 
-            <?php if (have_rows('flower_club_benefits', $page_id)) : ?>
+                <?php if (have_rows('flower_club_benefits', $page_id)) : ?>
 
-                <div class="flower-club-benefits__list">
+                    <div class="flower-club-benefits__list">
+
+                        <?php
+                        while (have_rows('flower_club_benefits', $page_id)) :
+                            the_row();
+
+                            $benefit_title = get_sub_field('benefit_title');
+                            $benefit_description = get_sub_field('benefit_description');
+                        ?>
+
+                            <?php if ($benefit_title || $benefit_description) : ?>
+                                <div class="flower-club-benefits__item">
+
+                                    <?php if ($benefit_title) : ?>
+                                        <h3 class="flower-club-benefits__item-title">
+                                            <?php echo esc_html($benefit_title); ?>
+                                        </h3>
+                                    <?php endif; ?>
+
+                                    <?php if ($benefit_description) : ?>
+                                        <p class="flower-club-benefits__description">
+                                            <?php echo esc_html($benefit_description); ?>
+                                        </p>
+                                    <?php endif; ?>
+
+                                </div>
+                            <?php endif; ?>
+
+                        <?php endwhile; ?>
+
+                    </div>
+
+                <?php endif; ?>
+
+            </div>
+
+            <!-- Right column: image -->
+            <?php if ($benefits_image_id) : ?>
+                <div class="flower-club-benefits__media">
 
                     <?php
-                    while (have_rows('flower_club_benefits', $page_id)) :
-                        the_row();
-
-                        $benefit_title = get_sub_field('benefit_title');
-                        $benefit_description = get_sub_field('benefit_description');
+                    echo wp_get_attachment_image(
+                        $benefits_image_id,
+                        'large',
+                        false,
+                        [
+                            'class' => 'flower-club-benefits__image',
+                        ]
+                    );
                     ?>
 
-                        <?php if ($benefit_title || $benefit_description) : ?>
-                            <div class="flower-club-benefits__item">
-
-                                <?php if ($benefit_title) : ?>
-                                    <h3 class="flower-club-benefits__item-title">
-                                        <?php echo esc_html($benefit_title); ?>
-                                    </h3>
-                                <?php endif; ?>
-
-                                <?php if ($benefit_description) : ?>
-                                    <p class="flower-club-benefits__description">
-                                        <?php echo esc_html($benefit_description); ?>
-                                    </p>
-                                <?php endif; ?>
-
-                            </div>
-                        <?php endif; ?>
-
-                    <?php endwhile; ?>
-
                 </div>
-
             <?php endif; ?>
 
         </div>
 
-        <!-- Right column: image -->
-        <?php if ($benefits_image_id) : ?>
-            <div class="flower-club-benefits__media">
+    </section>
 
-                <?php
-                echo wp_get_attachment_image(
-                    $benefits_image_id,
-                    'large',
-                    false,
-                    [
-                        'class' => 'flower-club-benefits__image',
-                    ]
-                );
-                ?>
+    <!-- How it works: block 3 -->
+    <section
+        class="flower-club-how"
+        id="flower-club-how-it-works"
+    >
+
+        <div class="container">
+
+            <!-- How it works content -->
+            <div class="flower-club-how__content">
+
+                <?php if ($how_title) : ?>
+                    <h2 class="flower-club-how__title">
+                        <?php echo esc_html($how_title); ?>
+                    </h2>
+                <?php endif; ?>
+
+                <?php if (have_rows('flower_club_steps', $page_id)) : ?>
+
+                    <ol class="flower-club-how__steps">
+
+                        <?php
+                        // Начинаем нумерацию с первого шага.
+                        $step_number = 1;
+
+                        while (have_rows('flower_club_steps', $page_id)) :
+                            the_row();
+
+                            $step_title = get_sub_field('step_title');
+                            $step_description = get_sub_field('step_description');
+                        ?>
+
+                            <?php if ($step_title || $step_description) : ?>
+                                <li class="flower-club-how__step">
+
+                                    <span class="flower-club-how__number">
+                                        <?php
+                                        if ($step_number < 10) {
+                                            echo '0';
+                                        }
+
+                                        echo $step_number;
+                                        ?>
+                                    </span>
+
+                                    <?php if ($step_title) : ?>
+                                        <h3 class="flower-club-how__step-title">
+                                            <?php echo esc_html($step_title); ?>
+                                        </h3>
+                                    <?php endif; ?>
+
+                                    <?php if ($step_description) : ?>
+                                        <p class="flower-club-how__description">
+                                            <?php echo esc_html($step_description); ?>
+                                        </p>
+                                    <?php endif; ?>
+
+                                </li>
+
+                                <?php
+                                // Увеличиваем номер после выведенного шага.
+                                $step_number++;
+                                ?>
+                            <?php endif; ?>
+
+                        <?php endwhile; ?>
+
+                    </ol>
+
+                <?php endif; ?>
 
             </div>
-        <?php endif; ?>
 
-    </div>
+            <!-- How it works image -->
+            <?php if ($how_image_id) : ?>
+                <div class="flower-club-how__media">
 
-</section>
+                    <?php
+                    echo wp_get_attachment_image(
+                        $how_image_id,
+                        'large',
+                        false,
+                        [
+                            'class'   => 'flower-club-how__image',
+                            'loading' => 'lazy',
+                        ]
+                    );
+                    ?>
+
+                </div>
+            <?php endif; ?>
+
+        </div>
+
+    </section>
 
 </main>
 
