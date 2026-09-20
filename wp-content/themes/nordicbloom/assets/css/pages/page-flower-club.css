@@ -131,6 +131,63 @@
   box-shadow: 0 0 0 7px #1a1817;
 }
 
+/* Benefits: block 2*/
+.flower-club-benefits {
+  padding: 70px 0;
+  background-color: #f0e7e1;
+  color: #1a1817;
+}
+
+.flower-club-benefits__container {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.flower-club-benefits__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.flower-club-benefits__title {
+  max-width: 470px;
+  margin: 0 0 32px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.flower-club-benefits__item {
+  padding: 22px 0;
+}
+
+.flower-club-benefits__item-title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.flower-club-benefits__description {
+  max-width: 450px;
+  margin: 0;
+  color: #5c5652;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.flower-club-benefits__image {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Tablets: width up to 900px */
 @media (max-width: 900px) {
   .flower-club-hero {
@@ -147,6 +204,25 @@
 
   .flower-club-hero h1 {
     font-size: 44px;
+  }
+
+  /* flower benefits */
+  .flower-club-benefits {
+    padding: 56px 0;
+  }
+
+  .flower-club-benefits__container {
+    gap: 36px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .flower-club-benefits__title {
+    font-size: 32px;
+  }
+
+  .flower-club-benefits__image {
+    height: 320px;
   }
 }
 
@@ -195,6 +271,43 @@
   .flower-club-button {
     width: 100%;
     max-width: 340px;
+  }
+
+  /* Flower benefits */
+  .flower-club-benefits {
+    padding: 44px 0;
+  }
+
+  .flower-club-benefits__container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .flower-club-benefits__content,
+  .flower-club-benefits__media {
+    flex: auto;
+    width: 100%;
+  }
+
+  .flower-club-benefits__title {
+    max-width: 100%;
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+
+  .flower-club-benefits__item {
+    padding: 20px 0;
+  }
+
+  .flower-club-benefits__description {
+    max-width: 100%;
+  }
+
+  .flower-club-benefits__image {
+    height: 280px;
   }
 }
 
