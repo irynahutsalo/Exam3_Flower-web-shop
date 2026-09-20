@@ -191,13 +191,8 @@
 /* How it works: block 3 */
 .flower-club-how {
   padding: 70px 0;
+  background-color: #f6f2ec;
   color: #1a1817;
-}
-
-.flower-club-how__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .flower-club-how__title {
@@ -210,13 +205,25 @@
 
 .flower-club-how__steps {
   display: flex;
-  list-style: none;
   gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .flower-club-how__step {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  padding-top: 24px;
+  border-top: 1px solid #d9ccc4;
+}
+
+.flower-club-how__number {
+  display: block;
+  margin-bottom: 20px;
+  color: #857970;
+  font-size: 60px;
+  line-height: 1;
 }
 
 .flower-club-how__step-title {
@@ -224,16 +231,19 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
-  letter-spacing: 1.5px;
+  overflow-wrap: break-word;
 }
 
 .flower-club-how__description {
-  max-width: 450px;
   margin: 0;
   color: #5c5652;
   font-size: 16px;
   line-height: 1.6;
   overflow-wrap: break-word;
+}
+
+.flower-club-how__media {
+  margin-top: 48px;
 }
 
 .flower-club-how__image {
@@ -242,12 +252,6 @@
   height: 360px;
   object-fit: cover;
   object-position: center;
-}
-
-.flower-club-how__number {
-  color: rgba(138, 127, 120, 0.2);
-  font-size: 60px;
-  margin-bottom: 20px;
 }
 
 /* Tablets: width up to 900px */
@@ -286,6 +290,34 @@
   .flower-club-benefits__image {
     height: 320px;
   }
+}
+
+/* How it works: block 3 */
+.flower-club-how {
+  padding: 56px 0;
+}
+
+.flower-club-how .container {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.flower-club-how__title {
+  font-size: 32px;
+}
+
+.flower-club-how__steps {
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.flower-club-how__step {
+  flex: none;
+  width: calc(50% - 16px);
+}
+
+.flower-club-how__image {
+  height: 300px;
 }
 
 /* Phones: width up to 600px */
@@ -370,6 +402,44 @@
 
   .flower-club-benefits__image {
     height: 280px;
+  }
+
+  /* How it works: block 3 */
+  .flower-club-how {
+    padding: 44px 0;
+  }
+
+  .flower-club-how .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .flower-club-how__title {
+    margin-bottom: 32px;
+    font-size: 30px;
+  }
+
+  .flower-club-how__steps {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .flower-club-how__step {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .flower-club-how__number {
+    margin-bottom: 14px;
+    font-size: 48px;
+  }
+
+  .flower-club-how__media {
+    margin-top: 32px;
+  }
+
+  .flower-club-how__image {
+    height: 240px;
   }
 }
 
