@@ -204,7 +204,8 @@
 }
 
 .flower-club-how__steps {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
   margin: 0;
   padding: 0;
@@ -212,7 +213,6 @@
 }
 
 .flower-club-how__step {
-  flex: 1;
   min-width: 0;
   padding-top: 24px;
   border-top: 1px solid #d9ccc4;
@@ -221,7 +221,7 @@
 .flower-club-how__number {
   display: block;
   margin-bottom: 20px;
-  color: #857970;
+  color: rgba(138, 127, 120, 0.2);
   font-size: 60px;
   line-height: 1;
 }
