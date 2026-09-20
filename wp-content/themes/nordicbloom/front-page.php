@@ -30,9 +30,14 @@ $newsletter_image       = get_field('newsletter_image');
 
     <!-- Hero Section -->
     <section class="hero-section"
-        <?php if ($heroBg) : ?> style="background-image: url('<?= esc_url($heroBg['url']); ?>');"
-        <?php endif;
-        ?>>
+        <?php if ($heroBg) : ?>
+            <?php $heroBg_url = is_array($heroBg) ? ($heroBg['url'] ?? '') : $heroBg; ?>
+                <?php if ($heroBg_url) : ?>
+                    <div class="hero-bg-image-wrap">
+                        <img src="<?= esc_url($heroBg_url); ?>" alt="Hero Background" fetchpriority="high" decoding="async">
+                    </div>
+                <?php endif; ?>
+        <?php endif; ?>
 
         <!-- Hero Container  -->
         <div class="hero-container">
@@ -331,7 +336,7 @@ $newsletter_image       = get_field('newsletter_image');
 
                 <!-- Imaage -->
                 <div class="newsletter-image">
-                    <img src="<?php echo esc_url($newsletter_image_url); ?>" alt="Nordic Bloom flower arrangement">
+                    <img src="<?php echo esc_url($newsletter_image_url); ?>" alt="Nordic Bloom flower arrangement" loading="lazy" decoding="async">
                 </div>
 
             <?php endif; ?>
