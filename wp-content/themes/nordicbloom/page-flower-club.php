@@ -20,6 +20,17 @@ $hero_image_id = is_array($hero_image)
 if (!$hero_title) {
     $hero_title = get_the_title($page_id);
 }
+
+// Benefits: text and image
+$benefits_title = get_field('flower_club_benefits_title', $page_id);
+$benefits_image = get_field('flower_club_benefits_image', $page_id);
+
+// Image ID for the benefits image, default to 0 if not set
+$benefits_image_id = 0;
+
+if (is_array($benefits_image)) {
+    $benefits_image_id = absint($benefits_image['ID']);
+}
 ?>
 
 <main class="flower-club-page">
@@ -93,6 +104,80 @@ if (!$hero_title) {
         </div>
 
     </section>
+
+    <!-- Benefits: block 2 -->
+<section class="flower-club-benefits">
+
+    <div class="container flower-club-benefits__container">
+
+        <!-- Left column: title and benefits -->
+        <div class="flower-club-benefits__content">
+
+            <?php if ($benefits_title) : ?>
+                <h2 class="flower-club-benefits__title">
+                    <?php echo esc_html($benefits_title); ?>
+                </h2>
+            <?php endif; ?>
+
+            <?php if (have_rows('flower_club_benefits', $page_id)) : ?>
+
+                <div class="flower-club-benefits__list">
+
+                    <?php
+                    while (have_rows('flower_club_benefits', $page_id)) :
+                        the_row();
+
+                        $benefit_title = get_sub_field('benefit_title');
+                        $benefit_description = get_sub_field('benefit_description');
+                    ?>
+
+                        <?php if ($benefit_title || $benefit_description) : ?>
+                            <div class="flower-club-benefits__item">
+
+                                <?php if ($benefit_title) : ?>
+                                    <h3 class="flower-club-benefits__item-title">
+                                        <?php echo esc_html($benefit_title); ?>
+                                    </h3>
+                                <?php endif; ?>
+
+                                <?php if ($benefit_description) : ?>
+                                    <p class="flower-club-benefits__description">
+                                        <?php echo esc_html($benefit_description); ?>
+                                    </p>
+                                <?php endif; ?>
+
+                            </div>
+                        <?php endif; ?>
+
+                    <?php endwhile; ?>
+
+                </div>
+
+            <?php endif; ?>
+
+        </div>
+
+        <!-- Right column: image -->
+        <?php if ($benefits_image_id) : ?>
+            <div class="flower-club-benefits__media">
+
+                <?php
+                echo wp_get_attachment_image(
+                    $benefits_image_id,
+                    'large',
+                    false,
+                    [
+                        'class' => 'flower-club-benefits__image',
+                    ]
+                );
+                ?>
+
+            </div>
+        <?php endif; ?>
+
+    </div>
+
+</section>
 
 </main>
 
