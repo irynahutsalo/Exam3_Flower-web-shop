@@ -191,7 +191,6 @@
 /* How it works: block 3 */
 .flower-club-how {
   padding: 70px 0;
-  background-color: #f6f2ec;
   color: #1a1817;
 }
 
@@ -290,34 +289,34 @@
   .flower-club-benefits__image {
     height: 320px;
   }
-}
 
-/* How it works: block 3 */
-.flower-club-how {
-  padding: 56px 0;
-}
+  /* How it works: block 3 */
+  .flower-club-how {
+    padding: 56px 0;
+  }
 
-.flower-club-how .container {
-  padding-left: 24px;
-  padding-right: 24px;
-}
+  .flower-club-how .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 
-.flower-club-how__title {
-  font-size: 32px;
-}
+  .flower-club-how__title {
+    font-size: 32px;
+  }
 
-.flower-club-how__steps {
-  flex-wrap: wrap;
-  gap: 32px;
-}
+  .flower-club-how__steps {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
 
-.flower-club-how__step {
-  flex: none;
-  width: calc(50% - 16px);
-}
+  .flower-club-how__step {
+    flex: none;
+    width: calc(50% - 16px);
+  }
 
-.flower-club-how__image {
-  height: 300px;
+  .flower-club-how__image {
+    height: 300px;
+  }
 }
 
 /* Phones: width up to 600px */
