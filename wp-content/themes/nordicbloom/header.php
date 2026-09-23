@@ -49,7 +49,9 @@ if (have_rows('header_navigation', $front_page_id)) {
         $page_id = $page->ID;
 
         // Gets the page title
-        $page_title = get_the_title($page_id);
+        // $page_title = get_the_title($page_id);
+        $custom_nav_label = get_field('nav_label', $page_id);
+        $page_title = $custom_nav_label ? $custom_nav_label : get_the_title($page_id);
 
         // Gets the page URL
         $page_url = get_permalink($page_id);
