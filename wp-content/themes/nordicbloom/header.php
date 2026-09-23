@@ -4,6 +4,16 @@
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Meta Description -->
+  <?php
+  $meta_description = get_field('meta_desc', get_queried_object_id());
+  ?>
+  
+  <?php if ($meta_description) : ?>
+   <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
+  <?php endif; ?>
+
   <?php wp_head(); ?>
 </head>
 
@@ -49,7 +59,6 @@ if (have_rows('header_navigation', $front_page_id)) {
         $page_id = $page->ID;
 
         // Gets the page title
-        // $page_title = get_the_title($page_id);
         $custom_nav_label = get_field('nav_label', $page_id);
         $page_title = $custom_nav_label ? $custom_nav_label : get_the_title($page_id);
 
