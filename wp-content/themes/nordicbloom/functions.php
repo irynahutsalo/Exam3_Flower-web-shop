@@ -1,5 +1,15 @@
 <?php
 
+add_filter('pre_get_document_title', function($title) {
+    if (is_page()) {
+        $seo_title = get_field('seo_title', get_queried_object_id());
+        if ($seo_title) {
+            return $seo_title;
+        }
+    }
+    return $title;
+});
+
 // --------------------------------------------------------- Theme Setup --------------------------------------------------
 function nordicbloom_theme_setup()
 {
@@ -391,6 +401,7 @@ add_action(
     'admin_post_submit_contact_form',
     'nordicbloom_handle_contact_form'
 );
+
 
 
 // search inspection

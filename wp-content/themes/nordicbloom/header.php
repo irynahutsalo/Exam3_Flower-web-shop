@@ -17,6 +17,8 @@
   <?php wp_head(); ?>
 </head>
 
+
+
 <!-- Adds Wordpress Classes to the body -->
 <body <?php body_class(); ?>>
 
@@ -61,6 +63,7 @@ if (have_rows('header_navigation', $front_page_id)) {
         // Gets the page title
         $custom_nav_label = get_field('nav_label', $page_id);
         $page_title = $custom_nav_label ? $custom_nav_label : get_the_title($page_id);
+
 
         // Gets the page URL
         $page_url = get_permalink($page_id);
