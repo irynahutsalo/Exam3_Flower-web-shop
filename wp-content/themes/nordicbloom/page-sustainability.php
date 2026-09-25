@@ -204,7 +204,7 @@ $future_cards       = get_field('sustainability_future_cards');
                     <div class="bouquet-center">
 
                         <!-- Left Top Arrow -->
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.png'); ?>"
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.svg'); ?>"
                             alt="" class="impact-arrow arrow-left-top" aria-hidden="true">
 
                         <!-- Left Middle Arrow -->
@@ -212,11 +212,11 @@ $future_cards       = get_field('sustainability_future_cards');
                             alt="" class="impact-arrow arrow-left-middle" aria-hidden="true">
 
                         <!-- Left Buttom Arrow -->
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.png'); ?>"
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.svg'); ?>"
                             alt="" class="impact-arrow arrow-left-bottom" aria-hidden="true">
 
                         <!-- Right Top Arrow -->
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.png'); ?>"
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.svg'); ?>"
                             alt="" class="impact-arrow arrow-right-top" aria-hidden="true">
 
                         <!-- Right Middle Arrow -->
@@ -224,12 +224,12 @@ $future_cards       = get_field('sustainability_future_cards');
                             alt="" class="impact-arrow arrow-right-middle" aria-hidden="true">
 
                         <!-- Right Bottom Arrow -->
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.png'); ?>"
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.svg'); ?>"
                             alt="" class="impact-arrow arrow-right-bottom" aria-hidden="true">
 
                         <!-- Displays the bouquet image if it exists in ACF -->
                         <?php if ($bouquet_url): ?>
-                            <img src="<?php echo esc_url($bouquet_url); ?>" alt="Sustainable Nordic Bloom bouquet"
+                            <img src="<?php echo esc_url($bouquet_url); ?>" alt="Sustainable Nordic Bloom bouquet image"
                                 class="sustainability-bouquet">
                         <?php endif; ?>
 

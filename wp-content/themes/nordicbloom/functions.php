@@ -1,5 +1,8 @@
 <?php
 
+// ----------------------------------------------
+// Custom SEO Title Filter
+// ----------------------------------------------
 add_filter('pre_get_document_title', function($title) {
     if (is_page()) {
         $seo_title = get_field('seo_title', get_queried_object_id());
