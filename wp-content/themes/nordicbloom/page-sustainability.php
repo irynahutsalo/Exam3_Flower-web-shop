@@ -208,7 +208,7 @@ $future_cards       = get_field('sustainability_future_cards');
                             alt="" class="impact-arrow arrow-left-top" aria-hidden="true">
 
                         <!-- Left Middle Arrow -->
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left.svg'); ?>"
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.svg'); ?>"
                             alt="" class="impact-arrow arrow-left-middle" aria-hidden="true">
 
                         <!-- Left Buttom Arrow -->
@@ -220,7 +220,7 @@ $future_cards       = get_field('sustainability_future_cards');
                             alt="" class="impact-arrow arrow-right-top" aria-hidden="true">
 
                         <!-- Right Middle Arrow -->
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left.svg'); ?>"
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/arrow-left-top.svg'); ?>"
                             alt="" class="impact-arrow arrow-right-middle" aria-hidden="true">
 
                         <!-- Right Bottom Arrow -->
