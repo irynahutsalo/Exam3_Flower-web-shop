@@ -69,7 +69,7 @@ $blog_query = new WP_Query($blog_args);
                           <?php endif; ?>
                       </a>
 
-                      <div class="blog-body">
+                      <div class="card-body">
                           <!-- Category -->
                           <span class="card-category">
                               <?php 
