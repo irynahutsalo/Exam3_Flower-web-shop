@@ -435,7 +435,7 @@
 
 .comment-date {
   font-size: 0.8rem;
-  color: #888888;
+  color: #555555;
 }
 
 .comment-text {
@@ -448,10 +448,9 @@
 .comment-reply-btn a {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: #743047;
   text-decoration: none;
-  border-bottom: 1px solid var(--color-accent);
-  transition: opacity 0.2s;
+  border-bottom: 1px solid currentColor;
 }
 
 .comments-chat-list .children {
