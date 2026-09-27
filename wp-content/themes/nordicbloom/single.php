@@ -112,7 +112,7 @@
                       <span class="user-name">' . esc_html( $current_user->display_name ) . '</span>
                   </div>';
               }
-                echo '<!-- single-comment-check-2236 -->';
+             
                 comment_form( array(
                 'title_reply'          => 'Leave a comment',
                 'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',
