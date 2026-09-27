@@ -24,7 +24,7 @@ $blog_args = array(
 $blog_query = new WP_Query($blog_args);
 ?>
 
-<main id="primary" class="blog-page">
+<main id="primary" class="blog-page" tabindex="-1">
 
   <!-- Hero section via ACF -->
   <section class="blog-hero" <?php if($heroBgUrl): ?> style="background-image: url(<?= esc_url($heroBgUrl); ?>);" <?php endif; ?>>
