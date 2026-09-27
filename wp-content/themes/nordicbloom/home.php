@@ -76,9 +76,9 @@ $blog_query = new WP_Query($blog_args);
                           </span>
 
                           <!-- Article title -->
-                          <h3 class="card-title">
+                          <h2 class="card-title">
                               <a href="<?php the_permalink(); ?>"><?= esc_html( get_the_title() ); ?></a>
-                          </h3>
+                          </h2>
 
                           <!-- Short excerpt -->
                           <p class="card-excerpt">
