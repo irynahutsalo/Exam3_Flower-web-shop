@@ -58,7 +58,10 @@ $blog_query = new WP_Query($blog_args);
                   
                   <article class="blog-card">
                       <!-- Image wrapper -->
-                      <a href="<?php the_permalink(); ?>" class="card-image-wrap">
+                      <a
+                        href="<?php the_permalink(); ?>"
+                        class="card-image-wrap"
+                        aria-label="<?php echo esc_attr('Read article: ' . get_the_title()); ?>">
                           <?php if ( has_post_thumbnail() ) : ?>
                               <?php the_post_thumbnail('medium'); ?>
                           <?php else : ?>
@@ -88,7 +91,13 @@ $blog_query = new WP_Query($blog_args);
                           <!-- Card footer -->
                           <div class="card-footer">
                               <span class="card-date"><?= esc_html( get_the_date('M j, Y') ); ?></span>
-                              <a href="<?php the_permalink(); ?>" class="card-arrow">&rarr;</a>
+                              <a
+                                href="<?php the_permalink(); ?>"
+                                class="card-arrow"
+                                aria-label="<?php echo esc_attr('Read article: ' . get_the_title()); ?>"
+                            >
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
                           </div>
                       </div>
                   </article>
