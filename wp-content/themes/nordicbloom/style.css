@@ -169,12 +169,13 @@
 /* Date styled precisely like the Post Comment button */
 .card-date {
   display: inline-block;
-  background-color: var(--color-accent);
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #555555;
   padding: 8px 14px;
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
+  line-height: 1.5;
   letter-spacing: 0.02em;
 }
 
