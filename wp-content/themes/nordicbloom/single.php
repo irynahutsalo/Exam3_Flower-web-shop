@@ -65,7 +65,7 @@
         <section class="single-comments-section single-container">
           
           <div class="comments-header-acf">
-            <h3 class="comments-main-title"><?php echo esc_html( $comments_title ); ?></h3>
+            <h2 class="comments-main-title"><?php echo esc_html( $comments_title ); ?></h2>
             <?php if ( $comments_subtitle ) : ?>
               <p class="comments-subtitle-text"><?php echo esc_html( $comments_subtitle ); ?></p>
             <?php endif; ?>
@@ -113,14 +113,16 @@
                   </div>';
               }
 
-              comment_form( array(
-                  'title_reply'          => '',
-                  'label_submit'         => esc_html( $comments_button_label ),
-                  'comment_notes_before' => '',
-                  'logged_in_as'         => $logged_in_preview,
-              ) );
-          }
-          ?>
+                comment_form( array(
+                'title_reply'          => 'Leave a comment',
+                'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',
+                'title_reply_after'    => '</h3>',
+                'label_submit'         => esc_html( $comments_button_label ),
+                'comment_notes_before' => '',
+                'logged_in_as'         => $logged_in_preview,
+                ) );
+            }
+            ?>
 
         </section>
       <?php endif; ?>
