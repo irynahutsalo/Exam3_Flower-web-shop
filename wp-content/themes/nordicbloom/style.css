@@ -271,14 +271,14 @@
 
 .single-post-meta {
   font-size: 0.8rem;
-  color: #888888;
+  color: #444444;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 15px;
 }
 
 .single-post-meta .post-category {
-  color: var(--color-accent);
+  color: #444444;
   font-weight: 600;
 }
 
