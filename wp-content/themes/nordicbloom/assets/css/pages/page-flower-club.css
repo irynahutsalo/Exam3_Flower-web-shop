@@ -422,6 +422,110 @@
   box-shadow: none;
 }
 
+/* FAQ: block 5 */
+
+.flower-club-faq {
+  padding: 70px 0;
+  background-color: #f6f2ec;
+  color: #1a1817;
+}
+
+/* Narrow content area in the centre */
+
+.flower-club-faq__content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Decorative line above the title */
+
+.flower-club-faq__content::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin-bottom: 24px;
+  background-color: #d4a39a;
+}
+
+.flower-club-faq__title {
+  margin: 0 0 40px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+/* Separator between questions */
+
+.flower-club-faq__item + .flower-club-faq__item {
+  border-top: 1px solid #d9ccc4;
+}
+
+/* Clickable question */
+
+.flower-club-faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  list-style: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Remove the standard marker in Safari */
+
+.flower-club-faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.flower-club-faq__question:hover {
+  color: #743047;
+}
+
+/* Keyboard focus */
+
+.flower-club-faq__question:focus-visible {
+  outline: 3px solid #8d3c57;
+  outline-offset: 4px;
+}
+
+/* Plus sign */
+
+.flower-club-faq__icon {
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.flower-club-faq__icon::before {
+  content: '+';
+}
+
+/* Minus sign when the answer is open */
+
+.flower-club-faq__item[open] .flower-club-faq__icon::before {
+  content: '−';
+}
+
+.flower-club-faq__answer {
+  margin: 0;
+  padding-bottom: 24px;
+  color: #5c5652;
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
 /* Tablets: width up to 900px */
 @media (max-width: 900px) {
   .flower-club-hero {
@@ -487,6 +591,8 @@
     height: 300px;
   }
 
+  /* Plans - block 4 */
+
   .flower-club-plans {
     padding: 56px 0;
   }
@@ -511,6 +617,21 @@
 
   .flower-club-plan__media {
     height: 240px;
+  }
+
+  /* FAQ */
+
+  .flower-club-faq {
+    padding: 56px 0;
+  }
+
+  .flower-club-faq .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .flower-club-faq__title {
+    font-size: 32px;
   }
 }
 
@@ -636,6 +757,8 @@
     height: 240px;
   }
 
+  /* Plans - block 4 */
+
   .flower-club-plans {
     padding: 44px 0;
   }
@@ -667,6 +790,32 @@
 
   .flower-club-plan__button {
     max-width: none;
+  }
+
+  /* FAQ */
+
+  .flower-club-faq {
+    padding: 44px 0;
+  }
+
+  .flower-club-faq .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .flower-club-faq__title {
+    margin-bottom: 28px;
+    font-size: 30px;
+  }
+
+  .flower-club-faq__question {
+    gap: 16px;
+    padding: 18px 0;
+    font-size: 16px;
+  }
+
+  .flower-club-faq__answer {
+    padding-bottom: 20px;
   }
 }
 

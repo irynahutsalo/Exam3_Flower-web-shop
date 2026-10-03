@@ -458,7 +458,7 @@ $faq_title = get_field('flower_club_faq_title', $page_id);
         </div>
     </section>
 
-        <!-- FAQ: block 5 -->
+    <!-- FAQ: block 5 -->
     <?php if (have_rows('flower_club_faq_items', $page_id)) : ?>
         <section class="flower-club-faq">
             <div class="container">
