@@ -253,6 +253,175 @@
   object-position: center;
 }
 
+/* Flower Club plans: block 4 */
+
+.flower-club-plans {
+  padding: 70px 0;
+  background-color: #f6f2ec;
+  color: #1a1817;
+}
+
+.flower-club-plans__title {
+  margin: 0 0 16px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.flower-club-plans__description {
+  max-width: 650px;
+  margin: 0 0 40px;
+  color: #5c5652;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Three cards in one row */
+
+.flower-club-plans__cards {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+}
+
+/* One card */
+
+.flower-club-plan {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d9ccc4;
+  background-color: #f6f2ec;
+}
+
+/* Image and badge */
+
+.flower-club-plan__media {
+  position: relative;
+  height: 260px;
+  background-color: #f0e7e1;
+}
+
+.flower-club-plan__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.flower-club-plan__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  width: fit-content;
+  padding: 6px 10px;
+  background-color: #ffffff;
+  color: #1b2a22;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+/* Content inside the card */
+
+.flower-club-plan__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+/* Name and price */
+
+.flower-club-plan__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 16px;
+}
+
+.flower-club-plan__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.flower-club-plan__price {
+  margin: 0;
+  color: #5c5652;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.flower-club-plan__description {
+  margin: 0 0 20px;
+  color: #5c5652;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+/* Best for and Includes */
+
+.flower-club-plan__details {
+  padding: 20px 0;
+  border-top: 1px solid #d9ccc4;
+}
+
+.flower-club-plan__subtitle {
+  margin: 0 0 12px;
+  color: #5c5652;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.flower-club-plan__list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.flower-club-plan__list li {
+  overflow-wrap: break-word;
+}
+
+.flower-club-plan__list li + li {
+  margin-top: 6px;
+}
+
+/* Shop link at the bottom */
+
+.flower-club-plan__button {
+  width: 100%;
+  max-width: none;
+  margin-top: auto;
+}
+
+/* Visible keyboard focus on a light background */
+
+.flower-club-plan__button:focus-visible {
+  outline: 3px solid #1b2a22;
+  outline-offset: 4px;
+  box-shadow: none;
+}
+
 /* Tablets: width up to 900px */
 @media (max-width: 900px) {
   .flower-club-hero {
@@ -316,6 +485,32 @@
 
   .flower-club-how__image {
     height: 300px;
+  }
+
+  .flower-club-plans {
+    padding: 56px 0;
+  }
+
+  .flower-club-plans .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .flower-club-plans__title {
+    font-size: 32px;
+  }
+
+  .flower-club-plans__cards {
+    flex-wrap: wrap;
+  }
+
+  .flower-club-plan {
+    flex: none;
+    width: calc(50% - 12px);
+  }
+
+  .flower-club-plan__media {
+    height: 240px;
   }
 }
 
@@ -439,6 +634,39 @@
 
   .flower-club-how__image {
     height: 240px;
+  }
+
+  .flower-club-plans {
+    padding: 44px 0;
+  }
+
+  .flower-club-plans .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .flower-club-plans__title {
+    font-size: 30px;
+  }
+
+  .flower-club-plans__description {
+    margin-bottom: 28px;
+  }
+
+  .flower-club-plans__cards {
+    flex-direction: column;
+  }
+
+  .flower-club-plan {
+    width: 100%;
+  }
+
+  .flower-club-plan__content {
+    padding: 20px;
+  }
+
+  .flower-club-plan__button {
+    max-width: none;
   }
 }
 
