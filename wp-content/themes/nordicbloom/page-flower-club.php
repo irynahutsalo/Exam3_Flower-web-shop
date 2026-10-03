@@ -42,11 +42,12 @@ if (is_array($how_image)) {
     $how_image_id = absint($how_image['ID'] ?? 0);
 }
 
-
-
 // Section: Flower Club Plans
 $plans_title = get_field('flower_club_plans_title', $page_id);
 $plans_description = get_field('flower_club_plans_description', $page_id);
+
+// Section: Flower Club FAQ
+$faq_title = get_field('flower_club_faq_title', $page_id);
 
 ?>
 
@@ -295,167 +296,218 @@ $plans_description = get_field('flower_club_plans_description', $page_id);
     </section>
 
     <!-- Flower Club plans: block 4 -->
-<section class="flower-club-plans" id="flower-club-plans">
-    <div class="container">
+    <section class="flower-club-plans" id="flower-club-plans">
+        <div class="container">
 
-        <?php if ($plans_title) : ?>
-            <h2 class="flower-club-plans__title">
-                <?php echo esc_html($plans_title); ?>
-            </h2>
-        <?php endif; ?>
+            <?php if ($plans_title) : ?>
+                <h2 class="flower-club-plans__title">
+                    <?php echo esc_html($plans_title); ?>
+                </h2>
+            <?php endif; ?>
 
-        <?php if ($plans_description) : ?>
-            <p class="flower-club-plans__description">
-                <?php echo esc_html($plans_description); ?>
-            </p>
-        <?php endif; ?>
+            <?php if ($plans_description) : ?>
+                <p class="flower-club-plans__description">
+                    <?php echo esc_html($plans_description); ?>
+                </p>
+            <?php endif; ?>
 
-        <?php if (have_rows('flower_club_plans', $page_id)) : ?>
-            <div class="flower-club-plans__cards">
+            <?php if (have_rows('flower_club_plans', $page_id)) : ?>
+                <div class="flower-club-plans__cards">
 
-                <?php
-                while (have_rows('flower_club_plans', $page_id)) :
-                    the_row();
+                    <?php
+                    while (have_rows('flower_club_plans', $page_id)) :
+                        the_row();
 
-                    $plan_image = get_sub_field('plan_image');
-                    $plan_badge = get_sub_field('plan_badge');
-                    $plan_title = get_sub_field('plan_title');
-                    $plan_price = get_sub_field('plan_price');
-                    $plan_description = get_sub_field('plan_description');
-                    $plan_best_for = get_sub_field('plan_best_for');
-                    $plan_includes = get_sub_field('plan_includes');
-                    $plan_button_text = get_sub_field('plan_button_text');
-                    $plan_button_url = get_sub_field('plan_button_url');
+                        $plan_image = get_sub_field('plan_image');
+                        $plan_badge = get_sub_field('plan_badge');
+                        $plan_title = get_sub_field('plan_title');
+                        $plan_price = get_sub_field('plan_price');
+                        $plan_description = get_sub_field('plan_description');
+                        $plan_best_for = get_sub_field('plan_best_for');
+                        $plan_includes = get_sub_field('plan_includes');
+                        $plan_button_text = get_sub_field('plan_button_text');
+                        $plan_button_url = get_sub_field('plan_button_url');
 
-                    $plan_image_id = 0;
+                        $plan_image_id = 0;
 
-                    if (is_array($plan_image)) {
-                        $plan_image_id = absint($plan_image['ID'] ?? 0);
-                    }
-                ?>
+                        if (is_array($plan_image)) {
+                            $plan_image_id = absint($plan_image['ID'] ?? 0);
+                        }
+                    ?>
 
-                    <article class="flower-club-plan">
+                        <article class="flower-club-plan">
 
-                        <div class="flower-club-plan__media">
+                            <div class="flower-club-plan__media">
 
-                            <?php if ($plan_image_id) : ?>
-                                <?php
-                                echo wp_get_attachment_image(
-                                    $plan_image_id,
-                                    'medium_large',
-                                    false,
-                                    [
-                                        'class' => 'flower-club-plan__image',
-                                        'loading' => 'lazy',
-                                    ]
-                                );
-                                ?>
-                            <?php endif; ?>
-
-                            <?php if ($plan_badge) : ?>
-                                <span class="flower-club-plan__badge">
-                                    <?php echo esc_html($plan_badge); ?>
-                                </span>
-                            <?php endif; ?>
-
-                        </div>
-
-                        <div class="flower-club-plan__content">
-
-                            <div class="flower-club-plan__heading">
-
-                                <?php if ($plan_title) : ?>
-                                    <h3 class="flower-club-plan__title">
-                                        <?php echo esc_html($plan_title); ?>
-                                    </h3>
+                                <?php if ($plan_image_id) : ?>
+                                    <?php
+                                    echo wp_get_attachment_image(
+                                        $plan_image_id,
+                                        'medium_large',
+                                        false,
+                                        [
+                                            'class' => 'flower-club-plan__image',
+                                            'loading' => 'lazy',
+                                        ]
+                                    );
+                                    ?>
                                 <?php endif; ?>
 
-                                <?php if ($plan_price) : ?>
-                                    <p class="flower-club-plan__price">
-                                        <?php echo esc_html($plan_price); ?>
-                                    </p>
+                                <?php if ($plan_badge) : ?>
+                                    <span class="flower-club-plan__badge">
+                                        <?php echo esc_html($plan_badge); ?>
+                                    </span>
                                 <?php endif; ?>
 
                             </div>
 
-                            <?php if ($plan_description) : ?>
-                                <p class="flower-club-plan__description">
-                                    <?php echo esc_html($plan_description); ?>
-                                </p>
-                            <?php endif; ?>
+                            <div class="flower-club-plan__content">
 
-                            <?php if ($plan_best_for) : ?>
-                                <div class="flower-club-plan__details">
+                                <div class="flower-club-plan__heading">
 
-                                    <h4 class="flower-club-plan__subtitle">
-                                        Best for
-                                    </h4>
+                                    <?php if ($plan_title) : ?>
+                                        <h3 class="flower-club-plan__title">
+                                            <?php echo esc_html($plan_title); ?>
+                                        </h3>
+                                    <?php endif; ?>
 
-                                    <ul class="flower-club-plan__list">
-                                        <?php
-                                        $best_for_items = explode("\n", $plan_best_for);
-                                        ?>
-
-                                        <?php foreach ($best_for_items as $item) : ?>
-                                            <?php $item = trim($item); ?>
-
-                                            <?php if ($item !== '') : ?>
-                                                <li>
-                                                    <?php echo esc_html($item); ?>
-                                                </li>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    </ul>
+                                    <?php if ($plan_price) : ?>
+                                        <p class="flower-club-plan__price">
+                                            <?php echo esc_html($plan_price); ?>
+                                        </p>
+                                    <?php endif; ?>
 
                                 </div>
-                            <?php endif; ?>
 
-                            <?php if ($plan_includes) : ?>
-                                <div class="flower-club-plan__details">
+                                <?php if ($plan_description) : ?>
+                                    <p class="flower-club-plan__description">
+                                        <?php echo esc_html($plan_description); ?>
+                                    </p>
+                                <?php endif; ?>
 
-                                    <h4 class="flower-club-plan__subtitle">
-                                        Includes
-                                    </h4>
+                                <?php if ($plan_best_for) : ?>
+                                    <div class="flower-club-plan__details">
 
-                                    <ul class="flower-club-plan__list">
-                                        <?php
-                                        $included_items = explode("\n", $plan_includes);
-                                        ?>
+                                        <h4 class="flower-club-plan__subtitle">
+                                            Best for
+                                        </h4>
 
-                                        <?php foreach ($included_items as $item) : ?>
-                                            <?php $item = trim($item); ?>
+                                        <ul class="flower-club-plan__list">
+                                            <?php
+                                            $best_for_items = explode("\n", $plan_best_for);
+                                            ?>
 
-                                            <?php if ($item !== '') : ?>
-                                                <li>
-                                                    <?php echo esc_html($item); ?>
-                                                </li>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    </ul>
+                                            <?php foreach ($best_for_items as $item) : ?>
+                                                <?php $item = trim($item); ?>
 
-                                </div>
-                            <?php endif; ?>
+                                                <?php if ($item !== '') : ?>
+                                                    <li>
+                                                        <?php echo esc_html($item); ?>
+                                                    </li>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </ul>
 
-                            <?php if ($plan_button_text && $plan_button_url) : ?>
-                                <a
-                                    href="<?php echo esc_url($plan_button_url); ?>"
-                                    class="flower-club-button flower-club-button--primary flower-club-plan__button"
-                                >
-                                    <?php echo esc_html($plan_button_text); ?>
-                                </a>
-                            <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
 
-                        </div>
+                                <?php if ($plan_includes) : ?>
+                                    <div class="flower-club-plan__details">
 
-                    </article>
+                                        <h4 class="flower-club-plan__subtitle">
+                                            Includes
+                                        </h4>
 
-                <?php endwhile; ?>
+                                        <ul class="flower-club-plan__list">
+                                            <?php
+                                            $included_items = explode("\n", $plan_includes);
+                                            ?>
 
+                                            <?php foreach ($included_items as $item) : ?>
+                                                <?php $item = trim($item); ?>
+
+                                                <?php if ($item !== '') : ?>
+                                                    <li>
+                                                        <?php echo esc_html($item); ?>
+                                                    </li>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </ul>
+
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($plan_button_text && $plan_button_url) : ?>
+                                    <a
+                                        href="<?php echo esc_url($plan_button_url); ?>"
+                                        class="flower-club-button flower-club-button--primary flower-club-plan__button"
+                                    >
+                                        <?php echo esc_html($plan_button_text); ?>
+                                    </a>
+                                <?php endif; ?>
+
+                            </div>
+
+                        </article>
+
+                    <?php endwhile; ?>
+
+                </div>
+            <?php endif; ?>
+
+        </div>
+    </section>
+
+        <!-- FAQ: block 5 -->
+    <?php if (have_rows('flower_club_faq_items', $page_id)) : ?>
+        <section class="flower-club-faq">
+            <div class="container">
+                <div class="flower-club-faq__content">
+
+                    <?php if ($faq_title) : ?>
+                        <h2 class="flower-club-faq__title">
+                            <?php echo esc_html($faq_title); ?>
+                        </h2>
+                    <?php endif; ?>
+
+                    <?php
+                    $first_question = true;
+
+                    while (have_rows('flower_club_faq_items', $page_id)) :
+                        the_row();
+
+                        $faq_question = get_sub_field('faq_question');
+                        $faq_answer = get_sub_field('faq_answer');
+                    ?>
+
+                        <?php if ($faq_question && $faq_answer) : ?>
+                            <details
+                                class="flower-club-faq__item"
+                                <?php if ($first_question) : ?>open<?php endif; ?>
+                            >
+                                <summary class="flower-club-faq__question">
+                                    <span>
+                                        <?php echo esc_html($faq_question); ?>
+                                    </span>
+
+                                    <span
+                                        class="flower-club-faq__icon"
+                                        aria-hidden="true"
+                                    ></span>
+                                </summary>
+
+                                <p class="flower-club-faq__answer"><?php echo esc_html($faq_answer); ?></p>
+                            </details>
+
+                            <?php $first_question = false; ?>
+                        <?php endif; ?>
+
+                    <?php endwhile; ?>
+
+                </div>
             </div>
-        <?php endif; ?>
-
-    </div>
-</section>
+        </section>
+    <?php endif; ?>
 
 </main>
 
