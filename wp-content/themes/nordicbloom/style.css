@@ -606,3 +606,22 @@
   justify-content: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
+
+
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    padding: 12px 18px;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-100%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
