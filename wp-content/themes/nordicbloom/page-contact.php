@@ -5,6 +5,7 @@ Template Name: Contact Page
 
 get_header();
 
+
 // ACF
 $contact_hero_title       = get_field('contact_hero_title');
 $contact_hero_description = get_field('contact_hero_description');
@@ -18,8 +19,10 @@ $contact_email       = get_field('contact_email');
 $contact_phone       = get_field('contact_phone');
 $working_hours       = get_field('working_hours');
 
+
 // Get the first row from the Working Hours repeater
 $working_hours = $working_hours[0] ?? [];
+
 
 // If a field is empty or does not exist it use an empty string instead
 $weekday_opening   = $working_hours['weekday_opening'] ?? '';
@@ -36,10 +39,12 @@ $weekday_hours = ($weekday_opening && $weekday_closing) ? "$weekday_opening - $w
 $saturday_hours = ($saturday_opening && $saturday_closing) ? "$saturday_opening - $saturday_closing" : 'Closed';
 $sunday_hours = ($sunday_opening && $sunday_closing) ? "$sunday_opening - $sunday_closing" : 'Closed';
 
+
 // Gets the image URL from the ACF image array
 if (is_array($contact_hero_image)) {
     $contact_hero_image = $contact_hero_image['url'] ?? '';
 }
+
 
 // Remove spaces and special characters with Regex so the phone number works correctly in the href="tel:" link
 $contact_phone_link = $contact_phone
@@ -119,7 +124,7 @@ $contact_phone_link = $contact_phone
 
 
                 <!-- Contact Details -->
-                <div class="contact-details" aria-label="Contact details">
+                <address class="contact-details" aria-label="Nordic Bloom contact details">
 
                     <!-- Email -->
                     <?php if ($contact_email) : ?>
@@ -140,7 +145,7 @@ $contact_phone_link = $contact_phone
                                     Email
                                 </span>
 
-                                <a href="mailto:<?php echo esc_attr($contact_email); ?>" class="contact-detail-value" aria-label="Email Nordic Bloom at <?php echo esc_attr($contact_email); ?>">
+                                <a href="mailto:<?php echo esc_attr($contact_email); ?>" class="contact-detail-value">
                                     <?php echo esc_html($contact_email); ?>
                                 </a>
 
@@ -169,7 +174,7 @@ $contact_phone_link = $contact_phone
                                     Phone
                                 </span>
 
-                                <a href="tel:<?php echo esc_attr($contact_phone_link); ?>" class="contact-detail-value" aria-label="Call Nordic Bloom at <?php echo esc_attr($contact_phone); ?>">
+                                <a href="tel:<?php echo esc_attr($contact_phone_link); ?>" class="contact-detail-value">
                                     <?php echo esc_html($contact_phone); ?>
                                 </a>
 
@@ -286,7 +291,7 @@ $contact_phone_link = $contact_phone
 
                     </div>
 
-                </div>
+                </address>
 
             </div>
 
@@ -342,11 +347,13 @@ $contact_phone_link = $contact_phone
                         <div class="form-progress">
 
                             <!-- Shows the Steps -->
-                            <span class="form-progress-text">Step <span id="currentStepNumber">1</span> of 4</span>
+                            <span class="form-progress-text" id="formProgressText">
+                                Step <span id="currentStepNumber">1</span> of 4
+                            </span>
 
                             <!-- Progress Bar -->
-                            <div class="form-progress-bar" id="formProgressBar" role="progressbar" aria-label="Contact form progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
-                                <div class="form-progress-fill" id="progressFill"></div>
+                            <div class="form-progress-bar" id="formProgressBar" role="progressbar" aria-label="Contact form progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-valuetext="Step 1 of 4">
+                                <div class="form-progress-fill" id="progressFill" aria-hidden="true"></div>
                             </div>
 
                         </div>
@@ -359,18 +366,18 @@ $contact_phone_link = $contact_phone
                             <div class="form-steps" id="formSteps">
 
                                 <!-- Step 1 -->
-                                <div class="form-step" role="group" aria-labelledby="contact-step-1-heading">
+                                <fieldset class="form-step">
 
-                                    <h2 id="contact-step-1-heading">
+                                    <legend id="contact-step-1-heading">
                                         Hej! First — who's writing in?
-                                    </h2>
+                                    </legend>
 
                                     <p class="form-helper" id="contact-step-1-helper">
                                         This helps us route your message to the right person.
                                     </p>
 
 
-                                    <div class="contact-choice-list" role="radiogroup" aria-labelledby="contact-step-1-heading" aria-describedby="contact-step-1-helper">
+                                    <div class="contact-choice-list" aria-describedby="contact-step-1-helper">
 
                                         <!-- Option A -->
                                         <label class="contact-choice-card">
@@ -435,17 +442,17 @@ $contact_phone_link = $contact_phone
 
                                     </div>
 
-                                </div>
+                                </fieldset>
 
 
                                <!-- Step 2  -->
                                 <div class="form-step" role="group" aria-labelledby="contact-step-2-heading">
 
-                                    <h2 id="contact-step-2-heading">
+                                    <h2 id="contact-step-2-heading" tabindex="-1">
                                         What's your name?
                                     </h2>
 
-                                    <p class="form-helper">
+                                    <p class="form-helper" id="contact-step-2-helper">
                                         Tell us how we can reach you.
                                     </p>
 
@@ -458,7 +465,7 @@ $contact_phone_link = $contact_phone
                                         </label>
 
                                         <input type="text" id="name" name="name" placeholder="Type your name..." autocomplete="name" required
-                                            aria-required="true"
+                                            aria-describedby="contact-step-2-helper"
                                             data-parsley-required-message="Please enter your name."
                                         >
 
@@ -468,7 +475,6 @@ $contact_phone_link = $contact_phone
                                         </label>
 
                                         <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required
-                                            aria-required="true"
                                             data-parsley-required-message="Please enter your email."
                                             data-parsley-type-message="Please enter a valid email address."
                                         >
@@ -485,17 +491,17 @@ $contact_phone_link = $contact_phone
                                 </div>
 
                                 <!-- Step 3 -->
-                                <div class="form-step" role="group" aria-labelledby="contact-step-3-heading">
+                                <fieldset class="form-step">
 
-                                    <h2 id="contact-step-3-heading">
+                                    <legend id="contact-step-3-heading">
                                         What's this about?
-                                    </h2>
+                                    </legend>
 
                                     <p class="form-helper" id="contact-step-3-helper">
                                         Pick the option that fits best.
                                     </p>
 
-                                    <div class="contact-choice-list" role="radiogroup" aria-labelledby="contact-step-3-heading" aria-describedby="contact-step-3-helper">
+                                    <div class="contact-choice-list" aria-describedby="contact-step-3-helper">
 
                                         <!-- Option A -->
                                         <label class="contact-choice-card">
@@ -584,13 +590,13 @@ $contact_phone_link = $contact_phone
 
                                     </div>
 
-                                </div>
+                                </fieldset>
 
 
                                 <!-- Step 4 -->
                                 <div class="form-step" role="group" aria-labelledby="contact-step-4-heading">
 
-                                    <h2 id="contact-step-4-heading">
+                                    <h2 id="contact-step-4-heading" tabindex="-1">
                                         Tell us more.
                                     </h2>
 
@@ -604,13 +610,11 @@ $contact_phone_link = $contact_phone
                                     </label>
 
                                     <textarea id="message" name="message" rows="7" maxlength="500" placeholder="Type your message..." required
-                                        aria-required="true"
                                         aria-describedby="message-helper characterCounter"
-                                        data-parsley-required-message="Please write a message.">
-                                    </textarea>
+                                        data-parsley-required-message="Please write a message."></textarea>
 
                                     <!-- Character Limit -->
-                                    <div class="character-counter" id="characterCounter" aria-live="polite">
+                                    <div class="character-counter" id="characterCounter" aria-live="polite" aria-atomic="true">
                                         <span id="characterCount">0</span>/500 characters
                                     </div>
 
@@ -672,13 +676,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const formWarning = document.getElementById("formWarning");
     const messageField = document.getElementById("message");
     const characterCount = document.getElementById("characterCount");
+    const steps = document.querySelectorAll(".form-step");
 
     // Stop if the form is not shown
-    if (!form || !formSteps || !nextButton || !backButton || !submitButton || !stepNumber || !progressFill) {
+    if (!form || !formSteps || !nextButton || !backButton || !submitButton || !stepNumber || !progressFill || !progressBar || !steps.length) {
         return;
     }
 
-    const totalSteps = 4;
+    const totalSteps = steps.length;
     let currentStep = 0;
 
     // Update the visible step and progress bar
@@ -691,7 +696,19 @@ document.addEventListener("DOMContentLoaded", () => {
             `${((currentStep + 1) / totalSteps) * 100}%`;
 
         // Updates the accessible progress value
-        progressBar?.setAttribute("aria-valuenow", currentStep + 1);
+        progressBar.setAttribute("aria-valuenow", currentStep + 1);
+        progressBar.setAttribute("aria-valuetext", `Step ${currentStep + 1} of ${totalSteps}`);
+
+        // Makes only the current step available to keyboard and screen reader users
+        steps.forEach((step, index) => {
+            const isActive = index === currentStep;
+
+            step.setAttribute("aria-hidden", isActive ? "false" : "true");
+
+            step.querySelectorAll("input, textarea, select, button, a").forEach(element => {
+                element.tabIndex = isActive ? 0 : -1;
+            });
+        });
 
         backButton.style.visibility =
             currentStep === 0 ? "hidden" : "visible";
@@ -703,6 +720,19 @@ document.addEventListener("DOMContentLoaded", () => {
             currentStep === totalSteps - 1 ? "inline-flex" : "none";
 
         hideWarning();
+    }
+
+    // Moves keyboard focus to the heading of the current step
+    function focusCurrentStep() {
+        const activeStep = steps[currentStep];
+        const heading = activeStep.querySelector("h2, legend");
+
+        if (!heading) {
+            return;
+        }
+
+        heading.setAttribute("tabindex", "-1");
+        heading.focus();
     }
 
     // Show a form warning
@@ -720,8 +750,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validate required fields in the current step
     function validateCurrentStep() {
-        const activeStep =
-            document.querySelectorAll(".form-step")[currentStep];
+        const activeStep = steps[currentStep];
 
         const requiredFields =
             activeStep.querySelectorAll("input[required], textarea[required]");
@@ -775,6 +804,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (validateCurrentStep() && currentStep < totalSteps - 1) {
             currentStep++;
             updateForm();
+            focusCurrentStep();
         }
     });
 
@@ -783,6 +813,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentStep > 0) {
             currentStep--;
             updateForm();
+            focusCurrentStep();
         }
     });
 
