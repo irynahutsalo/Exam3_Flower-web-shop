@@ -49,25 +49,30 @@ $contact_phone_link = $contact_phone
 
 
 <!-- Contact Page -->
-<main id="primary" class="contact-page">
+<main id="primary" class="contact-page" tabindex="-1">
 
     <!-- Contact Hero -->
 
     <!-- If a hero image exists then it uses it as the background image -->
     <section class="contact-hero"
+        <?php if ($contact_hero_title) : ?>
+            aria-labelledby="contact-hero-title"
+        <?php else : ?>
+            aria-label="Contact"
+        <?php endif; ?>
         <?php if ($contact_hero_image) : ?>
              style="background-image: url('<?php echo esc_url($contact_hero_image); ?>');"
         <?php endif; ?>>
 
         <!-- Dark Overlay -->
-        <div class="contact-hero-overlay"></div>
+        <div class="contact-hero-overlay" aria-hidden="true"></div>
 
         <!-- Contact Hero Content -->
         <div class="contact-hero-content">
 
             <!-- Title -->
             <?php if ($contact_hero_title) : ?>
-                <h1 class="contact-hero-title">
+                <h1 id="contact-hero-title" class="contact-hero-title">
                     <?php echo esc_html($contact_hero_title); ?>
                 </h1>
             <?php endif; ?>
@@ -85,7 +90,12 @@ $contact_phone_link = $contact_phone
 
 
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact-section"
+        <?php if ($contact_title) : ?>
+            aria-labelledby="contact-section-title"
+        <?php else : ?>
+            aria-label="Contact information and form"
+        <?php endif; ?>>
 
         <!-- Contact Container -->
         <div class="contact-container">
@@ -95,7 +105,7 @@ $contact_phone_link = $contact_phone
 
                 <!-- Contact Info Title -->
                 <?php if ($contact_title) : ?>
-                    <h2 class="contact-title">
+                    <h2 id="contact-section-title" class="contact-title">
                         <?php echo esc_html($contact_title); ?>
                     </h2>
                 <?php endif; ?>
@@ -109,15 +119,15 @@ $contact_phone_link = $contact_phone
 
 
                 <!-- Contact Details -->
-                <div class="contact-details">
+                <div class="contact-details" aria-label="Contact details">
 
                     <!-- Email -->
                     <?php if ($contact_email) : ?>
                         <div class="contact-detail-item">
 
                             <!-- Icon -->
-                            <div class="contact-detail-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" aria-hidden="true">
+                            <div class="contact-detail-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                                     <path d="M0 0h32v32H0z" fill="none" />
                                     <path fill="#fff" d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-2.2 2L16 14.78L6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z" />
                                 </svg>
@@ -125,13 +135,15 @@ $contact_phone_link = $contact_phone
 
                             <!-- Email Container -->
                             <div class="contact-detail-content">
+
                                 <span class="contact-detail-label">
                                     Email
                                 </span>
 
-                                <a href="mailto:<?php echo esc_attr($contact_email); ?>" class="contact-detail-value">
+                                <a href="mailto:<?php echo esc_attr($contact_email); ?>" class="contact-detail-value" aria-label="Email Nordic Bloom at <?php echo esc_attr($contact_email); ?>">
                                     <?php echo esc_html($contact_email); ?>
                                 </a>
+
                             </div>
 
                         </div>
@@ -143,8 +155,8 @@ $contact_phone_link = $contact_phone
                         <div class="contact-detail-item">
 
                             <!-- Icon -->
-                            <div class="contact-detail-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32">
+                            <div class="contact-detail-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                                     <path d="M0 0h32v32H0z" fill="none" />
                                     <path fill="#fff" d="M26 29h-.17C6.18 27.87 3.39 11.29 3 6.23A3 3 0 0 1 5.76 3h5.51a2 2 0 0 1 1.86 1.26L14.65 8a2 2 0 0 1-.44 2.16l-2.13 2.15a9.37 9.37 0 0 0 7.58 7.6l2.17-2.15a2 2 0 0 1 2.17-.41l3.77 1.51A2 2 0 0 1 29 20.72V26a3 3 0 0 1-3 3M6 5a1 1 0 0 0-1 1v.08C5.46 12 8.41 26 25.94 27a1 1 0 0 0 1.06-.94v-5.34l-3.77-1.51l-2.87 2.85l-.48-.06c-8.7-1.09-9.88-9.79-9.88-9.88l-.06-.48l2.84-2.87L11.28 5Z" />
                                 </svg>
@@ -152,13 +164,15 @@ $contact_phone_link = $contact_phone
 
                             <!-- Phone Container -->
                             <div class="contact-detail-content">
+
                                 <span class="contact-detail-label">
                                     Phone
                                 </span>
 
-                                <a href="tel:<?php echo esc_attr($contact_phone_link); ?>" class="contact-detail-value">
+                                <a href="tel:<?php echo esc_attr($contact_phone_link); ?>" class="contact-detail-value" aria-label="Call Nordic Bloom at <?php echo esc_attr($contact_phone); ?>">
                                     <?php echo esc_html($contact_phone); ?>
                                 </a>
+
                             </div>
 
                         </div>
@@ -170,8 +184,8 @@ $contact_phone_link = $contact_phone
                         <div class="contact-detail-item">
 
                             <!-- Icon -->
-                            <div class="contact-detail-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32">
+                            <div class="contact-detail-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                                     <path d="M0 0h32v32H0z" fill="none" />
                                     <path fill="#fff" d="M16 18a5 5 0 1 1 5-5a5.006 5.006 0 0 1-5 5m0-8a3 3 0 1 0 3 3a3.003 3.003 0 0 0-3-3" />
                                     <path fill="#fff" d="m16 30l-8.436-9.949a35 35 0 0 1-.348-.451A10.9 10.9 0 0 1 5 13a11 11 0 0 1 22 0a10.9 10.9 0 0 1-2.215 6.597l-.001.003s-.3.394-.345.447ZM8.813 18.395s.233.308.286.374L16 26.908l6.91-8.15c.044-.055.278-.365.279-.366A8.9 8.9 0 0 0 25 13a9 9 0 1 0-18 0a8.9 8.9 0 0 0 1.813 5.395" />
@@ -180,6 +194,7 @@ $contact_phone_link = $contact_phone
 
                             <!-- Location Container -->
                             <div class="contact-detail-content">
+
                                 <span class="contact-detail-label">
                                     Location
                                 </span>
@@ -188,6 +203,7 @@ $contact_phone_link = $contact_phone
                                 <p class="contact-detail-value">
                                     <?php echo esc_html($contact_location); ?>
                                 </p>
+
                             </div>
 
                         </div>
@@ -199,8 +215,8 @@ $contact_phone_link = $contact_phone
                     <div class="contact-hours-section">
 
                         <!-- Icon -->
-                        <div class="contact-detail-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
                                 <path d="M0 0h512v512H0z" fill="none" />
                                 <path fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="32" d="M256 64C150 64 64 150 64 256s86 192 192 192s192-86 192-192S362 64 256 64Z" />
                                 <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96" />
@@ -231,10 +247,12 @@ $contact_phone_link = $contact_phone
                                     <span class="contact-hours-time">
                                         <?php echo esc_html($weekday_hours); ?>
                                     </span>
+
                                 </div>
 
                                 <!-- Second Row Saturday Container -->
                                 <div class="contact-hours-row">
+
                                     <!-- Saturday Label -->
                                     <span class="contact-hours-day">
                                         Saturday
@@ -244,10 +262,12 @@ $contact_phone_link = $contact_phone
                                     <span class="contact-hours-time">
                                         <?php echo esc_html($saturday_hours); ?>
                                     </span>
+
                                 </div>
 
                                 <!-- Third Row Saturday Container -->
                                 <div class="contact-hours-row">
+
                                     <!-- Sunday Label -->
                                     <span class="contact-hours-day">
                                         Sunday
@@ -257,6 +277,7 @@ $contact_phone_link = $contact_phone
                                     <span class="contact-hours-time">
                                         <?php echo esc_html($sunday_hours); ?>
                                     </span>
+
                                 </div>
 
                             </div>
@@ -277,17 +298,21 @@ $contact_phone_link = $contact_phone
                 <?php if (isset($_GET['sent']) && $_GET['sent'] === '1') : ?>
 
                     <!-- Success Container -->
-                    <div class="contact-success">
+                    <div class="contact-success" role="status" aria-live="polite">
 
                         <!-- Icon Container -->
-                        <div class="contact-succes-icon-wrapper">
+                        <div class="contact-succes-icon-wrapper" aria-hidden="true">
+
                             <!-- Icon -->
                             <div class="contact-success-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 56 56">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
                                     <path d="M0 0h56v56H0z" fill="none" />
                                     <path fill="#fff" d="M23.078 48.027c1.008 0 1.805-.445 2.367-1.312L47.594 11.84c.422-.68.61-1.195.61-1.735c0-1.289-.868-2.132-2.157-2.132c-.914 0-1.453.304-2.016 1.195L22.984 42.707L12.062 28.41c-.585-.82-1.148-1.148-2.015-1.148c-1.313 0-2.25.914-2.25 2.203c0 .539.234 1.148.68 1.71L20.64 46.669c.726.914 1.43 1.36 2.437 1.36" />
                                 </svg>
+
                             </div>
+
                         </div>
 
                         <h2 class="contact-success-title">
@@ -305,7 +330,7 @@ $contact_phone_link = $contact_phone
 
                     <!-- Form -->
                      <!-- Sends the form data to WordPress for processing -->
-                    <form class="contact-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" data-parsley-validate>
+                    <form class="contact-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" data-parsley-validate aria-label="Contact form">
 
                         <!-- This tells WordPress which function should handle the form submission -->
                         <input type="hidden" name="action" value="submit_contact_form">
@@ -320,7 +345,7 @@ $contact_phone_link = $contact_phone
                             <span class="form-progress-text">Step <span id="currentStepNumber">1</span> of 4</span>
 
                             <!-- Progress Bar -->
-                            <div class="form-progress-bar">
+                            <div class="form-progress-bar" id="formProgressBar" role="progressbar" aria-label="Contact form progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
                                 <div class="form-progress-fill" id="progressFill"></div>
                             </div>
 
@@ -329,64 +354,83 @@ $contact_phone_link = $contact_phone
 
                         <!-- Steps Container -->
                         <div class="form-steps-wrapper">
+
                             <!-- Steps Content Container -->
                             <div class="form-steps" id="formSteps">
 
                                 <!-- Step 1 -->
-                                <div class="form-step">
+                                <div class="form-step" role="group" aria-labelledby="contact-step-1-heading">
 
-                                    <h2>
+                                    <h2 id="contact-step-1-heading">
                                         Hej! First — who's writing in?
                                     </h2>
 
-                                    <p class="form-helper">
+                                    <p class="form-helper" id="contact-step-1-helper">
                                         This helps us route your message to the right person.
                                     </p>
 
 
-                                    <div class="contact-choice-list">
+                                    <div class="contact-choice-list" role="radiogroup" aria-labelledby="contact-step-1-heading" aria-describedby="contact-step-1-helper">
 
                                         <!-- Option A -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option A -->
-                                            <input type="radio" name="customer_type" value="home_customer"required>
-                                            <span class="contact-choice-letter"> A </span>
+                                            <input type="radio" name="customer_type" value="home_customer" required>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> A </span>
 
                                             <span class="contact-choice-text">
+
                                                 <!-- Title -->
                                                 <strong> A home customer</strong>
+
                                                 <!-- Small Description -->
                                                 <small> Flower Club subscriber, or thinking about it</small>
+
                                             </span>
+
                                         </label>
 
                                         <!-- Option B -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option B -->
                                             <input type="radio" name="customer_type" value="business">
-                                            <span class="contact-choice-letter"> B </span>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> B </span>
 
                                             <span class="contact-choice-text">
+
                                                 <!-- Title -->
                                                 <strong> A business</strong>
+
                                                 <!-- Small Description -->
                                                 <small> Office, hotel, salon or similar space</small>
+
                                             </span>
+
                                         </label>
 
 
                                         <!-- Option C -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option C -->
                                             <input type="radio" name="customer_type" value="something_else">
-                                            <span class="contact-choice-letter"> C </span>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> C </span>
 
                                             <span class="contact-choice-text">
+
                                                 <!-- Title -->
                                                 <strong> Something else </strong>
+
                                                 <!-- Small Description -->
                                                 <small> Gift, press, partnership, or just a question</small>
+
                                             </span>
+
                                         </label>
 
                                     </div>
@@ -394,10 +438,10 @@ $contact_phone_link = $contact_phone
                                 </div>
 
 
-                              <!-- Step 2  -->
-                                <div class="form-step">
+                               <!-- Step 2  -->
+                                <div class="form-step" role="group" aria-labelledby="contact-step-2-heading">
 
-                                    <h2>
+                                    <h2 id="contact-step-2-heading">
                                         What's your name?
                                     </h2>
 
@@ -407,71 +451,100 @@ $contact_phone_link = $contact_phone
 
                                     <!-- Personal Data -->
                                     <div class="contact-personal-fields">
+
                                         <!-- Name -->
-                                        <input type="text" id="name" name="name" placeholder="Type your name..." required
+                                        <label for="name" class="contact-input-label">
+                                            Name
+                                        </label>
+
+                                        <input type="text" id="name" name="name" placeholder="Type your name..." autocomplete="name" required
+                                            aria-required="true"
                                             data-parsley-required-message="Please enter your name."
                                         >
+
                                         <!-- Email -->
-                                        <input type="email" id="email" name="email" placeholder="you@email.com" required
+                                        <label for="email" class="contact-input-label">
+                                            Email
+                                        </label>
+
+                                        <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required
+                                            aria-required="true"
                                             data-parsley-required-message="Please enter your email."
                                             data-parsley-type-message="Please enter a valid email address."
                                         >
-                                        <!-- Phone  -->
-                                        <span class="contact-input-label">
-                                            Phone (optional — for delivery-day questions)
-                                        </span>
 
-                                        <input type="tel" id="phone" name="phone" placeholder="+45 ...">
+                                        <!-- Phone  -->
+                                        <label for="phone" class="contact-input-label">
+                                            Phone (optional — for delivery-day questions)
+                                        </label>
+
+                                        <input type="tel" id="phone" name="phone" placeholder="+45 ..." autocomplete="tel">
 
                                     </div>
 
                                 </div>
 
                                 <!-- Step 3 -->
-                                <div class="form-step">
+                                <div class="form-step" role="group" aria-labelledby="contact-step-3-heading">
 
-                                    <h2>
+                                    <h2 id="contact-step-3-heading">
                                         What's this about?
                                     </h2>
 
-                                    <p class="form-helper">
+                                    <p class="form-helper" id="contact-step-3-helper">
                                         Pick the option that fits best.
                                     </p>
 
-                                    <div class="contact-choice-list">
+                                    <div class="contact-choice-list" role="radiogroup" aria-labelledby="contact-step-3-heading" aria-describedby="contact-step-3-helper">
+
                                         <!-- Option A -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option A -->
                                             <input type="radio" name="subject" value="Bloom for Business enquiry" required>
-                                            <span class="contact-choice-letter"> A </span>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> A </span>
 
                                             <span class="contact-choice-text">
+
                                                 <!-- Title -->
                                                 <strong> Bloom for Business enquiry</strong>
+
                                                 <!-- Small Description -->
                                                 <small> Managed flowers for your workplace</small>
+
                                             </span>
+
                                         </label>
 
                                         <!-- Option B -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option B -->
                                             <input type="radio" name="subject" value="Existing business account">
-                                            <span class="contact-choice-letter"> B </span>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> B </span>
 
                                             <span class="contact-choice-text">
+
                                                 <!-- Title -->
                                                 <strong> An existing business account </strong>
+
                                                 <!-- Small Description -->
                                                 <small> Delivery schedule, sizing, or changes</small>
+
                                             </span>
+
                                         </label>
 
                                         <!-- Option C -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option C -->
                                             <input type="radio" name="subject" value="Billing invoicing or EAN">
-                                            <span class="contact-choice-letter"> C </span>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> C </span>
+
                                             <!-- Title -->
                                             <span class="contact-choice-text">
                                                 <strong> Billing, invoicing or EAN</strong>
@@ -481,24 +554,32 @@ $contact_phone_link = $contact_phone
 
                                         <!-- Option D -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option D -->
                                             <input type="radio" name="subject" value="Partnership">
-                                            <span class="contact-choice-letter"> D </span>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> D </span>
+
                                             <!-- Title-->
                                             <span class="contact-choice-text">
                                                 <strong> Partnership</strong>
                                             </span>
+
                                         </label>
 
                                         <!-- Option E -->
                                         <label class="contact-choice-card">
+
                                             <!-- Radio - Option E -->
                                             <input type="radio" name="subject" value="Something else">
-                                            <span class="contact-choice-letter"> E </span>
+
+                                            <span class="contact-choice-letter" aria-hidden="true"> E </span>
+
                                             <!-- Title -->
                                             <span class="contact-choice-text">
                                                 <strong> Something else </strong>
                                             </span>
+
                                         </label>
 
                                     </div>
@@ -507,22 +588,29 @@ $contact_phone_link = $contact_phone
 
 
                                 <!-- Step 4 -->
-                                <div class="form-step">
-                                    <h2>
+                                <div class="form-step" role="group" aria-labelledby="contact-step-4-heading">
+
+                                    <h2 id="contact-step-4-heading">
                                         Tell us more.
                                     </h2>
 
-                                    <p class="form-helper">
+                                    <p class="form-helper" id="message-helper">
                                         The more detail, the faster we can help.
                                     </p>
 
                                     <!-- Texarea -->
+                                    <label for="message" class="contact-input-label">
+                                        Message
+                                    </label>
+
                                     <textarea id="message" name="message" rows="7" maxlength="500" placeholder="Type your message..." required
+                                        aria-required="true"
+                                        aria-describedby="message-helper characterCounter"
                                         data-parsley-required-message="Please write a message.">
                                     </textarea>
 
                                     <!-- Character Limit -->
-                                    <div class="character-counter">
+                                    <div class="character-counter" id="characterCounter" aria-live="polite">
                                         <span id="characterCount">0</span>/500 characters
                                     </div>
 
@@ -534,7 +622,7 @@ $contact_phone_link = $contact_phone
 
 
                         <!-- Validation Warning -->
-                        <div class="form-warning" id="formWarning" role="alert" aria-live="polite">
+                        <div class="form-warning" id="formWarning" role="alert">
                             Please complete the required information before continuing.
                         </div>
 
@@ -566,7 +654,9 @@ $contact_phone_link = $contact_phone
     </section>
 
 </main>
+
 <?php get_footer(); ?>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -578,6 +668,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("submitButton");
     const stepNumber = document.getElementById("currentStepNumber");
     const progressFill = document.getElementById("progressFill");
+    const progressBar = document.getElementById("formProgressBar");
     const formWarning = document.getElementById("formWarning");
     const messageField = document.getElementById("message");
     const characterCount = document.getElementById("characterCount");
@@ -598,6 +689,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         progressFill.style.width =
             `${((currentStep + 1) / totalSteps) * 100}%`;
+
+        // Updates the accessible progress value
+        progressBar?.setAttribute("aria-valuenow", currentStep + 1);
 
         backButton.style.visibility =
             currentStep === 0 ? "hidden" : "visible";
@@ -645,6 +739,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Please choose one of the options before continuing."
                     );
 
+                    field.focus();
                     return false;
                 }
             }
