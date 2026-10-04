@@ -21,9 +21,7 @@
 <!-- This allows WordPress and plugins to add content after the body opens -->
 <?php wp_body_open(); ?>
 
-<?php if (is_page('contact')) : ?>
 <a class="skip-link" href="#primary">Skip to main content</a>
-<?php endif; ?>
 
 <?php
 
