@@ -15,16 +15,16 @@
   <?php wp_head(); ?>
 </head>
 
-
-
 <!-- Adds Wordpress Classes to the body -->
 <body <?php body_class(); ?>>
 
 <!-- This allows WordPress and plugins to add content after the body opens -->
 <?php wp_body_open(); ?>
 
-<!-- Skip to main content link for accessibility -->
-<a class="skip-link" href="#primary"><?php esc_html_e('Skip to main content', 'nordicbloom'); ?></a>
+<?php if (is_page_template('page-contact.php')) : ?>
+  <!-- Skip to main content link for accessibility -->
+  <a class="skip-link" href="#primary"><?php esc_html_e('Skip to main content', 'nordicbloom'); ?></a>
+<?php endif; ?>
 
 <?php
 
