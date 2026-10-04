@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Meta Description -->
-  <?php$meta_description = get_field('meta_desc', get_queried_object_id());?>
+  <?php $meta_description = get_field('meta_desc', get_queried_object_id());?>
   
   <?php if ($meta_description) : ?>
    <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
