@@ -331,24 +331,11 @@ $contact_phone_link = $contact_phone
                         <!-- Name Fields -->
                         <div class="contact-form-grid">
 
-                            <!-- Company Name -->
-                            <div class="contact-form-field">
-
-                                <label for="company_name">
-                                    Company Name <span aria-hidden="true">*</span>
-                                </label>
-
-                                <input type="text" id="company_name" name="company_name" placeholder="Nordic Bloom A/S" autocomplete="organization"
-                                    required aria-required="true" data-parsley-required-message="Please enter your company name."
-                                >
-
-                            </div>
-
                             <!-- Contact Person -->
                             <div class="contact-form-field">
 
                                 <label for="contact_person">
-                                    Contact Person <span aria-hidden="true">*</span>
+                                    Contact Person
                                 </label>
 
                                 <input type="text" id="contact_person" name="contact_person" placeholder="Anna Jensen" autocomplete="name"
@@ -357,11 +344,24 @@ $contact_phone_link = $contact_phone
 
                             </div>
 
+                            <!-- Company Name -->
+                            <div class="contact-form-field">
+
+                                <label for="company_name">
+                                    Company Name <span class="optional">(Optional)</span>
+                                </label>
+
+                                <input type="text" id="company_name" name="company_name" placeholder="Nordic Bloom A/S" autocomplete="organization"
+                                    required aria-required="true" data-parsley-required-message="Please enter your company name."
+                                >
+
+                            </div>
+
                             <!-- Email -->
                             <div class="contact-form-field">
 
                                 <label for="email">
-                                    Email <span aria-hidden="true">*</span>
+                                    Email
                                 </label>
 
                                 <input type="email" id="email" name="email" placeholder="anna@company.dk" autocomplete="email" required aria-required="true"

@@ -193,7 +193,7 @@ a.contact-detail-value:hover {
 
 .contact-form {
   width: 100%;
-  padding: 35px;
+  padding: 55px 35px;
   background-color: var(--color-bg);
   overflow: hidden;
 }
