@@ -285,7 +285,7 @@ a.contact-detail-value:hover {
   width: 100%;
   background-color: #fbf9f4;
   border: 1px solid #d8d2c8;
-  border-radius: 0;
+  border-radius: 8px;
   color: var(--color-text);
   font-family: var(--font-main);
   font-size: 0.9rem;
@@ -333,7 +333,7 @@ a.contact-detail-value:hover {
   justify-content: center;
   background-color: var(--color-primary);
   border: none;
-  border-radius: 0;
+  border-radius: 8px;
   color: #ffffff;
   font-family: var(--font-main);
   font-size: 0.68rem;
@@ -342,9 +342,7 @@ a.contact-detail-value:hover {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .contact-submit:hover {
