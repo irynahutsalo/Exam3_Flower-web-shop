@@ -269,9 +269,7 @@ function nordicbloom_comment_template($comment, $args, $depth)
 <?php
 }
 
-
 // ------------------------------------------------------------- Parsley Script ----------------------------------------------
-
 function nordicbloom_enqueue_scripts(){
 
     // jQuery
@@ -288,16 +286,13 @@ function nordicbloom_enqueue_scripts(){
 
 }
 
-
 add_action(
     'wp_enqueue_scripts',
     'nordicbloom_enqueue_scripts'
 );
 
 
-
 // --------------------------------------------------------------- Contact Form Handler ---------------------------------------------
-
 function nordicbloom_handle_contact_form(){
 
     // Security Check
@@ -328,32 +323,20 @@ function nordicbloom_handle_contact_form(){
         ? sanitize_text_field($_POST['phone'])
         : '';
 
-    $space_type = isset($_POST['space_type'])
-        ? sanitize_text_field($_POST['space_type'])
-        : '';
-
-    $services = isset($_POST['services']) && is_array($_POST['services'])
-        ? array_map('sanitize_text_field', $_POST['services'])
-        : array();
-
-
     $message = isset($_POST['message'])
         ? sanitize_textarea_field($_POST['message'])
         : '';
-
 
     // Required Fields
     if (
         empty($company_name) ||
         empty($contact_person) ||
-        empty($email) ||
-        empty($space_type)
+        empty($email)
     ) {
         wp_die('Please fill in all required fields.');
     }
 
-
-    // Valid EmaiL
+    // Valid Email
     if (!is_email($email)) {
         wp_die('Invalid email address.');
     }
@@ -366,19 +349,12 @@ function nordicbloom_handle_contact_form(){
         'Quote request from ' .
         $company_name;
 
-    // Services
-    $services_text = !empty($services)
-        ? implode(', ', $services)
-        : 'None selected';
-
     // Email Body
     $mail_message =
         "Company Name: " . $company_name . "\n" .
         "Contact Person: " . $contact_person . "\n" .
         "Email: " . $email . "\n" .
-        "Phone: " . ($phone ? $phone : 'Not provided') . "\n" .
-        "Type of Space: " . $space_type . "\n" .
-        "Services: " . $services_text . "\n\n" .
+        "Phone: " . ($phone ? $phone : 'Not provided') . "\n\n" .
         "Message:\n" . ($message ? $message : 'No message provided');
 
     // Email Headers

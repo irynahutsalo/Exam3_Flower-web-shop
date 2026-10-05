@@ -256,7 +256,7 @@ $contact_phone_link = $contact_phone
 
                                 </div>
 
-                                <!-- Third Row Saturday Container -->
+                                <!-- Third Row Sunday Container -->
                                 <div class="contact-hours-row">
 
                                     <!-- Sunday Label -->
