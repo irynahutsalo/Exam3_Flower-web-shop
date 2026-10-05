@@ -407,7 +407,7 @@ $contact_phone_link = $contact_phone
 
                         <!-- Submit Button -->
                         <button type="submit" class="contact-submit" aria-label="Request a quote">
-                            Request a Quote
+                            Submit
                         </button>
 
                         <!-- Form Note -->
