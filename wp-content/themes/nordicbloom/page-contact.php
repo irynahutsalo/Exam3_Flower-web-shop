@@ -61,12 +61,12 @@ $contact_phone_link = $contact_phone
     <!-- If a hero image exists then it uses it as the background image -->
     <section class="contact-hero"
         <?php if ($contact_hero_title) : ?>
-            aria-labelledby="contact-hero-title"
+        aria-labelledby="contact-hero-title"
         <?php else : ?>
-            aria-label="Contact"
+        aria-label="Contact"
         <?php endif; ?>
         <?php if ($contact_hero_image) : ?>
-             style="background-image: url('<?php echo esc_url($contact_hero_image); ?>');"
+        style="background-image: url('<?php echo esc_url($contact_hero_image); ?>');"
         <?php endif; ?>>
 
         <!-- Dark Overlay -->
@@ -97,9 +97,9 @@ $contact_phone_link = $contact_phone
     <!-- Contact Section -->
     <section class="contact-section"
         <?php if ($contact_title) : ?>
-            aria-labelledby="contact-section-title"
+        aria-labelledby="contact-section-title"
         <?php else : ?>
-            aria-label="Contact information and form"
+        aria-label="Contact information and form"
         <?php endif; ?>>
 
         <!-- Contact Container -->
@@ -335,13 +335,14 @@ $contact_phone_link = $contact_phone
 
                     <!-- Form -->
                     <!-- Sends the form data to WordPress for processing -->
+                    <!-- Form -->
+                    <!-- Sends the form data to WordPress for processing -->
                     <form
                         class="contact-form"
                         action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
                         method="POST"
                         data-parsley-validate
-                        aria-label="Request a quote form"
-                    >
+                        aria-label="Request a quote form">
 
                         <!-- This tells WordPress which function should handle the form submission -->
                         <input type="hidden" name="action" value="submit_contact_form">
@@ -369,8 +370,7 @@ $contact_phone_link = $contact_phone
                                     autocomplete="organization"
                                     required
                                     aria-required="true"
-                                    data-parsley-required-message="Please enter your company name."
-                                >
+                                    data-parsley-required-message="Please enter your company name.">
 
                             </div>
 
@@ -390,8 +390,7 @@ $contact_phone_link = $contact_phone
                                     autocomplete="name"
                                     required
                                     aria-required="true"
-                                    data-parsley-required-message="Please enter a contact person."
-                                >
+                                    data-parsley-required-message="Please enter a contact person.">
 
                             </div>
 
@@ -412,8 +411,7 @@ $contact_phone_link = $contact_phone
                                     required
                                     aria-required="true"
                                     data-parsley-required-message="Please enter your email."
-                                    data-parsley-type-message="Please enter a valid email address."
-                                >
+                                    data-parsley-type-message="Please enter a valid email address.">
 
                             </div>
 
@@ -430,8 +428,7 @@ $contact_phone_link = $contact_phone
                                     id="phone"
                                     name="phone"
                                     placeholder="+45 70 00 00 00"
-                                    autocomplete="tel"
-                                >
+                                    autocomplete="tel">
 
                             </div>
 
@@ -450,8 +447,7 @@ $contact_phone_link = $contact_phone
                                 name="space_type"
                                 required
                                 aria-required="true"
-                                data-parsley-required-message="Please select your type of space."
-                            >
+                                data-parsley-required-message="Please select your type of space.">
                                 <option value="" selected disabled>Select type of space</option>
                                 <option value="office">Office</option>
                                 <option value="hotel">Hotel</option>
@@ -480,8 +476,7 @@ $contact_phone_link = $contact_phone
                                     <input
                                         type="checkbox"
                                         name="services[]"
-                                        value="Regular flower delivery"
-                                    >
+                                        value="Regular flower delivery">
 
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
 
@@ -496,8 +491,7 @@ $contact_phone_link = $contact_phone
                                     <input
                                         type="checkbox"
                                         name="services[]"
-                                        value="Vase service"
-                                    >
+                                        value="Vase service">
 
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
 
@@ -512,8 +506,7 @@ $contact_phone_link = $contact_phone
                                     <input
                                         type="checkbox"
                                         name="services[]"
-                                        value="Maintenance"
-                                    >
+                                        value="Maintenance">
 
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
 
@@ -528,8 +521,7 @@ $contact_phone_link = $contact_phone
                                     <input
                                         type="checkbox"
                                         name="services[]"
-                                        value="Not sure yet"
-                                    >
+                                        value="Not sure yet">
 
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
 
@@ -554,8 +546,7 @@ $contact_phone_link = $contact_phone
                                 name="message"
                                 rows="5"
                                 maxlength="1000"
-                                placeholder="Tell us more about your space, the size of your arrangements or anything else that would be helpful."
-                            ></textarea>
+                                placeholder="Tell us more about your space, the size of your arrangements or anything else that would be helpful."></textarea>
 
                         </div>
 
@@ -564,8 +555,7 @@ $contact_phone_link = $contact_phone
                         <button
                             type="submit"
                             class="contact-submit"
-                            aria-label="Request a quote"
-                        >
+                            aria-label="Request a quote">
                             Request a Quote
                         </button>
 
@@ -576,6 +566,7 @@ $contact_phone_link = $contact_phone
                         </p>
 
                     </form>
+
 
                 <?php endif; ?>
 
@@ -588,3 +579,176 @@ $contact_phone_link = $contact_phone
 </main>
 
 <?php get_footer(); ?>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const form = document.querySelector(".contact-form");
+        const formSteps = document.getElementById("formSteps");
+        const nextButton = document.getElementById("nextButton");
+        const backButton = document.getElementById("backButton");
+        const submitButton = document.getElementById("submitButton");
+        const stepNumber = document.getElementById("currentStepNumber");
+        const progressFill = document.getElementById("progressFill");
+        const progressBar = document.getElementById("formProgressBar");
+        const formWarning = document.getElementById("formWarning");
+        const messageField = document.getElementById("message");
+        const characterCount = document.getElementById("characterCount");
+        const steps = document.querySelectorAll(".form-step");
+
+        // Stop if the form is not shown
+        if (!form || !formSteps || !nextButton || !backButton || !submitButton || !stepNumber || !progressFill || !progressBar || !steps.length) {
+            return;
+        }
+
+        const totalSteps = steps.length;
+        let currentStep = 0;
+
+        // Update the visible step and progress bar
+        function updateForm() {
+            formSteps.style.transform = `translateX(-${currentStep * 25}%)`;
+
+            stepNumber.textContent = currentStep + 1;
+
+            progressFill.style.width =
+                `${((currentStep + 1) / totalSteps) * 100}%`;
+
+            // Updates the accessible progress value
+            progressBar.setAttribute("aria-valuenow", currentStep + 1);
+            progressBar.setAttribute("aria-valuetext", `Step ${currentStep + 1} of ${totalSteps}`);
+
+            // Makes only the current step available to keyboard and screen reader users
+            steps.forEach((step, index) => {
+                const isActive = index === currentStep;
+
+                step.setAttribute("aria-hidden", isActive ? "false" : "true");
+
+                step.querySelectorAll("input, textarea, select, button, a").forEach(element => {
+                    element.tabIndex = isActive ? 0 : -1;
+                });
+            });
+
+            backButton.style.visibility =
+                currentStep === 0 ? "hidden" : "visible";
+
+            nextButton.style.display =
+                currentStep === totalSteps - 1 ? "none" : "inline-flex";
+
+            submitButton.style.display =
+                currentStep === totalSteps - 1 ? "inline-flex" : "none";
+
+            hideWarning();
+        }
+
+        // Moves keyboard focus to the heading of the current step
+        function focusCurrentStep() {
+            const activeStep = steps[currentStep];
+            const heading = activeStep.querySelector("h2, legend");
+
+            if (!heading) {
+                return;
+            }
+
+            heading.setAttribute("tabindex", "-1");
+            heading.focus();
+        }
+
+        // Show a form warning
+        function showWarning(message) {
+            if (!formWarning) return;
+
+            formWarning.textContent = message;
+            formWarning.classList.add("is-visible");
+        }
+
+        // Hide the form warning
+        function hideWarning() {
+            formWarning?.classList.remove("is-visible");
+        }
+
+        // Validate required fields in the current step
+        function validateCurrentStep() {
+            const activeStep = steps[currentStep];
+
+            const requiredFields =
+                activeStep.querySelectorAll("input[required], textarea[required]");
+
+            for (const field of requiredFields) {
+
+                if (field.type === "radio") {
+                    const checkedRadio =
+                        activeStep.querySelector(
+                            `input[name="${field.name}"]:checked`
+                        );
+
+                    if (!checkedRadio) {
+                        showWarning(
+                            "Please choose one of the options before continuing."
+                        );
+
+                        field.focus();
+                        return false;
+                    }
+                } else if (!field.value.trim()) {
+                    showWarning(
+                        "Please complete the required information before continuing."
+                    );
+
+                    field.focus();
+                    return false;
+                } else if (
+                    field.type === "email" &&
+                    !field.validity.valid
+                ) {
+                    showWarning(
+                        "Please enter a valid email address before continuing."
+                    );
+
+                    field.focus();
+                    return false;
+                }
+            }
+
+            hideWarning();
+            return true;
+        }
+
+        // Go to the next step
+        nextButton.addEventListener("click", () => {
+            if (validateCurrentStep() && currentStep < totalSteps - 1) {
+                currentStep++;
+                updateForm();
+                focusCurrentStep();
+            }
+        });
+
+        // Go back one step
+        backButton.addEventListener("click", () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateForm();
+                focusCurrentStep();
+            }
+        });
+
+        // Prevent submission if the last step is invalid
+        form.addEventListener("submit", event => {
+            if (!validateCurrentStep()) {
+                event.preventDefault();
+            }
+        });
+
+        // Count the message characters
+        if (messageField && characterCount) {
+            const updateCharacterCount = () => {
+                characterCount.textContent = messageField.value.length;
+            };
+
+            updateCharacterCount();
+            messageField.addEventListener("input", updateCharacterCount);
+        }
+
+        updateForm();
+    });
+</script>
