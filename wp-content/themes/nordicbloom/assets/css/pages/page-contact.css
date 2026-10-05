@@ -49,6 +49,7 @@
 }
 
 /* ------------------------------------------------ Contact Section ------------------------------------------ */
+
 .contact-section {
   width: 100%;
   max-width: var(--max-width);
@@ -84,6 +85,7 @@
 }
 
 /* Contact Details */
+
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -141,6 +143,7 @@ a.contact-detail-value:hover {
 }
 
 /* Working Hours */
+
 .contact-hours-section {
   display: flex;
   align-items: flex-start;
@@ -182,6 +185,7 @@ a.contact-detail-value:hover {
 }
 
 /* --------------------------------------------------- Form ---------------------------------------------------- */
+
 .contact-form-wrapper {
   width: 100%;
   min-width: 0;
@@ -195,6 +199,7 @@ a.contact-detail-value:hover {
 }
 
 /* Success */
+
 .contact-success {
   width: 100%;
   padding: 45px 35px;
@@ -239,6 +244,7 @@ a.contact-detail-value:hover {
 }
 
 /* --------------------------------------------------- Responsiveness ---------------------------------------------------- */
+
 @media (max-width: 900px) {
   .contact-hero {
     min-height: 320px;
@@ -462,6 +468,7 @@ a.contact-detail-value:hover {
 }
 
 /* --------------------------------------------------- Contact Form ---------------------------------------------------- */
+
 .contact-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -473,8 +480,7 @@ a.contact-detail-value:hover {
   flex-direction: column;
 }
 
-.contact-form-field label,
-.contact-help-section legend {
+.contact-form-field label {
   margin-bottom: 9px;
   color: #4F4F4F;
   font-size: 0.68rem;
@@ -490,7 +496,6 @@ a.contact-detail-value:hover {
 }
 
 .contact-form-field input,
-.contact-form-field select,
 .contact-form-field textarea {
   width: 100%;
   background-color: #fbf9f4;
@@ -518,7 +523,6 @@ a.contact-detail-value:hover {
 }
 
 .contact-form-field input:focus,
-.contact-form-field select:focus,
 .contact-form-field textarea:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px rgba(31, 58, 39, 0.12);
@@ -527,95 +531,6 @@ a.contact-detail-value:hover {
 .contact-form-full {
   width: 100%;
   margin-top: 20px;
-}
-
-.contact-form-field select {
-  height: 48px;
-  padding: 0 42px 0 14px;
-  appearance: none;
-  -webkit-appearance: none;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2377796f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  background-size: 14px;
-}
-
-.contact-help-section {
-  min-width: 0;
-  margin: 20px 0 0;
-  padding: 0;
-  border: 0;
-}
-
-.contact-help-section legend {
-  padding: 0;
-}
-
-.contact-help-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.contact-checkbox {
-  position: relative;
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  background-color: #fbf9f4;
-  border: 1px solid #d8d2c8;
-  color: var(--color-text);
-  font-size: 0.85rem;
-  line-height: 1.5;
-  cursor: pointer;
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.contact-checkbox:hover {
-  border-color: #b9b2a8;
-}
-
-.contact-checkbox input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
-.contact-checkbox-box {
-  position: relative;
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-  background-color: transparent;
-  border: 1px solid #c9c3ba;
-}
-
-.contact-checkbox input:checked + .contact-checkbox-box {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.contact-checkbox input:checked + .contact-checkbox-box::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 1px;
-  width: 4px;
-  height: 8px;
-  border: solid #ffffff;
-  border-width: 0 1.5px 1.5px 0;
-  transform: rotate(45deg);
-}
-
-.contact-checkbox input:focus-visible + .contact-checkbox-box {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
 }
 
 .contact-form-field textarea {
@@ -683,21 +598,14 @@ a.contact-detail-value:hover {
 }
 
 /* Mobile */
+
 @media (max-width: 600px) {
   .contact-form-grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .contact-help-grid {
-    grid-template-columns: 1fr;
-  }
-
   .contact-form-full {
-    margin-top: 18px;
-  }
-
-  .contact-help-section {
     margin-top: 18px;
   }
 
