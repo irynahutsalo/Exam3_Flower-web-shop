@@ -333,319 +333,247 @@ $contact_phone_link = $contact_phone
 
                 <?php else : ?>
 
-                    <!-- Form -->
-                     <!-- Sends the form data to WordPress for processing -->
-                    <form class="contact-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" data-parsley-validate aria-label="Contact form">
+                                        <!-- Form -->
+                    <!-- Sends the form data to WordPress for processing -->
+                    <form
+                        class="contact-form business-contact-form"
+                        action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+                        method="POST"
+                        data-parsley-validate
+                        aria-label="Request a quote form"
+                    >
 
                         <!-- This tells WordPress which function should handle the form submission -->
                         <input type="hidden" name="action" value="submit_contact_form">
 
+
                         <!-- Add a WordPress nonce to protect the form submission (security) -->
-                        <?php wp_nonce_field('contact_form_action','contact_form_nonce'); ?>
+                        <?php wp_nonce_field('contact_form_action', 'contact_form_nonce'); ?>
 
-                        <!-- Progress Container -->
-                        <div class="form-progress">
 
-                            <!-- Shows the Steps -->
-                            <span class="form-progress-text" id="formProgressText">
-                                Step <span id="currentStepNumber">1</span> of 4
-                            </span>
+                        <!-- Name Fields -->
+                        <div class="business-form-grid">
 
-                            <!-- Progress Bar -->
-                            <div class="form-progress-bar" id="formProgressBar" role="progressbar" aria-label="Contact form progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-valuetext="Step 1 of 4">
-                                <div class="form-progress-fill" id="progressFill" aria-hidden="true"></div>
+                            <!-- Company Name -->
+                            <div class="business-form-field">
+
+                                <label for="company_name">
+                                    Company Name <span aria-hidden="true">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="company_name"
+                                    name="company_name"
+                                    placeholder="Nordic Bloom A/S"
+                                    autocomplete="organization"
+                                    required
+                                    aria-required="true"
+                                    data-parsley-required-message="Please enter your company name."
+                                >
+
                             </div>
 
-                        </div>
 
-
-                        <!-- Steps Container -->
-                        <div class="form-steps-wrapper">
-
-                            <!-- Steps Content Container -->
-                            <div class="form-steps" id="formSteps">
-
-                                <!-- Step 1 -->
-                                <fieldset class="form-step">
-
-                                    <legend id="contact-step-1-heading">
-                                        Hej! First — who's writing in?
-                                    </legend>
-
-                                    <p class="form-helper" id="contact-step-1-helper">
-                                        This helps us route your message to the right person.
-                                    </p>
-
-
-                                    <div class="contact-choice-list" aria-describedby="contact-step-1-helper">
-
-                                        <!-- Option A -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option A -->
-                                            <input type="radio" name="customer_type" value="home_customer" required>
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> A </span>
-
-                                            <span class="contact-choice-text">
-
-                                                <!-- Title -->
-                                                <strong> A home customer</strong>
-
-                                                <!-- Small Description -->
-                                                <small> Flower Club subscriber, or thinking about it</small>
-
-                                            </span>
-
-                                        </label>
-
-                                        <!-- Option B -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option B -->
-                                            <input type="radio" name="customer_type" value="business">
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> B </span>
-
-                                            <span class="contact-choice-text">
-
-                                                <!-- Title -->
-                                                <strong> A business</strong>
-
-                                                <!-- Small Description -->
-                                                <small> Office, hotel, salon or similar space</small>
-
-                                            </span>
-
-                                        </label>
-
-
-                                        <!-- Option C -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option C -->
-                                            <input type="radio" name="customer_type" value="something_else">
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> C </span>
-
-                                            <span class="contact-choice-text">
-
-                                                <!-- Title -->
-                                                <strong> Something else </strong>
-
-                                                <!-- Small Description -->
-                                                <small> Gift, press, partnership, or just a question</small>
-
-                                            </span>
-
-                                        </label>
-
-                                    </div>
-
-                                </fieldset>
-
-
-                               <!-- Step 2  -->
-                                <div class="form-step" role="group" aria-labelledby="contact-step-2-heading">
-
-                                    <h2 id="contact-step-2-heading" tabindex="-1">
-                                        What's your name?
-                                    </h2>
-
-                                    <p class="form-helper" id="contact-step-2-helper">
-                                        Tell us how we can reach you.
-                                    </p>
-
-                                    <!-- Personal Data -->
-                                    <div class="contact-personal-fields">
-
-                                        <!-- Name -->
-                                        <label for="name" class="contact-input-label">
-                                            Name
-                                        </label>
-
-                                        <input type="text" id="name" name="name" placeholder="Type your name..." autocomplete="name" required
-                                            aria-describedby="contact-step-2-helper"
-                                            data-parsley-required-message="Please enter your name."
-                                        >
-
-                                        <!-- Email -->
-                                        <label for="email" class="contact-input-label">
-                                            Email
-                                        </label>
-
-                                        <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required
-                                            data-parsley-required-message="Please enter your email."
-                                            data-parsley-type-message="Please enter a valid email address."
-                                        >
-
-                                        <!-- Phone  -->
-                                        <label for="phone" class="contact-input-label">
-                                            Phone (optional — for delivery-day questions)
-                                        </label>
-
-                                        <input type="tel" id="phone" name="phone" placeholder="+45 ..." autocomplete="tel">
-
-                                    </div>
-
-                                </div>
-
-                                <!-- Step 3 -->
-                                <fieldset class="form-step">
-
-                                    <legend id="contact-step-3-heading">
-                                        What's this about?
-                                    </legend>
-
-                                    <p class="form-helper" id="contact-step-3-helper">
-                                        Pick the option that fits best.
-                                    </p>
-
-                                    <div class="contact-choice-list" aria-describedby="contact-step-3-helper">
-
-                                        <!-- Option A -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option A -->
-                                            <input type="radio" name="subject" value="Bloom for Business enquiry" required>
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> A </span>
-
-                                            <span class="contact-choice-text">
-
-                                                <!-- Title -->
-                                                <strong> Bloom for Business enquiry</strong>
-
-                                                <!-- Small Description -->
-                                                <small> Managed flowers for your workplace</small>
-
-                                            </span>
-
-                                        </label>
-
-                                        <!-- Option B -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option B -->
-                                            <input type="radio" name="subject" value="Existing business account">
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> B </span>
-
-                                            <span class="contact-choice-text">
-
-                                                <!-- Title -->
-                                                <strong> An existing business account </strong>
-
-                                                <!-- Small Description -->
-                                                <small> Delivery schedule, sizing, or changes</small>
-
-                                            </span>
-
-                                        </label>
-
-                                        <!-- Option C -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option C -->
-                                            <input type="radio" name="subject" value="Billing invoicing or EAN">
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> C </span>
-
-                                            <!-- Title -->
-                                            <span class="contact-choice-text">
-                                                <strong> Billing, invoicing or EAN</strong>
-                                            </span>
-
-                                        </label>
-
-                                        <!-- Option D -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option D -->
-                                            <input type="radio" name="subject" value="Partnership">
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> D </span>
-
-                                            <!-- Title-->
-                                            <span class="contact-choice-text">
-                                                <strong> Partnership</strong>
-                                            </span>
-
-                                        </label>
-
-                                        <!-- Option E -->
-                                        <label class="contact-choice-card">
-
-                                            <!-- Radio - Option E -->
-                                            <input type="radio" name="subject" value="Something else">
-
-                                            <span class="contact-choice-letter" aria-hidden="true"> E </span>
-
-                                            <!-- Title -->
-                                            <span class="contact-choice-text">
-                                                <strong> Something else </strong>
-                                            </span>
-
-                                        </label>
-
-                                    </div>
-
-                                </fieldset>
-
-
-                                <!-- Step 4 -->
-                                <div class="form-step" role="group" aria-labelledby="contact-step-4-heading">
-
-                                    <h2 id="contact-step-4-heading" tabindex="-1">
-                                        Tell us more.
-                                    </h2>
-
-                                    <p class="form-helper" id="message-helper">
-                                        The more detail, the faster we can help.
-                                    </p>
-
-                                    <!-- Texarea -->
-                                    <label for="message" class="contact-input-label">
-                                        Message
-                                    </label>
-
-                                    <textarea id="message" name="message" rows="7" maxlength="500" placeholder="Type your message..." required
-                                        aria-describedby="message-helper characterCounter"
-                                        data-parsley-required-message="Please write a message."></textarea>
-
-                                    <!-- Character Limit -->
-                                    <div class="character-counter" id="characterCounter" aria-live="polite" aria-atomic="true">
-                                        <span id="characterCount">0</span>/500 characters
-                                    </div>
-
-                                </div>
+                            <!-- Contact Person -->
+                            <div class="business-form-field">
+
+                                <label for="contact_person">
+                                    Contact Person <span aria-hidden="true">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contact_person"
+                                    name="contact_person"
+                                    placeholder="Anna Jensen"
+                                    autocomplete="name"
+                                    required
+                                    aria-required="true"
+                                    data-parsley-required-message="Please enter a contact person."
+                                >
+
+                            </div>
+
+
+                            <!-- Email -->
+                            <div class="business-form-field">
+
+                                <label for="email">
+                                    Email <span aria-hidden="true">*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="anna@company.dk"
+                                    autocomplete="email"
+                                    required
+                                    aria-required="true"
+                                    data-parsley-required-message="Please enter your email."
+                                    data-parsley-type-message="Please enter a valid email address."
+                                >
+
+                            </div>
+
+
+                            <!-- Phone -->
+                            <div class="business-form-field">
+
+                                <label for="phone">
+                                    Phone <span class="optional">(Optional)</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="+45 70 00 00 00"
+                                    autocomplete="tel"
+                                >
 
                             </div>
 
                         </div>
 
 
-                        <!-- Validation Warning -->
-                        <div class="form-warning" id="formWarning" role="alert">
-                            Please complete the required information before continuing.
+                        <!-- Type of Space -->
+                        <div class="business-form-field business-form-full">
+
+                            <label for="space_type">
+                                Type of Space <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select
+                                id="space_type"
+                                name="space_type"
+                                required
+                                aria-required="true"
+                                data-parsley-required-message="Please select your type of space."
+                            >
+                                <option value="" selected disabled>Select type of space</option>
+                                <option value="office">Office</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="salon">Salon</option>
+                                <option value="retail">Retail</option>
+                                <option value="other">Other</option>
+                            </select>
+
                         </div>
 
-                        <!-- Navigation -->
-                        <div class="form-navigation">
 
-                            <button type="button" class="form-back-button" id="backButton">
-                                Back
-                            </button>
+                        <!-- Help Options -->
+                        <fieldset class="business-help-section">
 
-                            <button type="button" class="form-next-button" id="nextButton">
-                                Next
-                            </button>
+                            <legend>
+                                What do you need help with?
+                            </legend>
 
-                            <button type="submit" class="contact-submit" id="submitButton">
-                                Send message
-                            </button>
+
+                            <div class="business-help-grid">
+
+                                <!-- Regular Flower Delivery -->
+                                <label class="business-checkbox">
+
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="Regular flower delivery"
+                                    >
+
+                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+
+                                    <span>Regular flower delivery</span>
+
+                                </label>
+
+
+                                <!-- Vase Service -->
+                                <label class="business-checkbox">
+
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="Vase service"
+                                    >
+
+                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+
+                                    <span>Vase service</span>
+
+                                </label>
+
+
+                                <!-- Maintenance -->
+                                <label class="business-checkbox">
+
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="Maintenance"
+                                    >
+
+                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+
+                                    <span>Maintenance</span>
+
+                                </label>
+
+
+                                <!-- Not Sure Yet -->
+                                <label class="business-checkbox">
+
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="Not sure yet"
+                                    >
+
+                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+
+                                    <span>Not sure yet</span>
+
+                                </label>
+
+                            </div>
+
+                        </fieldset>
+
+
+                        <!-- Message -->
+                        <div class="business-form-field business-form-full">
+
+                            <label for="message">
+                                Message <span class="optional">(Optional)</span>
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                maxlength="1000"
+                                placeholder="Tell us more about your space, the size of your arrangements or anything else that would be helpful."
+                            ></textarea>
 
                         </div>
+
+
+                        <!-- Submit Button -->
+                        <button
+                            type="submit"
+                            class="business-submit"
+                            aria-label="Request a quote"
+                        >
+                            Request a Quote
+                        </button>
+
+
+                        <!-- Form Note -->
+                        <p class="business-form-note">
+                            No commitment. We'll contact you to discuss your space and needs.
+                        </p>
 
                     </form>
 

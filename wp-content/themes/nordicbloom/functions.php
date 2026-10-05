@@ -271,12 +271,11 @@ function nordicbloom_comment_template($comment, $args, $depth)
 
 
 // ------------------------------------------------------------- Parsley Script ----------------------------------------------
-function nordicbloom_enqueue_scripts()
-{
+
+function nordicbloom_enqueue_scripts(){
 
     // jQuery
     wp_enqueue_script('jquery');
-
 
     // Parsley validation
     wp_enqueue_script(
@@ -286,16 +285,20 @@ function nordicbloom_enqueue_scripts()
         '2.9.2',
         true
     );
+
 }
+
 
 add_action(
     'wp_enqueue_scripts',
     'nordicbloom_enqueue_scripts'
 );
 
+
+
 // --------------------------------------------------------------- Contact Form Handler ---------------------------------------------
-function nordicbloom_handle_contact_form()
-{
+
+function nordicbloom_handle_contact_form(){
 
     // Security Check
     if (
@@ -308,63 +311,83 @@ function nordicbloom_handle_contact_form()
         wp_die('Security check failed.');
     }
 
-
     // Sanitize Data
-    $name = isset($_POST['name'])
-        ? sanitize_text_field($_POST['name'])
+    $company_name = isset($_POST['company_name'])
+        ? sanitize_text_field($_POST['company_name'])
+        : '';
+
+    $contact_person = isset($_POST['contact_person'])
+        ? sanitize_text_field($_POST['contact_person'])
         : '';
 
     $email = isset($_POST['email'])
         ? sanitize_email($_POST['email'])
         : '';
 
-    $subject = isset($_POST['subject'])
-        ? sanitize_text_field($_POST['subject'])
+    $phone = isset($_POST['phone'])
+        ? sanitize_text_field($_POST['phone'])
         : '';
+
+    $space_type = isset($_POST['space_type'])
+        ? sanitize_text_field($_POST['space_type'])
+        : '';
+
+    $services = isset($_POST['services']) && is_array($_POST['services'])
+        ? array_map('sanitize_text_field', $_POST['services'])
+        : array();
+
 
     $message = isset($_POST['message'])
         ? sanitize_textarea_field($_POST['message'])
         : '';
 
 
+
     // Required Fields
     if (
-        empty($name) ||
+        empty($company_name) ||
+        empty($contact_person) ||
         empty($email) ||
-        empty($subject) ||
-        empty($message)
+        empty($space_type)
     ) {
         wp_die('Please fill in all required fields.');
     }
 
 
-    // Valid Email
+
+    // Valid EmaiL
     if (!is_email($email)) {
         wp_die('Invalid email address.');
     }
 
-
     // Email Receiver
     $to = get_option('admin_email');
 
-
     // Email Subject
     $mail_subject =
-        'Contact form: ' .
-        $subject;
+        'Quote request from ' .
+        $company_name;
 
+    // Services
+    $services_text = !empty($services)
+        ? implode(', ', $services)
+        : 'None selected';
 
     // Email Body
     $mail_message =
-        "Name: " . $name . "\n" .
-        "Email: " . $email . "\n\n" .
-        "Message:\n" . $message;
-
+        "Company Name: " . $company_name . "\n" .
+        "Contact Person: " . $contact_person . "\n" .
+        "Email: " . $email . "\n" .
+        "Phone: " . ($phone ? $phone : 'Not provided') . "\n" .
+        "Type of Space: " . $space_type . "\n" .
+        "Services: " . $services_text . "\n\n" .
+        "Message:\n" . ($message ? $message : 'No message provided');
 
     // Email Headers
     $headers = array(
+
         'Reply-To: ' .
-            $name .
+            $contact_person .
             ' <' .
             $email .
             '>'
@@ -378,17 +401,27 @@ function nordicbloom_handle_contact_form()
         $headers
     );
 
-    // Redirect Back to Home Page
+    // Redirect Back to Contact Page
+    $redirect_url = wp_get_referer();
+
+    if (!$redirect_url) {
+        $redirect_url = home_url('/contact/');
+    }
+
     wp_safe_redirect(
+
         add_query_arg(
             'sent',
             '1',
-            wp_get_referer()
+            $redirect_url
         )
     );
 
     exit;
+
 }
+
+
 
 //  --------------------------------------------------------- Contact Form Actions ----------------------------------------------
 
@@ -399,17 +432,18 @@ add_action(
 );
 
 
+
 /* Logged in */
 add_action(
     'admin_post_submit_contact_form',
     'nordicbloom_handle_contact_form'
 );
 
-
-
 // search inspection
 function remove_admin_bar_search() {
     global $wp_admin_bar;
     $wp_admin_bar->remove_menu('search');
+
 }
+
 add_action('wp_before_admin_bar_render', 'remove_admin_bar_search');
