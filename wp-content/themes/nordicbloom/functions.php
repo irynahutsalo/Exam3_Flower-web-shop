@@ -329,11 +329,12 @@ function nordicbloom_handle_contact_form(){
 
     // Required Fields
     if (
-        empty($company_name) ||
-        empty($contact_person) ||
-        empty($email)
-    ) {
-        wp_die('Please fill in all required fields.');
+    empty($contact_person) ||
+    empty($email) ||
+    empty($phone)
+    ){
+    wp_die('Please fill in all required fields.');
+
     }
 
     // Valid Email
