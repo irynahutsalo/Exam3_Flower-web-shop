@@ -333,10 +333,10 @@ $contact_phone_link = $contact_phone
 
                 <?php else : ?>
 
-                                        <!-- Form -->
+                    <!-- Form -->
                     <!-- Sends the form data to WordPress for processing -->
                     <form
-                        class="contact-form business-contact-form"
+                        class="contact-form"
                         action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
                         method="POST"
                         data-parsley-validate
@@ -352,10 +352,10 @@ $contact_phone_link = $contact_phone
 
 
                         <!-- Name Fields -->
-                        <div class="business-form-grid">
+                        <div class="contact-form-grid">
 
                             <!-- Company Name -->
-                            <div class="business-form-field">
+                            <div class="contact-form-field">
 
                                 <label for="company_name">
                                     Company Name <span aria-hidden="true">*</span>
@@ -376,7 +376,7 @@ $contact_phone_link = $contact_phone
 
 
                             <!-- Contact Person -->
-                            <div class="business-form-field">
+                            <div class="contact-form-field">
 
                                 <label for="contact_person">
                                     Contact Person <span aria-hidden="true">*</span>
@@ -397,7 +397,7 @@ $contact_phone_link = $contact_phone
 
 
                             <!-- Email -->
-                            <div class="business-form-field">
+                            <div class="contact-form-field">
 
                                 <label for="email">
                                     Email <span aria-hidden="true">*</span>
@@ -419,7 +419,7 @@ $contact_phone_link = $contact_phone
 
 
                             <!-- Phone -->
-                            <div class="business-form-field">
+                            <div class="contact-form-field">
 
                                 <label for="phone">
                                     Phone <span class="optional">(Optional)</span>
@@ -439,7 +439,7 @@ $contact_phone_link = $contact_phone
 
 
                         <!-- Type of Space -->
-                        <div class="business-form-field business-form-full">
+                        <div class="contact-form-field contact-form-full">
 
                             <label for="space_type">
                                 Type of Space <span aria-hidden="true">*</span>
@@ -465,17 +465,17 @@ $contact_phone_link = $contact_phone
 
 
                         <!-- Help Options -->
-                        <fieldset class="business-help-section">
+                        <fieldset class="contact-help-section">
 
                             <legend>
                                 What do you need help with?
                             </legend>
 
 
-                            <div class="business-help-grid">
+                            <div class="contact-help-grid">
 
                                 <!-- Regular Flower Delivery -->
-                                <label class="business-checkbox">
+                                <label class="contact-checkbox">
 
                                     <input
                                         type="checkbox"
@@ -483,7 +483,7 @@ $contact_phone_link = $contact_phone
                                         value="Regular flower delivery"
                                     >
 
-                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+                                    <span class="contact-checkbox-box" aria-hidden="true"></span>
 
                                     <span>Regular flower delivery</span>
 
@@ -491,7 +491,7 @@ $contact_phone_link = $contact_phone
 
 
                                 <!-- Vase Service -->
-                                <label class="business-checkbox">
+                                <label class="contact-checkbox">
 
                                     <input
                                         type="checkbox"
@@ -499,7 +499,7 @@ $contact_phone_link = $contact_phone
                                         value="Vase service"
                                     >
 
-                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+                                    <span class="contact-checkbox-box" aria-hidden="true"></span>
 
                                     <span>Vase service</span>
 
@@ -507,7 +507,7 @@ $contact_phone_link = $contact_phone
 
 
                                 <!-- Maintenance -->
-                                <label class="business-checkbox">
+                                <label class="contact-checkbox">
 
                                     <input
                                         type="checkbox"
@@ -515,7 +515,7 @@ $contact_phone_link = $contact_phone
                                         value="Maintenance"
                                     >
 
-                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+                                    <span class="contact-checkbox-box" aria-hidden="true"></span>
 
                                     <span>Maintenance</span>
 
@@ -523,7 +523,7 @@ $contact_phone_link = $contact_phone
 
 
                                 <!-- Not Sure Yet -->
-                                <label class="business-checkbox">
+                                <label class="contact-checkbox">
 
                                     <input
                                         type="checkbox"
@@ -531,7 +531,7 @@ $contact_phone_link = $contact_phone
                                         value="Not sure yet"
                                     >
 
-                                    <span class="business-checkbox-box" aria-hidden="true"></span>
+                                    <span class="contact-checkbox-box" aria-hidden="true"></span>
 
                                     <span>Not sure yet</span>
 
@@ -543,7 +543,7 @@ $contact_phone_link = $contact_phone
 
 
                         <!-- Message -->
-                        <div class="business-form-field business-form-full">
+                        <div class="contact-form-field contact-form-full">
 
                             <label for="message">
                                 Message <span class="optional">(Optional)</span>
@@ -563,7 +563,7 @@ $contact_phone_link = $contact_phone
                         <!-- Submit Button -->
                         <button
                             type="submit"
-                            class="business-submit"
+                            class="contact-submit"
                             aria-label="Request a quote"
                         >
                             Request a Quote
@@ -571,7 +571,7 @@ $contact_phone_link = $contact_phone
 
 
                         <!-- Form Note -->
-                        <p class="business-form-note">
+                        <p class="contact-form-note">
                             No commitment. We'll contact you to discuss your space and needs.
                         </p>
 
@@ -588,180 +588,3 @@ $contact_phone_link = $contact_phone
 </main>
 
 <?php get_footer(); ?>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    const form = document.querySelector(".contact-form");
-    const formSteps = document.getElementById("formSteps");
-    const nextButton = document.getElementById("nextButton");
-    const backButton = document.getElementById("backButton");
-    const submitButton = document.getElementById("submitButton");
-    const stepNumber = document.getElementById("currentStepNumber");
-    const progressFill = document.getElementById("progressFill");
-    const progressBar = document.getElementById("formProgressBar");
-    const formWarning = document.getElementById("formWarning");
-    const messageField = document.getElementById("message");
-    const characterCount = document.getElementById("characterCount");
-    const steps = document.querySelectorAll(".form-step");
-
-    // Stop if the form is not shown
-    if (!form || !formSteps || !nextButton || !backButton || !submitButton || !stepNumber || !progressFill || !progressBar || !steps.length) {
-        return;
-    }
-
-    const totalSteps = steps.length;
-    let currentStep = 0;
-
-    // Update the visible step and progress bar
-    function updateForm() {
-        formSteps.style.transform = `translateX(-${currentStep * 25}%)`;
-
-        stepNumber.textContent = currentStep + 1;
-
-        progressFill.style.width =
-            `${((currentStep + 1) / totalSteps) * 100}%`;
-
-        // Updates the accessible progress value
-        progressBar.setAttribute("aria-valuenow", currentStep + 1);
-        progressBar.setAttribute("aria-valuetext", `Step ${currentStep + 1} of ${totalSteps}`);
-
-        // Makes only the current step available to keyboard and screen reader users
-        steps.forEach((step, index) => {
-            const isActive = index === currentStep;
-
-            step.setAttribute("aria-hidden", isActive ? "false" : "true");
-
-            step.querySelectorAll("input, textarea, select, button, a").forEach(element => {
-                element.tabIndex = isActive ? 0 : -1;
-            });
-        });
-
-        backButton.style.visibility =
-            currentStep === 0 ? "hidden" : "visible";
-
-        nextButton.style.display =
-            currentStep === totalSteps - 1 ? "none" : "inline-flex";
-
-        submitButton.style.display =
-            currentStep === totalSteps - 1 ? "inline-flex" : "none";
-
-        hideWarning();
-    }
-
-    // Moves keyboard focus to the heading of the current step
-    function focusCurrentStep() {
-        const activeStep = steps[currentStep];
-        const heading = activeStep.querySelector("h2, legend");
-
-        if (!heading) {
-            return;
-        }
-
-        heading.setAttribute("tabindex", "-1");
-        heading.focus();
-    }
-
-    // Show a form warning
-    function showWarning(message) {
-        if (!formWarning) return;
-
-        formWarning.textContent = message;
-        formWarning.classList.add("is-visible");
-    }
-
-    // Hide the form warning
-    function hideWarning() {
-        formWarning?.classList.remove("is-visible");
-    }
-
-    // Validate required fields in the current step
-    function validateCurrentStep() {
-        const activeStep = steps[currentStep];
-
-        const requiredFields =
-            activeStep.querySelectorAll("input[required], textarea[required]");
-
-        for (const field of requiredFields) {
-
-            if (field.type === "radio") {
-                const checkedRadio =
-                    activeStep.querySelector(
-                        `input[name="${field.name}"]:checked`
-                    );
-
-                if (!checkedRadio) {
-                    showWarning(
-                        "Please choose one of the options before continuing."
-                    );
-
-                    field.focus();
-                    return false;
-                }
-            }
-
-            else if (!field.value.trim()) {
-                showWarning(
-                    "Please complete the required information before continuing."
-                );
-
-                field.focus();
-                return false;
-            }
-
-            else if (
-                field.type === "email" &&
-                !field.validity.valid
-            ) {
-                showWarning(
-                    "Please enter a valid email address before continuing."
-                );
-
-                field.focus();
-                return false;
-            }
-        }
-
-        hideWarning();
-        return true;
-    }
-
-    // Go to the next step
-    nextButton.addEventListener("click", () => {
-        if (validateCurrentStep() && currentStep < totalSteps - 1) {
-            currentStep++;
-            updateForm();
-            focusCurrentStep();
-        }
-    });
-
-    // Go back one step
-    backButton.addEventListener("click", () => {
-        if (currentStep > 0) {
-            currentStep--;
-            updateForm();
-            focusCurrentStep();
-        }
-    });
-
-    // Prevent submission if the last step is invalid
-    form.addEventListener("submit", event => {
-        if (!validateCurrentStep()) {
-            event.preventDefault();
-        }
-    });
-
-    // Count the message characters
-    if (messageField && characterCount) {
-        const updateCharacterCount = () => {
-            characterCount.textContent = messageField.value.length;
-        };
-
-        updateCharacterCount();
-        messageField.addEventListener("input", updateCharacterCount);
-    }
-
-    updateForm();
-});
-</script>

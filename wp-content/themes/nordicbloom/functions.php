@@ -342,7 +342,6 @@ function nordicbloom_handle_contact_form(){
         : '';
 
 
-
     // Required Fields
     if (
         empty($company_name) ||
@@ -352,7 +351,6 @@ function nordicbloom_handle_contact_form(){
     ) {
         wp_die('Please fill in all required fields.');
     }
-
 
 
     // Valid EmaiL
