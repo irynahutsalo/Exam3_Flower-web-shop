@@ -332,6 +332,7 @@ a.contact-detail-value:hover {
   align-items: center;
   justify-content: center;
   background-color: var(--color-primary);
+  border: none;
   border-radius: 0;
   color: #ffffff;
   font-family: var(--font-main);
