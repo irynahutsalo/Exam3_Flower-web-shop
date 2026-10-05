@@ -346,7 +346,7 @@ a.contact-detail-value:hover {
 }
 
 .contact-submit:hover {
-  background-color: var(--color-text-secondary);
+  background-color: var(--color-secondary);
 }
 
 .contact-submit:focus-visible {
