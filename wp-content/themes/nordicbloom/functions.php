@@ -269,28 +269,29 @@ function nordicbloom_comment_template($comment, $args, $depth)
 <?php
 }
 
-// ------------------------------------------------------------- Parsley Script ----------------------------------------------
+// ------------------------------------------------------------- Parsley Script ----------------------------------------------// ------------------------------------------------------------- Parsley Script ----------------------------------------------
 function nordicbloom_enqueue_scripts(){
 
-    // jQuery
-    wp_enqueue_script('jquery');
+    if (is_page('contact')) {
 
-    // Parsley validation
-    wp_enqueue_script(
-        'parsley',
-        'https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js',
-        array('jquery'),
-        '2.9.2',
-        true
-    );
+        // jQuery
+        wp_enqueue_script('jquery');
 
+        // Parsley validation
+        wp_enqueue_script(
+            'parsley',
+            'https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js',
+            array('jquery'),
+            '2.9.2',
+            true
+        );
+    }
 }
 
 add_action(
     'wp_enqueue_scripts',
     'nordicbloom_enqueue_scripts'
 );
-
 
 // --------------------------------------------------------------- Contact Form Handler ---------------------------------------------
 function nordicbloom_handle_contact_form(){
