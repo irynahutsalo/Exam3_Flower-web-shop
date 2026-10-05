@@ -5,7 +5,6 @@ Template Name: Contact Page
 
 get_header();
 
-
 // ACF
 $contact_hero_title       = get_field('contact_hero_title');
 $contact_hero_description = get_field('contact_hero_description');
@@ -19,10 +18,8 @@ $contact_email       = get_field('contact_email');
 $contact_phone       = get_field('contact_phone');
 $working_hours       = get_field('working_hours');
 
-
 // Get the first row from the Working Hours repeater
 $working_hours = $working_hours[0] ?? [];
-
 
 // If a field is empty or does not exist it use an empty string instead
 $weekday_opening   = $working_hours['weekday_opening'] ?? '';
@@ -32,26 +29,22 @@ $saturday_closing  = $working_hours['saturday_closing'] ?? '';
 $sunday_opening    = $working_hours['sunday_opening'] ?? '';
 $sunday_closing    = $working_hours['sunday_closing'] ?? '';
 
-
 // If both an opening and closing time exist, display them together (string interpolation)
 // Otherwise displays "Closed"
 $weekday_hours = ($weekday_opening && $weekday_closing) ? "$weekday_opening - $weekday_closing" : 'Closed';
 $saturday_hours = ($saturday_opening && $saturday_closing) ? "$saturday_opening - $saturday_closing" : 'Closed';
 $sunday_hours = ($sunday_opening && $sunday_closing) ? "$sunday_opening - $sunday_closing" : 'Closed';
 
-
 // Gets the image URL from the ACF image array
 if (is_array($contact_hero_image)) {
     $contact_hero_image = $contact_hero_image['url'] ?? '';
 }
-
 
 // Remove spaces and special characters with Regex so the phone number works correctly in the href="tel:" link
 $contact_phone_link = $contact_phone
     ? preg_replace('/[^0-9+]/', '', $contact_phone)
     : '';
 ?>
-
 
 <!-- Contact Page -->
 <main id="primary" class="contact-page" tabindex="-1">
@@ -93,7 +86,6 @@ $contact_phone_link = $contact_phone
 
     </section>
 
-
     <!-- Contact Section -->
     <section class="contact-section"
         <?php if ($contact_title) : ?>
@@ -121,7 +113,6 @@ $contact_phone_link = $contact_phone
                         <?php echo esc_html($contact_description); ?>
                     </p>
                 <?php endif; ?>
-
 
                 <!-- Contact Details -->
                 <address class="contact-details" aria-label="Nordic Bloom contact details">
@@ -154,7 +145,6 @@ $contact_phone_link = $contact_phone
                         </div>
                     <?php endif; ?>
 
-
                     <!-- Phone -->
                     <?php if ($contact_phone) : ?>
                         <div class="contact-detail-item">
@@ -182,7 +172,6 @@ $contact_phone_link = $contact_phone
 
                         </div>
                     <?php endif; ?>
-
 
                     <!-- Location -->
                     <?php if ($contact_location) : ?>
@@ -212,9 +201,7 @@ $contact_phone_link = $contact_phone
                             </div>
 
                         </div>
-
                     <?php endif; ?>
-
 
                     <!-- Working Hours -->
                     <div class="contact-hours-section">
@@ -227,7 +214,6 @@ $contact_phone_link = $contact_phone
                                 <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96" />
                             </svg>
                         </div>
-
 
                         <!-- Working Hours Content -->
                         <div class="contact-hours-content">
@@ -295,7 +281,6 @@ $contact_phone_link = $contact_phone
 
             </div>
 
-
             <!-- Right Side Container -->
             <div class="contact-form-wrapper">
 
@@ -335,22 +320,13 @@ $contact_phone_link = $contact_phone
 
                     <!-- Form -->
                     <!-- Sends the form data to WordPress for processing -->
-                    <!-- Form -->
-                    <!-- Sends the form data to WordPress for processing -->
-                    <form
-                        class="contact-form"
-                        action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-                        method="POST"
-                        data-parsley-validate
-                        aria-label="Request a quote form">
+                    <form class="contact-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" data-parsley-validate aria-label="Request a quote form">
 
                         <!-- This tells WordPress which function should handle the form submission -->
                         <input type="hidden" name="action" value="submit_contact_form">
 
-
                         <!-- Add a WordPress nonce to protect the form submission (security) -->
                         <?php wp_nonce_field('contact_form_action', 'contact_form_nonce'); ?>
-
 
                         <!-- Name Fields -->
                         <div class="contact-form-grid">
@@ -362,18 +338,11 @@ $contact_phone_link = $contact_phone
                                     Company Name <span aria-hidden="true">*</span>
                                 </label>
 
-                                <input
-                                    type="text"
-                                    id="company_name"
-                                    name="company_name"
-                                    placeholder="Nordic Bloom A/S"
-                                    autocomplete="organization"
-                                    required
-                                    aria-required="true"
-                                    data-parsley-required-message="Please enter your company name.">
+                                <input type="text" id="company_name" name="company_name" placeholder="Nordic Bloom A/S" autocomplete="organization"
+                                    required aria-required="true" data-parsley-required-message="Please enter your company name."
+                                >
 
                             </div>
-
 
                             <!-- Contact Person -->
                             <div class="contact-form-field">
@@ -382,18 +351,11 @@ $contact_phone_link = $contact_phone
                                     Contact Person <span aria-hidden="true">*</span>
                                 </label>
 
-                                <input
-                                    type="text"
-                                    id="contact_person"
-                                    name="contact_person"
-                                    placeholder="Anna Jensen"
-                                    autocomplete="name"
-                                    required
-                                    aria-required="true"
-                                    data-parsley-required-message="Please enter a contact person.">
+                                <input type="text" id="contact_person" name="contact_person" placeholder="Anna Jensen" autocomplete="name"
+                                    required aria-required="true" data-parsley-required-message="Please enter a contact person."
+                                >
 
                             </div>
-
 
                             <!-- Email -->
                             <div class="contact-form-field">
@@ -402,19 +364,11 @@ $contact_phone_link = $contact_phone
                                     Email <span aria-hidden="true">*</span>
                                 </label>
 
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="anna@company.dk"
-                                    autocomplete="email"
-                                    required
-                                    aria-required="true"
-                                    data-parsley-required-message="Please enter your email."
-                                    data-parsley-type-message="Please enter a valid email address.">
+                                <input type="email" id="email" name="email" placeholder="anna@company.dk" autocomplete="email" required aria-required="true"
+                                    data-parsley-required-message="Please enter your email." data-parsley-type-message="Please enter a valid email address."
+                                >
 
                             </div>
-
 
                             <!-- Phone -->
                             <div class="contact-form-field">
@@ -423,17 +377,11 @@ $contact_phone_link = $contact_phone
                                     Phone <span class="optional">(Optional)</span>
                                 </label>
 
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    placeholder="+45 70 00 00 00"
-                                    autocomplete="tel">
+                                <input type="tel" id="phone" name="phone" placeholder="+45 70 00 00 00" autocomplete="tel">
 
                             </div>
 
                         </div>
-
 
                         <!-- Type of Space -->
                         <div class="contact-form-field contact-form-full">
@@ -442,12 +390,7 @@ $contact_phone_link = $contact_phone
                                 Type of Space <span aria-hidden="true">*</span>
                             </label>
 
-                            <select
-                                id="space_type"
-                                name="space_type"
-                                required
-                                aria-required="true"
-                                data-parsley-required-message="Please select your type of space.">
+                            <select id="space_type" name="space_type" required aria-required="true" data-parsley-required-message="Please select your type of space.">
                                 <option value="" selected disabled>Select type of space</option>
                                 <option value="office">Office</option>
                                 <option value="hotel">Hotel</option>
@@ -459,7 +402,6 @@ $contact_phone_link = $contact_phone
 
                         </div>
 
-
                         <!-- Help Options -->
                         <fieldset class="contact-help-section">
 
@@ -467,64 +409,40 @@ $contact_phone_link = $contact_phone
                                 What do you need help with?
                             </legend>
 
-
                             <div class="contact-help-grid">
 
                                 <!-- Regular Flower Delivery -->
                                 <label class="contact-checkbox">
 
-                                    <input
-                                        type="checkbox"
-                                        name="services[]"
-                                        value="Regular flower delivery">
-
+                                    <input type="checkbox" name="services[]" value="Regular flower delivery">
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
-
                                     <span>Regular flower delivery</span>
 
                                 </label>
 
-
                                 <!-- Vase Service -->
                                 <label class="contact-checkbox">
 
-                                    <input
-                                        type="checkbox"
-                                        name="services[]"
-                                        value="Vase service">
-
+                                    <input type="checkbox" name="services[]" value="Vase service">
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
-
                                     <span>Vase service</span>
 
                                 </label>
 
-
                                 <!-- Maintenance -->
                                 <label class="contact-checkbox">
 
-                                    <input
-                                        type="checkbox"
-                                        name="services[]"
-                                        value="Maintenance">
-
+                                    <input type="checkbox" name="services[]" value="Maintenance">
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
-
                                     <span>Maintenance</span>
 
                                 </label>
 
-
                                 <!-- Not Sure Yet -->
                                 <label class="contact-checkbox">
 
-                                    <input
-                                        type="checkbox"
-                                        name="services[]"
-                                        value="Not sure yet">
-
+                                    <input type="checkbox" name="services[]"value="Not sure yet">
                                     <span class="contact-checkbox-box" aria-hidden="true"></span>
-
                                     <span>Not sure yet</span>
 
                                 </label>
@@ -533,7 +451,6 @@ $contact_phone_link = $contact_phone
 
                         </fieldset>
 
-
                         <!-- Message -->
                         <div class="contact-form-field contact-form-full">
 
@@ -541,24 +458,14 @@ $contact_phone_link = $contact_phone
                                 Message <span class="optional">(Optional)</span>
                             </label>
 
-                            <textarea
-                                id="message"
-                                name="message"
-                                rows="5"
-                                maxlength="1000"
-                                placeholder="Tell us more about your space, the size of your arrangements or anything else that would be helpful."></textarea>
+                            <textarea id="message" name="message" rows="5" maxlength="1000" placeholder="Tell us more about your space, the size of your arrangements or anything else that would be helpful."></textarea>
 
                         </div>
 
-
                         <!-- Submit Button -->
-                        <button
-                            type="submit"
-                            class="contact-submit"
-                            aria-label="Request a quote">
+                        <button type="submit" class="contact-submit" aria-label="Request a quote">
                             Request a Quote
                         </button>
-
 
                         <!-- Form Note -->
                         <p class="contact-form-note">
@@ -566,7 +473,6 @@ $contact_phone_link = $contact_phone
                         </p>
 
                     </form>
-
 
                 <?php endif; ?>
 
@@ -579,176 +485,3 @@ $contact_phone_link = $contact_phone
 </main>
 
 <?php get_footer(); ?>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-        const form = document.querySelector(".contact-form");
-        const formSteps = document.getElementById("formSteps");
-        const nextButton = document.getElementById("nextButton");
-        const backButton = document.getElementById("backButton");
-        const submitButton = document.getElementById("submitButton");
-        const stepNumber = document.getElementById("currentStepNumber");
-        const progressFill = document.getElementById("progressFill");
-        const progressBar = document.getElementById("formProgressBar");
-        const formWarning = document.getElementById("formWarning");
-        const messageField = document.getElementById("message");
-        const characterCount = document.getElementById("characterCount");
-        const steps = document.querySelectorAll(".form-step");
-
-        // Stop if the form is not shown
-        if (!form || !formSteps || !nextButton || !backButton || !submitButton || !stepNumber || !progressFill || !progressBar || !steps.length) {
-            return;
-        }
-
-        const totalSteps = steps.length;
-        let currentStep = 0;
-
-        // Update the visible step and progress bar
-        function updateForm() {
-            formSteps.style.transform = `translateX(-${currentStep * 25}%)`;
-
-            stepNumber.textContent = currentStep + 1;
-
-            progressFill.style.width =
-                `${((currentStep + 1) / totalSteps) * 100}%`;
-
-            // Updates the accessible progress value
-            progressBar.setAttribute("aria-valuenow", currentStep + 1);
-            progressBar.setAttribute("aria-valuetext", `Step ${currentStep + 1} of ${totalSteps}`);
-
-            // Makes only the current step available to keyboard and screen reader users
-            steps.forEach((step, index) => {
-                const isActive = index === currentStep;
-
-                step.setAttribute("aria-hidden", isActive ? "false" : "true");
-
-                step.querySelectorAll("input, textarea, select, button, a").forEach(element => {
-                    element.tabIndex = isActive ? 0 : -1;
-                });
-            });
-
-            backButton.style.visibility =
-                currentStep === 0 ? "hidden" : "visible";
-
-            nextButton.style.display =
-                currentStep === totalSteps - 1 ? "none" : "inline-flex";
-
-            submitButton.style.display =
-                currentStep === totalSteps - 1 ? "inline-flex" : "none";
-
-            hideWarning();
-        }
-
-        // Moves keyboard focus to the heading of the current step
-        function focusCurrentStep() {
-            const activeStep = steps[currentStep];
-            const heading = activeStep.querySelector("h2, legend");
-
-            if (!heading) {
-                return;
-            }
-
-            heading.setAttribute("tabindex", "-1");
-            heading.focus();
-        }
-
-        // Show a form warning
-        function showWarning(message) {
-            if (!formWarning) return;
-
-            formWarning.textContent = message;
-            formWarning.classList.add("is-visible");
-        }
-
-        // Hide the form warning
-        function hideWarning() {
-            formWarning?.classList.remove("is-visible");
-        }
-
-        // Validate required fields in the current step
-        function validateCurrentStep() {
-            const activeStep = steps[currentStep];
-
-            const requiredFields =
-                activeStep.querySelectorAll("input[required], textarea[required]");
-
-            for (const field of requiredFields) {
-
-                if (field.type === "radio") {
-                    const checkedRadio =
-                        activeStep.querySelector(
-                            `input[name="${field.name}"]:checked`
-                        );
-
-                    if (!checkedRadio) {
-                        showWarning(
-                            "Please choose one of the options before continuing."
-                        );
-
-                        field.focus();
-                        return false;
-                    }
-                } else if (!field.value.trim()) {
-                    showWarning(
-                        "Please complete the required information before continuing."
-                    );
-
-                    field.focus();
-                    return false;
-                } else if (
-                    field.type === "email" &&
-                    !field.validity.valid
-                ) {
-                    showWarning(
-                        "Please enter a valid email address before continuing."
-                    );
-
-                    field.focus();
-                    return false;
-                }
-            }
-
-            hideWarning();
-            return true;
-        }
-
-        // Go to the next step
-        nextButton.addEventListener("click", () => {
-            if (validateCurrentStep() && currentStep < totalSteps - 1) {
-                currentStep++;
-                updateForm();
-                focusCurrentStep();
-            }
-        });
-
-        // Go back one step
-        backButton.addEventListener("click", () => {
-            if (currentStep > 0) {
-                currentStep--;
-                updateForm();
-                focusCurrentStep();
-            }
-        });
-
-        // Prevent submission if the last step is invalid
-        form.addEventListener("submit", event => {
-            if (!validateCurrentStep()) {
-                event.preventDefault();
-            }
-        });
-
-        // Count the message characters
-        if (messageField && characterCount) {
-            const updateCharacterCount = () => {
-                characterCount.textContent = messageField.value.length;
-            };
-
-            updateCharacterCount();
-            messageField.addEventListener("input", updateCharacterCount);
-        }
-
-        updateForm();
-    });
-</script>
