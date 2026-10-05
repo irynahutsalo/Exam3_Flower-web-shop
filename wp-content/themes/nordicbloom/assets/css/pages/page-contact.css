@@ -16,14 +16,18 @@
 .contact-hero-image {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .contact-hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-color: rgba(0, 0, 0, 0.32);
 }
 
@@ -299,7 +303,7 @@ a.contact-detail-value:hover {
 
   .contact-hero-content {
     padding: 45px 20px;
-    text-align: center;
+    text-align: left;
   }
 
   .contact-hero-title,
