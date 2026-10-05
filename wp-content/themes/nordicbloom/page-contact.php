@@ -44,27 +44,34 @@ $contact_phone_link = $contact_phone
 <!-- Contact Page -->
 <main id="primary" class="contact-page" tabindex="-1">
 
-    <!-- Responsive Contact Hero Image-->
+    <!-- Contact Hero -->
     <section class="contact-hero"
         <?php if ($contact_hero_title) : ?>
         aria-labelledby="contact-hero-title"
         <?php else : ?>
         aria-label="Contact"
-        <?php endif; ?>
+        <?php endif; ?>>
+
+        <!-- Responsive Contact Hero Image -->
         <?php if ($contact_hero_image) : ?>
-        <?php
-        echo wp_get_attachment_image(
-            $contact_hero_image['ID'],
-            'full',
-            false,
-            array(
-                'class' => 'contact-hero-image',
-                'alt' => '',
-                'loading' => 'eager',
-                'fetchpriority' => 'high'
-            )
-        );
-        ?>
+            <?php
+            $contact_hero_image_id = is_array($contact_hero_image)
+                ? $contact_hero_image['ID']
+                : $contact_hero_image;
+
+            echo wp_get_attachment_image(
+                $contact_hero_image_id,
+                'full',
+                false,
+                array(
+                    'class' => 'contact-hero-image',
+                    'alt' => '',
+                    'loading' => 'eager',
+                    'fetchpriority' => 'high',
+                    'sizes' => '100vw'
+                )
+            );
+            ?>
         <?php endif; ?>
 
         <div class="contact-hero-overlay" aria-hidden="true"></div>

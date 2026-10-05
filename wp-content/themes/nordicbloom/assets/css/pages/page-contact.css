@@ -297,6 +297,15 @@ a.contact-detail-value:hover {
   }
 }
 
+@media (max-width: 600px) {
+  .contact-hero {
+    min-height: 300px;
+  }
+
+  .contact-hero-image {
+    object-position: 65% center;
+  }
+
   .contact-hero-overlay {
     background-color: rgba(0, 0, 0, 0.4);
   }
@@ -304,12 +313,6 @@ a.contact-detail-value:hover {
   .contact-hero-content {
     padding: 45px 20px;
     text-align: left;
-  }
-
-  .contact-hero-title,
-  .contact-hero-description {
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .contact-hero-title {
@@ -403,11 +406,15 @@ a.contact-detail-value:hover {
     margin: 0 auto;
     padding: 24px 0;
   }
+}
 
 @media (max-width: 480px) {
   .contact-hero {
     min-height: 280px;
-    background-position: 65% center;
+  }
+
+  .contact-hero-image {
+    object-position: 70% center;
   }
 
   .contact-hero-content {
@@ -467,26 +474,6 @@ a.contact-detail-value:hover {
     gap: 8px;
     font-size: 0.82rem;
   }
-}
-
-
-@media (max-width: 600px) {
-  .contact-hero {
-    min-height: 300px;
-    background-position: 60% center;
-  }
-
-  @media (max-width: 600px) {
-  .contact-hero-image {
-    object-position: 65% center;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-hero-image {
-    object-position: 70% center;
-  }
-}
 }
 
 /* --------------------------------------------------- Contact Form ---------------------------------------------------- */
