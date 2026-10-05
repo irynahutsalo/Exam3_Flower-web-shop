@@ -485,7 +485,7 @@ a.contact-detail-value:hover {
 }
 
 .contact-form-field .optional {
-    color: #aaa69f;
+    color: #69635D;
     font-weight: 400;
 }
 
@@ -511,7 +511,7 @@ a.contact-detail-value:hover {
 
 .contact-form-field input::placeholder,
 .contact-form-field textarea::placeholder {
-    color: #aaa69f;
+    color: #69635D;
     opacity: 1;
 }
 
