@@ -65,7 +65,7 @@
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.18em;
-    text-transform: uppercase;
+    text-transform: none;
     color: #363633;
 }
 
@@ -175,7 +175,7 @@
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
+    text-transform: none;
     transition: background-color 0.2s ease;
 }
 
@@ -272,7 +272,8 @@
     padding: 13px 26px;
     border: 2px solid var(--color-primary);
     border-radius: 999px;
-    color: var(--color-primary);
+    color: #fff;
+    background-color: var(--color-primary);
     text-decoration: none;
     font-size: 0.75rem;
     font-weight: 800;
@@ -280,10 +281,8 @@
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.outline-button:hover {
-    background-color: var(--color-primary);
-    color: #fff;
-}
+/* .outline-button:hover {
+} */
 
 /* --------------------------------------------------What's Next Section --------------------------------------------- */
 .sustainability-future {
