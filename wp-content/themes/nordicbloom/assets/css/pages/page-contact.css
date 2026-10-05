@@ -476,7 +476,7 @@ a.contact-detail-value:hover {
 .contact-form-field label,
 .contact-help-section legend {
   margin-bottom: 9px;
-  color: #64655d;
+  color: #4F4F4F;
   font-size: 0.68rem;
   font-weight: 500;
   line-height: 1.5;
@@ -485,7 +485,7 @@ a.contact-detail-value:hover {
 }
 
 .contact-form-field .optional {
-  color: #69635d;
+  color: #4F4F4F;
   font-weight: 400;
 }
 
