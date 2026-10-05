@@ -374,7 +374,7 @@ $contact_phone_link = $contact_phone
                             <div class="contact-form-field">
 
                                 <label for="phone">
-                                    Phone <span class="optional">(Optional)</span>
+                                    Phone
                                 </label>
 
                                 <input type="tel" id="phone" name="phone" placeholder="+45 70 00 00 00" autocomplete="tel">
@@ -390,7 +390,7 @@ $contact_phone_link = $contact_phone
                                 Message <span class="optional">(Optional)</span>
                             </label>
 
-                            <textarea id="message" name="message" rows="5" maxlength="1000" placeholder="Tell us more about your space, the size of your arrangements or anything else that would be helpful."></textarea>
+                            <textarea id="message" name="message" rows="5" maxlength="1000" placeholder="Tell us about your request, preferences, or anything else we should know."></textarea>
 
                         </div>
 
