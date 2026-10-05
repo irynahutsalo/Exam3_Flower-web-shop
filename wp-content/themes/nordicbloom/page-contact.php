@@ -35,11 +35,6 @@ $weekday_hours = ($weekday_opening && $weekday_closing) ? "$weekday_opening - $w
 $saturday_hours = ($saturday_opening && $saturday_closing) ? "$saturday_opening - $saturday_closing" : 'Closed';
 $sunday_hours = ($sunday_opening && $sunday_closing) ? "$sunday_opening - $sunday_closing" : 'Closed';
 
-// Gets the image URL from the ACF image array
-if (is_array($contact_hero_image)) {
-    $contact_hero_image = $contact_hero_image['url'] ?? '';
-}
-
 // Remove spaces and special characters with Regex so the phone number works correctly in the href="tel:" link
 $contact_phone_link = $contact_phone
     ? preg_replace('/[^0-9+]/', '', $contact_phone)
@@ -49,9 +44,7 @@ $contact_phone_link = $contact_phone
 <!-- Contact Page -->
 <main id="primary" class="contact-page" tabindex="-1">
 
-    <!-- Contact Hero -->
-
-    <!-- If a hero image exists then it uses it as the background image -->
+    <!-- Responsive Contact Hero Image-->
     <section class="contact-hero"
         <?php if ($contact_hero_title) : ?>
         aria-labelledby="contact-hero-title"
@@ -59,10 +52,21 @@ $contact_phone_link = $contact_phone
         aria-label="Contact"
         <?php endif; ?>
         <?php if ($contact_hero_image) : ?>
-        style="background-image: url('<?php echo esc_url($contact_hero_image); ?>');"
-        <?php endif; ?>>
+        <?php
+        echo wp_get_attachment_image(
+            $contact_hero_image['ID'],
+            'full',
+            false,
+            array(
+                'class' => 'contact-hero-image',
+                'alt' => '',
+                'loading' => 'eager',
+                'fetchpriority' => 'high'
+            )
+        );
+        ?>
+        <?php endif; ?>
 
-        <!-- Dark Overlay -->
         <div class="contact-hero-overlay" aria-hidden="true"></div>
 
         <!-- Contact Hero Content -->
@@ -351,9 +355,7 @@ $contact_phone_link = $contact_phone
                                     Company Name <span class="optional">(Optional)</span>
                                 </label>
 
-                                <input type="text" id="company_name" name="company_name" placeholder="Nordic Bloom A/S" autocomplete="organization"
-                                    required aria-required="true" data-parsley-required-message="Please enter your company name."
-                                >
+                                <input type="text" id="company_name" name="company_name" placeholder="Nordic Bloom A/S" autocomplete="organization">
 
                             </div>
 
@@ -377,7 +379,9 @@ $contact_phone_link = $contact_phone
                                     Phone
                                 </label>
 
-                                <input type="tel" id="phone" name="phone" placeholder="+45 70 00 00 00" autocomplete="tel">
+                                <input type="tel" id="phone" name="phone" placeholder="+45 70 00 00 00" autocomplete="tel" required aria-required="true"
+                                    data-parsley-required-message="Please enter your phone number." data-parsley-type-message="Please enter a valid phone number."
+                                >
 
                             </div>
 
