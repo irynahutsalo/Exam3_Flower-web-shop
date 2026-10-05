@@ -100,10 +100,11 @@ body.admin-bar .site-header {
 
 .main-navigation a {
   position: relative;
-  min-height: 44px;
   min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0;
   color: var(--color-text);
   text-decoration: none;
@@ -116,7 +117,6 @@ body.admin-bar .site-header {
 }
 
 /* Underline For Hover */
-
 .main-navigation a::after {
   content: "";
   position: absolute;
