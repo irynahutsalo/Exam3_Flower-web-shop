@@ -309,6 +309,67 @@
   line-height: 1.4;
 }
 
+
+/* -------------------------------- Split Section B2B and B2C -------------------------------- */
+
+.split-section__heading {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+/* put the image on the right when "right" is selected */
+.split--img-right .split__image { order: 2; }
+
+.split__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.split__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.split__content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.btn {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.btn--solid   { background: #1f2d22; color: #fff; }
+.btn--outline { border: 1px solid #1f2d22; color: #1f2d22; }
+
+@media (max-width: 768px) {
+  .split { grid-template-columns: 1fr; }
+  .split--img-right .split__image { order: 0; }
+  .split__content { padding: 2rem 1.5rem; }
+}
+
 /* ---------------------------------------------------------- Newsletter Section ---------------------------------------- */
 .newsletter-section {
     background-color: #f5eee9;
