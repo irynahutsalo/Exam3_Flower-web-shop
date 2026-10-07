@@ -364,88 +364,88 @@
 }
 
 /* ==========================================================================
-     COMMENTS SECTION & CHAT STYLES (single.php)
-     ========================================================================== */
+   COMMENTS SECTION STYLES (comments.php)
+   ========================================================================== */
 
-.single-comments-section {
+#comments {
   margin-top: 60px;
   padding-top: 40px;
   border-top: 1px solid #efefef;
 }
 
-.comments-header-acf {
-  margin-bottom: 30px;
-}
-
-.comments-main-title {
+#comments h2 {
   font-family: var(--font-main, serif);
   font-size: 1.8rem;
   color: var(--color-text);
-  margin: 0 0 8px 0;
+  margin: 0 0 30px 0;
 }
 
-.comments-subtitle-text {
-  font-size: 0.95rem;
-  color: #666666;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.comments-chat-list,
-.comments-chat-list .children {
+/* Comment List Container */
+.comment-list,
+.comment-list .children {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.comment-item {
+/* Single Comment Item */
+.comment-list li.comment {
   margin-bottom: 20px;
 }
 
-.comment-message-box {
-  display: flex;
-  gap: 16px;
+/* Comment Box Wrapper */
+.comment-list .comment-body {
+  position: relative;
   background-color: #ffffff;
-  padding: 20px;
+  padding: 20px 20px 20px 96px; /* Left padding for avatar spacing */
   border-radius: 8px;
   border: 1px solid #eae5dd;
 }
 
-.comment-avatar img {
+/* Avatar Position & Styling */
+.comment-list .comment-author .avatar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.comment-content-wrap {
-  flex: 1;
-}
-
-.comment-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.comment-author-name {
+/* Author Name & "says:" Text */
+.comment-list .comment-author .fn {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-text);
+  font-style: normal;
 }
 
-.comment-date {
+.comment-list .comment-author .says {
+  display: none; /* Hide default "says:" text */
+}
+
+/* Comment Date & Meta */
+.comment-list .comment-meta {
+  margin-bottom: 8px;
+}
+
+.comment-list .comment-meta a {
   font-size: 0.8rem;
   color: #555555;
+  text-decoration: none;
 }
 
-.comment-text {
+/* Comment Text */
+.comment-list .comment-body p {
   font-size: 0.95rem;
   color: #333333;
   line-height: 1.6;
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
 }
 
-.comment-reply-btn a {
+/* Reply Button Link */
+.comment-list .reply a {
   font-size: 0.85rem;
   font-weight: 600;
   color: #743047;
@@ -453,11 +453,16 @@
   border-bottom: 1px solid currentColor;
 }
 
-.comments-chat-list .children {
+/* Nested Comments (Replies Thread) */
+.comment-list .children {
   margin-top: 16px;
   padding-left: 32px;
   border-left: 2px solid var(--color-accent);
 }
+
+/* ==========================================================================
+   COMMENT FORM STYLES (comment_form)
+   ========================================================================== */
 
 .comment-respond {
   margin-top: 40px;
@@ -465,6 +470,13 @@
   padding: 30px;
   border-radius: 8px;
   border: 1px solid #eae5dd;
+}
+
+.comment-reply-title {
+  font-family: var(--font-main, serif);
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .comment-form p {
