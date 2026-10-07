@@ -268,6 +268,79 @@ $newsletter_image       = get_field('newsletter_image');
     <?php endif; ?>
 
 
+<!-------------------------------- Split Section B2B and B2C --------------------------------------------------------------------------------------------------->
+
+
+<?php
+$heading = get_field('split_heading');
+?>
+
+ <section class="split-section">
+
+  <?php if ($heading) : ?>
+    <h2 class="split-section__heading"><?php echo esc_html($heading); ?></h2>
+  <?php endif; ?>
+
+  <?php if (have_rows('split_panels')) : ?>
+    <?php while (have_rows('split_panels')) : the_row();
+
+      $image    = get_sub_field('split_image');
+      $eyebrow  = get_sub_field('split_eyebrow');
+      $title    = get_sub_field('split_title');
+      $desc     = get_sub_field('split_description');
+      $features = get_sub_field('split_features');
+      $link     = get_sub_field('split_button');
+      $style    = get_sub_field('split_button_style') ?: 'solid';
+      $pos      = get_sub_field('split_img_position') ?: 'left';
+    ?>
+
+      <div class="split split--img-<?php echo esc_attr($pos); ?>">
+
+        <div class="split__image">
+          <?php if ($image) echo wp_get_attachment_image($image, 'large'); ?>
+        </div>
+
+        <div class="split__content">
+
+          <?php if ($eyebrow) : ?>
+            <span class="eyebrow"><?php echo esc_html($eyebrow); ?></span>
+          <?php endif; ?>
+
+          <?php if ($title) : ?>
+            <h3 class="split__title"><?php echo esc_html($title); ?></h3>
+          <?php endif; ?>
+
+          <?php if ($desc) : ?>
+            <p class="split__desc"><?php echo esc_html($desc); ?></p>
+          <?php endif; ?>
+
+          <?php if ($features) : ?>
+            <ul class="split__features">
+              <?php foreach (preg_split('/\r\n|\r|\n/', trim($features)) as $feature) : ?>
+                <?php if ($feature !== '') : ?>
+                  <li><?php echo esc_html($feature); ?></li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </ul>
+          <?php endif; ?>
+
+          <?php if ($link) : ?>
+            <a class="btn btn--<?php echo esc_attr($style); ?>"
+               href="<?php echo esc_url($link['url']); ?>"
+               <?php if (!empty($link['target'])) : ?>target="<?php echo esc_attr($link['target']); ?>" rel="noopener"<?php endif; ?>>
+              <?php echo esc_html($link['title']); ?>
+            </a>
+          <?php endif; ?>
+
+        </div>
+      </div>
+
+    <?php endwhile; ?>
+  <?php endif; ?>
+
+  </section>
+
+
     <!-- Newsletter Section -->
     <section class="newsletter-section">
 

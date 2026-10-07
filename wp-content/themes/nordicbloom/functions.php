@@ -13,6 +13,7 @@ add_filter('pre_get_document_title', function($title) {
     return $title;
 });
 
+
 // --------------------------------------------------------- Theme Setup --------------------------------------------------
 function nordicbloom_theme_setup()
 {
