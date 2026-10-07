@@ -5,7 +5,7 @@
 
     <article id="post-<?php the_ID(); ?>" <?php post_class('single-article'); ?>>
       
-      <!-- Шапка статті -->
+      <!-- Article Header -->
       <header class="single-post-header">
         <div class="single-container">
           
@@ -31,29 +31,26 @@
         </div>
       </header>
 
-      <!-- Головна картинка (Featured Image) -->
+      <!-- Featured Image -->
       <?php if ( has_post_thumbnail() ) : ?>
         <div class="single-featured-image single-container">
           <?php the_post_thumbnail('full'); ?>
         </div>
       <?php endif; ?>
 
-      <!-- Основний текст статті -->
+      <!-- Main Post Content -->
       <div class="single-post-content single-container">
         <?php the_content(); ?>
       </div>
 
-      <!-- Навігація на попередню / наступну статтю -->
-      <nav class="post-navigation single-container">
-        <div class="nav-previous">
-          <?php previous_post_link('%link', '&larr; %title'); ?>
-        </div>
-        <div class="nav-next">
-          <?php next_post_link('%link', '%title &rarr;'); ?>
-        </div>
-      </nav>
+     <!-- Back to All Articles Button -->
+<div class="back-to-posts single-container">
+  <a href="<?= esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/blog' ) ); ?>" class="btn-all-articles">
+    &larr; All articles
+  </a>
+</div>
 
-      <!-- Секція коментарів -->
+      <!-- Comments Section -->
       <?php 
       $enable_comments = get_field('enable_comments');
 
@@ -61,7 +58,7 @@
       ?>
         <div class="single-container">
           <?php 
-          // НОВИЙ КОД: Підключаємо файл comments.php стандартним способом WordPress
+          // Load the comments.php template file using standard WordPress functionality
           if ( comments_open() || get_comments_number() ) {
               comments_template();
           }
