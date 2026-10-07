@@ -313,7 +313,11 @@
 /* -------------------------------- Split Section B2B and B2C -------------------------------- */
 
 .split-section__heading {
-  margin: 0;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
   color: var(--color-text);
   font-size: clamp(2.8rem, 5vw, 4.3rem);
   font-weight: 500;
@@ -385,6 +389,7 @@
 .btn--outline { border: 1px solid #1f2d22; color: #1f2d22; }
 
 @media (max-width: 768px) {
+  .split-section__heading { padding: 0 24px; }
   .split { grid-template-columns: 1fr; }
   .split--img-right .split__image { order: 0; }
   .split__content { padding: 2rem 1.5rem; }
