@@ -275,7 +275,7 @@ $newsletter_image       = get_field('newsletter_image');
 $heading = get_field('split_heading');
 ?>
 
- <section class="split-section">
+ <section class="split-section">    
 
   <?php if ($heading) : ?>
     <h2 class="split-section__heading"><?php echo esc_html($heading); ?></h2>
@@ -291,7 +291,7 @@ $heading = get_field('split_heading');
       $features = get_sub_field('split_features');
       $link     = get_sub_field('split_button');
       $style    = get_sub_field('split_button_style') ?: 'solid';
-      $pos      = get_sub_field('split_img_position') ?: 'left';
+      $pos      = get_sub_field('split_img_position') ?: 'left': 'right';
     ?>
 
       <div class="split split--img-<?php echo esc_attr($pos); ?>">
