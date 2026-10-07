@@ -273,9 +273,10 @@ $newsletter_image       = get_field('newsletter_image');
 
 <?php
 $heading = get_field('split_heading');
+$i = 0;
 ?>
 
- <section class="split-section">    
+<section class="split-section">
 
   <?php if ($heading) : ?>
     <h2 class="split-section__heading"><?php echo esc_html($heading); ?></h2>
@@ -284,14 +285,15 @@ $heading = get_field('split_heading');
   <?php if (have_rows('split_panels')) : ?>
     <?php while (have_rows('split_panels')) : the_row();
 
+      $i++;
       $image    = get_sub_field('split_image');
       $eyebrow  = get_sub_field('split_eyebrow');
       $title    = get_sub_field('split_title');
       $desc     = get_sub_field('split_description');
       $features = get_sub_field('split_features');
       $link     = get_sub_field('split_button');
-      $style    = get_sub_field('split_button_style') ?: 'solid';
-      $pos      = get_sub_field('split_img_position') ?: 'left';
+      $style    = get_sub_field('button_style') ?: 'solid';
+      $pos      = ($i % 2 === 1) ? 'left' : 'right';
     ?>
 
       <div class="split split--img-<?php echo esc_attr($pos); ?>">
@@ -338,7 +340,7 @@ $heading = get_field('split_heading');
     <?php endwhile; ?>
   <?php endif; ?>
 
-  </section>
+</section>
 
 
     <!-- Newsletter Section -->
