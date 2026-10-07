@@ -291,7 +291,7 @@ $heading = get_field('split_heading');
       $features = get_sub_field('split_features');
       $link     = get_sub_field('split_button');
       $style    = get_sub_field('split_button_style') ?: 'solid';
-      $pos      = get_sub_field('split_img_position') ?: 'left': 'right';
+      $pos      = get_sub_field('split_img_position') ?: 'left';
     ?>
 
       <div class="split split--img-<?php echo esc_attr($pos); ?>">
