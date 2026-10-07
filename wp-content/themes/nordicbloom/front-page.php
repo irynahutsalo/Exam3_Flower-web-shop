@@ -299,7 +299,7 @@ $i = 0;
       <div class="split split--img-<?php echo esc_attr($pos); ?>">
 
         <div class="split__image">
-          <?php if ($image) echo wp_get_attachment_image($image, 'large'); ?>
+          <?php if ($image) echo wp_get_attachment_image($image, 'medium'); ?>
         </div>
 
         <div class="split__content">

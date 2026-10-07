@@ -320,7 +320,7 @@
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 500px;
+  max-height: 500px;
 }
 
 /* put the image on the right when "right" is selected */
