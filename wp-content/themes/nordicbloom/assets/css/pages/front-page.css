@@ -313,14 +313,18 @@
 /* -------------------------------- Split Section B2B and B2C -------------------------------- */
 
 .split-section__heading {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(2.8rem, 5vw, 4.3rem);
+  font-weight: 500;
+  line-height: 1.08;
   text-align: center;
-  padding: 3rem 1rem;
 }
 
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-height: 500px;
+  min-height: 500px;
 }
 
 /* put the image on the right when "right" is selected */
@@ -344,12 +348,23 @@
   flex-direction: column;
   justify-content: center;
   padding: 4rem;
+   max-width: 720px;
+  margin: 24px auto 0;
+  color: #5C554E; /* new */
+  /* color: #777168; */
+  font-size: 1.15rem;
+  line-height: 1.55;
 }
 
 .eyebrow {
-  font-size: 0.7rem;
+  /* font-size: 0.7rem;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  text-transform: uppercase; */
+  margin: 0 0 22px;
+  color: #6f6a63;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
 }
 
 .split__content ul {
