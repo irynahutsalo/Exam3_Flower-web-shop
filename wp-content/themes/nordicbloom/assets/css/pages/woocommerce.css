@@ -1,0 +1,43 @@
+/* WooCommerce content spacing */
+
+/* WooCommerce content spacing */
+.shop-content {
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
+.woocommerce .shop-content .woocommerce-breadcrumb {
+  margin-bottom: 24px;
+}
+
+.woocommerce .shop-content .woocommerce-products-header {
+  margin-bottom: 24px;
+}
+
+.woocommerce .shop-content div.product .product_title {
+  margin-bottom: 16px;
+}
+
+.woocommerce .shop-content div.product p.price {
+  margin-bottom: 20px;
+  color: var(--color-text);
+}
+
+.woocommerce .shop-content .woocommerce-product-details__short-description {
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.woocommerce .shop-content .woocommerce-tabs .panel {
+  line-height: 1.6;
+}
+
+.woocommerce .shop-content .woocommerce-tabs .panel p {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 767px) {
+  .shop-content {
+    padding: 24px 20px 40px;
+  }
+}
