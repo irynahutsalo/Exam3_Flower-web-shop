@@ -28,6 +28,13 @@ function nordicbloom_theme_setup()
 
 add_action('after_setup_theme', 'nordicbloom_theme_setup');
 
+// WooCommerce support.
+function shop_enable_woocommerce()
+{
+    add_theme_support('woocommerce');
+}   
+add_action('after_setup_theme', 'shop_enable_woocommerce');
+
 
 // ------------------------------------------------ CSS Stylesheets ----------------------------------------------
 function nordicbloom_enqueue_styles()
