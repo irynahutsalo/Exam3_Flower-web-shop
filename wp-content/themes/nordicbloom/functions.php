@@ -27,17 +27,6 @@ function nordicbloom_theme_setup()
 }
 add_action('after_setup_theme', 'nordicbloom_theme_setup');
 
-// Remove the sidebar from WooCommerce pages.
-function nordicbloom_remove_woocommerce_sidebar()
-{
-    remove_action(
-        'woocommerce_sidebar',
-        'woocommerce_get_sidebar',
-        10
-    );
-}
-add_action('wp', 'nordicbloom_remove_woocommerce_sidebar');
-
 
 // ------------------------------------------------ CSS Stylesheets ----------------------------------------------
 function nordicbloom_enqueue_styles()
