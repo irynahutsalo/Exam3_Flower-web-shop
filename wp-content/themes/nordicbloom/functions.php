@@ -19,6 +19,7 @@ function nordicbloom_theme_setup()
 {
     add_theme_support('post-thumbnails');
     add_theme_support('title-tag');
+    add_theme_support('woocommerce');
 
     register_nav_menus(array(
         'primary' => __('Primary Menu', 'nordicbloom'),
@@ -26,16 +27,80 @@ function nordicbloom_theme_setup()
 }
 add_action('after_setup_theme', 'nordicbloom_theme_setup');
 
+// Remove the sidebar from WooCommerce pages.
+function nordicbloom_remove_woocommerce_sidebar()
+{
+    remove_action(
+        'woocommerce_sidebar',
+        'woocommerce_get_sidebar',
+        10
+    );
+}
+add_action('wp', 'nordicbloom_remove_woocommerce_sidebar');
 
+
+// Use the theme container for WooCommerce content.
+function nordicbloom_woocommerce_wrappers()
+{
+    remove_action(
+        'woocommerce_before_main_content',
+        'woocommerce_output_content_wrapper',
+        10
+    );
+
+    remove_action(
+        'woocommerce_after_main_content',
+        'woocommerce_output_content_wrapper_end',
+        10
+    );
+
+    add_action(
+        'woocommerce_before_main_content',
+        'nordicbloom_woocommerce_wrapper_start',
+        10
+    );
+
+    add_action(
+        'woocommerce_after_main_content',
+        'nordicbloom_woocommerce_wrapper_end',
+        10
+    );
+}
+add_action('after_setup_theme', 'nordicbloom_woocommerce_wrappers');
+
+function nordicbloom_woocommerce_wrapper_start()
+{
+    echo '<main id="primary" class="container shop-content">';
+}
+
+function nordicbloom_woocommerce_wrapper_end()
+{
+    echo '</main>';
+}
 
 
 // ------------------------------------------------ CSS Stylesheets ----------------------------------------------
     function nordicbloom_enqueue_styles()
     {
 
+    // WooCommerce pages.
+    if (
+        function_exists('is_woocommerce')
+        && (is_woocommerce() || is_cart() || is_checkout() || is_account_page())
+    ) {
+        wp_enqueue_style(
+            'nordicbloom-woocommerce',
+            get_template_directory_uri() . '/assets/css/pages/woocommerce.css',
+            array('nordicbloom-base'),
+            filemtime(
+                get_template_directory() . '/assets/css/pages/woocommerce.css'
+            )
+        );
+    }
+
     // Main WordPress stylesheet
     wp_enqueue_style(
-        'nordicbloom-style'
+        'nordicbloom-style',
         get_stylesheet_uri()
     );
 
