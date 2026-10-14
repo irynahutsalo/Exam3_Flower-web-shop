@@ -17,15 +17,14 @@ add_filter('pre_get_document_title', function($title) {
 // --------------------------------------------------------- Theme Setup --------------------------------------------------
 function nordicbloom_theme_setup()
 {
-
     add_theme_support('post-thumbnails');
     add_theme_support('title-tag');
+    add_theme_support('woocommerce');
 
     register_nav_menus(array(
         'primary' => __('Primary Menu', 'nordicbloom'),
     ));
 }
-
 add_action('after_setup_theme', 'nordicbloom_theme_setup');
 
 
