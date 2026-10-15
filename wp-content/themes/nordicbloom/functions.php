@@ -125,7 +125,7 @@ function nordicbloom_enqueue_styles()
     }
 
     // Single Blog Post
-    if (is_single()) {
+    if (is_singular('post')) {
         wp_enqueue_style(
             'nordicbloom-single',
             get_template_directory_uri() . '/assets/css/pages/single.css',
@@ -141,6 +141,39 @@ function nordicbloom_enqueue_styles()
             ['nordicbloom-base']
         );
     }
+
+    // WooCommerce styles--------------------------------------------------------
+if (
+    function_exists('is_woocommerce')
+    && (is_woocommerce() || is_cart() || is_checkout() || is_account_page())
+) {
+    // Shared styles.
+    wp_enqueue_style(
+        'nordicbloom-woocommerce',
+        get_template_directory_uri() . '/assets/css/pages/woocommerce.css',
+        ['nordicbloom-base']
+    );
+
+    // Styles for the current page.
+    if (is_product()) {
+        $page_style = 'product';
+    } elseif (is_cart()) {
+        $page_style = 'cart';
+    } elseif (is_checkout()) {
+        $page_style = 'checkout';
+    } elseif (is_account_page()) {
+        $page_style = 'account';
+    } else {
+        $page_style = 'shop';
+    }
+
+    wp_enqueue_style(
+        'nordicbloom-' . $page_style,
+        get_template_directory_uri() . '/assets/css/pages/' . $page_style . '.css',
+        ['nordicbloom-woocommerce']
+    );
+}
+
 }
 
 add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_styles');
@@ -292,3 +325,6 @@ add_action(
     'admin_post_submit_contact_form',
     'nordicbloom_handle_contact_form'
 );
+
+
+//  ---------------------------------------------------------  WooCommerce styles ---------------------------------------------

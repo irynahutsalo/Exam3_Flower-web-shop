@@ -1,0 +1,54 @@
+/* Shop and product category/tag archives. */
+body.woocommerce #primary .woocommerce-products-header {
+  margin-bottom: 28px;
+  max-width: 740px;
+}
+body.woocommerce #primary .woocommerce-products-header__title {
+  margin-bottom: 18px;
+}
+body.woocommerce #primary .term-description {
+  color: var(--shop-muted);
+}
+body.woocommerce #primary .woocommerce-result-count {
+  font-size: 14px;
+  color: var(--shop-muted);
+  margin: 12px 0 20px;
+}
+body.woocommerce #primary .woocommerce-ordering {
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+body.woocommerce #primary > ul.products {
+  clear: both;
+}
+body.woocommerce #primary .woocommerce-pagination ul {
+  border: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+body.woocommerce #primary .woocommerce-pagination ul li {
+  border: 0;
+}
+body.woocommerce #primary .woocommerce-pagination ul li :is(a, span) {
+  min-width: 44px;
+  padding: 13px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-text);
+}
+body.woocommerce #primary .woocommerce-pagination ul li :is(.current, a:hover) {
+  background: var(--color-primary);
+  color: #fff;
+}
+@media (max-width: 600px) {
+  body.woocommerce
+    #primary
+    :is(.woocommerce-ordering, .woocommerce-result-count) {
+    float: none;
+    width: 100%;
+  }
+  body.woocommerce #primary .woocommerce-ordering select {
+    width: 100%;
+  }
+}

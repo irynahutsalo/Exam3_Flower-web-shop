@@ -1,0 +1,91 @@
+/* Classic [woocommerce_checkout], including order confirmation. */
+body.woocommerce-checkout #primary form.checkout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 0 40px;
+  align-items: start;
+}
+body.woocommerce-checkout #primary form.checkout > .woocommerce-NoticeGroup {
+  grid-column: 1 / -1;
+}
+body.woocommerce-checkout #primary #customer_details {
+  grid-column: 1;
+  grid-row: span 2;
+  width: 100%;
+}
+body.woocommerce-checkout #primary #customer_details :is(.col-1, .col-2) {
+  float: none;
+  width: 100%;
+}
+body.woocommerce-checkout #primary #customer_details .col-2 {
+  margin-top: 28px;
+}
+body.woocommerce-checkout #primary #order_review_heading,
+body.woocommerce-checkout #primary #order_review {
+  grid-column: 2;
+  width: 100%;
+}
+body.woocommerce-checkout #primary #payment {
+  border-radius: 12px;
+  background: #eee6dd;
+}
+body.woocommerce-checkout #primary #payment ul.payment_methods {
+  border-bottom-color: var(--shop-border);
+}
+body.woocommerce-checkout #primary #payment div.payment_box {
+  background: #fff;
+  color: var(--color-text);
+  border-radius: 8px;
+}
+body.woocommerce-checkout #primary #payment div.payment_box::before {
+  border-bottom-color: #fff;
+}
+body.woocommerce-checkout #primary #place_order {
+  width: 100%;
+  float: none;
+  margin-top: 12px;
+}
+body.woocommerce-checkout #primary .woocommerce-privacy-policy-text {
+  font-size: 13px;
+  color: var(--shop-muted);
+}
+body.woocommerce-checkout #primary .woocommerce-form-coupon {
+  border: 1px solid var(--shop-border);
+  border-radius: 12px;
+  background: #fff;
+}
+body.woocommerce-checkout #primary ul.order_details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 28px 0;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+}
+body.woocommerce-checkout #primary ul.order_details li {
+  float: none;
+  margin: 0;
+  padding-right: 20px;
+}
+body.woocommerce-checkout #primary .woocommerce-customer-details address {
+  padding: 20px;
+  border: 1px solid var(--shop-border);
+  border-radius: 12px;
+  background: #fff;
+}
+@media (max-width: 900px) {
+  body.woocommerce-checkout #primary form.checkout {
+    display: block;
+  }
+  body.woocommerce-checkout #primary #order_review_heading {
+    margin-top: 36px;
+  }
+}
+@media (max-width: 600px) {
+  body.woocommerce-checkout #primary .form-row-first,
+  body.woocommerce-checkout #primary .form-row-last {
+    float: none;
+    width: 100%;
+  }
+}

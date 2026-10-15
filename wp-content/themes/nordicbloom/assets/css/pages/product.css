@@ -1,0 +1,119 @@
+/* Single product; keeps WooCommerce gallery and variation behaviour. */
+body.single-product #primary div.product div.images {
+  width: 48%;
+}
+body.single-product #primary div.product div.summary {
+  width: 46%;
+  margin-bottom: 48px;
+}
+body.single-product #primary .woocommerce-product-gallery img {
+  border-radius: 12px;
+}
+body.single-product #primary .flex-control-thumbs {
+  margin-top: 12px;
+}
+body.single-product #primary .flex-control-thumbs li {
+  padding: 4px;
+}
+body.single-product #primary div.product .product_title {
+  font-size: clamp(30px, 3.5vw, 44px);
+  margin-bottom: 20px;
+}
+body.single-product #primary div.product :is(p.price, span.price) {
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+body.single-product #primary .woocommerce-product-details__short-description {
+  margin-bottom: 28px;
+}
+body.single-product
+  #primary
+  .woocommerce-product-details__short-description
+  ul {
+  padding-left: 22px;
+  margin-bottom: 20px;
+}
+body.single-product #primary form.cart .variations {
+  margin-bottom: 20px;
+}
+body.single-product #primary form.cart .variations :is(th, td) {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0 0 8px;
+}
+body.single-product #primary form.cart .variations select {
+  width: 100%;
+  margin-right: 0;
+}
+body.single-product #primary .reset_variations {
+  font-size: 13px;
+}
+body.single-product #primary form.cart div.quantity {
+  margin-right: 12px;
+}
+body.single-product #primary .product_meta {
+  border-top: 1px solid var(--shop-border);
+  padding-top: 20px;
+  font-size: 13px;
+  color: var(--shop-muted);
+}
+body.single-product #primary .product_meta > span {
+  display: block;
+  margin-bottom: 6px;
+}
+body.single-product #primary .woocommerce-tabs {
+  clear: both;
+  padding-top: 20px;
+}
+body.single-product #primary div.product .woocommerce-tabs ul.tabs {
+  padding: 0;
+  margin-bottom: 28px;
+}
+body.single-product #primary div.product .woocommerce-tabs ul.tabs::before {
+  border-color: var(--shop-border);
+}
+body.single-product #primary div.product .woocommerce-tabs ul.tabs li {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  margin: 0 24px 0 0;
+  padding: 0;
+}
+body.single-product #primary div.product .woocommerce-tabs ul.tabs li::before,
+body.single-product #primary div.product .woocommerce-tabs ul.tabs li::after {
+  display: none;
+}
+body.single-product #primary div.product .woocommerce-tabs ul.tabs li a {
+  padding: 14px 0;
+  color: var(--shop-muted);
+}
+body.single-product #primary div.product .woocommerce-tabs ul.tabs li.active {
+  border-bottom: 3px solid var(--color-primary);
+}
+body.single-product #primary div.product .woocommerce-tabs ul.tabs li.active a {
+  color: var(--color-primary);
+}
+body.single-product #primary .woocommerce-Tabs-panel {
+  max-width: 850px;
+  margin-bottom: 56px;
+}
+body.single-product #primary .woocommerce-Tabs-panel ul {
+  padding-left: 22px;
+}
+body.single-product #primary .related {
+  clear: both;
+  padding-top: 24px;
+}
+@media (max-width: 768px) {
+  body.single-product #primary div.product div.images,
+  body.single-product #primary div.product div.summary {
+    float: none;
+    width: 100%;
+  }
+  body.single-product #primary div.product div.images {
+    margin-bottom: 28px;
+  }
+}

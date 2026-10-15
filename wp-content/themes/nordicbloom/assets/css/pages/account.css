@@ -1,0 +1,82 @@
+/* Classic [woocommerce_my_account], including login and endpoints. */
+body.woocommerce-account #primary .woocommerce-MyAccount-navigation {
+  width: 25%;
+}
+body.woocommerce-account #primary .woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  border: 1px solid var(--shop-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+body.woocommerce-account #primary .woocommerce-MyAccount-navigation li + li {
+  border-top: 1px solid var(--shop-border);
+}
+body.woocommerce-account #primary .woocommerce-MyAccount-navigation a {
+  display: block;
+  padding: 14px 18px;
+  background: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+body.woocommerce-account
+  #primary
+  .woocommerce-MyAccount-navigation
+  .is-active
+  a {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+}
+body.woocommerce-account #primary .woocommerce-MyAccount-navigation a:hover {
+  background: var(--color-secondary);
+  color: #fff;
+}
+body.woocommerce-account #primary .woocommerce-MyAccount-content {
+  width: 70%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+body.woocommerce-account #primary :is(form.login, form.register) {
+  background: #fff;
+  padding: 28px;
+  border: 1px solid var(--shop-border);
+  border-radius: 12px;
+}
+body.woocommerce-account #primary form.login {
+  max-width: 560px;
+}
+body.woocommerce-account #primary .woocommerce-form-login__rememberme {
+  display: block;
+  margin-bottom: 16px;
+}
+body.woocommerce-account #primary fieldset {
+  border: 1px solid var(--shop-border);
+  padding: 20px;
+  margin: 24px 0;
+  border-radius: 12px;
+}
+body.woocommerce-account #primary legend {
+  padding: 0 8px;
+  font-weight: 600;
+}
+body.woocommerce-account #primary address {
+  margin: 16px 0 28px;
+  font-style: normal;
+}
+body.woocommerce-account #primary .woocommerce-Address .title h3 {
+  margin-top: 16px;
+}
+@media (max-width: 768px) {
+  body.woocommerce-account
+    #primary
+    :is(.woocommerce-MyAccount-navigation, .woocommerce-MyAccount-content) {
+    float: none;
+    width: 100%;
+  }
+  body.woocommerce-account #primary .woocommerce-MyAccount-navigation {
+    margin-bottom: 32px;
+  }
+  body.woocommerce-account #primary :is(form.login, form.register) {
+    padding: 20px;
+  }
+}
