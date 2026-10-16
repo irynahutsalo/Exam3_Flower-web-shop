@@ -6,7 +6,7 @@
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: 80vh;
+  min-height: 560px;
   display: flex;
   align-items: center;
   background-color: var(--color-bg);
