@@ -325,7 +325,11 @@
 .split {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  max-width: var(--max-width);
   min-height: 500px;
+  margin: 0 auto;
+  padding: 0 40px;
   background-color: var(--color-bg);
 }
 
@@ -1101,5 +1105,19 @@
     min-height: 44px;
     padding: 0 16px;
     font-size: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .split {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .split {
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }
