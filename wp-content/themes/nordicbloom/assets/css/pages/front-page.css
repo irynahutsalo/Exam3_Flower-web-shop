@@ -815,8 +815,7 @@
 
 @media (max-width: 600px) {
   .hero-section {
-    min-height: 85vh;
-    min-height: 85svh;
+    min-height: 448px;
     justify-content: center;
     background-position: 68% center;
   }
@@ -969,6 +968,7 @@
 
 @media (max-width: 480px) {
   .hero-section {
+    min-height: 449px;
     background-position: 70% center;
   }
 
