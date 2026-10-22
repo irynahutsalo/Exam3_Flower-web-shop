@@ -556,7 +556,6 @@ a.contact-detail-value:focus-visible {
   }
 
   .contact-description {
-    max-width: 480px;
     margin: 0 auto 32px;
     font-size: 0.95rem;
     line-height: 1.65;
@@ -564,7 +563,6 @@ a.contact-detail-value:focus-visible {
 
   /* Contact Details */
   .contact-details {
-    max-width: 440px;
     margin: 0 auto;
     align-items: stretch;
   }
