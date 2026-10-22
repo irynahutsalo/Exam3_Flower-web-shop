@@ -1,6 +1,6 @@
 .site-footer {
   background-color: var(--color-footer-bg);
-  color: #f8f5f0;
+  color: var(--color-text-tertiary);
   padding: 80px 0 25px;
   font-family: var(--font-main);
 }
@@ -9,7 +9,6 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 40px;
-  box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
   gap: 50px;
@@ -23,8 +22,8 @@
 }
 
 .footer-logo {
-  margin: 0 0 25px;
-  color: #ffffff;
+  margin-bottom: 25px;
+  color: var(--color-text-secondary);
   font-size: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -32,21 +31,20 @@
 }
 
 .footer-address {
-  margin: 0 0 20px;
+  margin-bottom: 20px;
   color: #c0bbb3;
   font-size: 0.85rem;
   line-height: 1.6;
 }
 
 .footer-slogan {
-  margin: 0;
   color: #b5b0a8;
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
 .footer-title {
-  margin: 0 0 25px;
+  margin-bottom: 25px;
   color: #c0bbb3;
   font-size: 0.75rem;
   font-weight: 500;
@@ -55,8 +53,6 @@
 }
 
 .footer-links {
-  margin: 0;
-  padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -96,13 +92,11 @@
   max-width: var(--max-width);
   margin: 60px auto 0;
   padding: 25px 40px 0;
-  box-sizing: border-box;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
 }
 
 .footer-bottom p {
-  margin: 0;
   color: #c0bbb3;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
@@ -140,13 +134,9 @@
     align-items: center;
   }
 
-  .footer-links li,
-  .footer-links a {
-    text-align: center;
-  }
-
   .footer-links a {
     justify-content: center;
+    text-align: center;
   }
 
   .footer-title {
@@ -155,8 +145,7 @@
 
   .footer-bottom {
     margin-top: 50px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-inline: 24px;
   }
 }
 
@@ -212,7 +201,7 @@
   }
 
   .footer-container {
-    padding: 0 18px;
+    padding-inline: 18px;
     gap: 32px;
   }
 
@@ -235,7 +224,6 @@
 
   .footer-bottom {
     margin-top: 36px;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-inline: 18px;
   }
 }
