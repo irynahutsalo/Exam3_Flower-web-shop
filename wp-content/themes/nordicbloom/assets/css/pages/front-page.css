@@ -622,7 +622,7 @@
 /* ------------------------------------------------------ Responsiveness --------------------------------------------- */
 @media (max-width: 900px) {
   .hero-section {
-    min-height: 650px;
+    min-height: 448px;
     background-position: 60% center;
   }
 
