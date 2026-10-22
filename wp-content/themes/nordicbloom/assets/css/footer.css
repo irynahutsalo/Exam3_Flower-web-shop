@@ -56,17 +56,16 @@
   list-style: none;
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 .footer-links a,
 .footer-link-text {
-  min-width: 44px;
-  min-height: 44px;
+  min-height: 36px;
   display: inline-flex;
   align-items: center;
   color: #e2ddd5;
   font-size: 0.9rem;
-  overflow-wrap: anywhere;
 }
 
 .footer-links a {
