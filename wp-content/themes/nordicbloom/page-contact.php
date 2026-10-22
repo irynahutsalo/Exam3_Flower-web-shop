@@ -1,4 +1,3 @@
-
 <?php
 /*
 Template Name: Contact Page
@@ -20,7 +19,7 @@ $contact_phone       = get_field('contact_phone');
 $working_hours       = get_field('working_hours');
 
 // Get the first row from the Working Hours repeater
-$working_hours = $working_hours[0] ?? [];
+$working_hours = is_array($working_hours) ? ($working_hours[0] ?? []) : [];
 
 // If a field is empty or does not exist it use an empty string instead
 $weekday_opening   = $working_hours['weekday_opening'] ?? '';
@@ -32,9 +31,10 @@ $sunday_closing    = $working_hours['sunday_closing'] ?? '';
 
 // If both an opening and closing time exist, display them together (string interpolation)
 // Otherwise displays "Closed"
-$weekday_hours = ($weekday_opening && $weekday_closing) ? "$weekday_opening - $weekday_closing" : 'Closed';
-$saturday_hours = ($saturday_opening && $saturday_closing) ? "$saturday_opening - $saturday_closing" : 'Closed';
-$sunday_hours = ($sunday_opening && $sunday_closing) ? "$sunday_opening - $sunday_closing" : 'Closed';
+$weekday_hours = ($weekday_opening && $weekday_closing) ? trim($weekday_opening) . ' - ' . trim($weekday_closing) : 'Closed';
+$saturday_hours = ($saturday_opening && $saturday_closing) ? trim($saturday_opening) . ' - ' . trim($saturday_closing) : 'Closed';
+$sunday_hours = ($sunday_opening && $sunday_closing) ? trim($sunday_opening) . ' - ' . trim($sunday_closing) : 'Closed';
+
 
 // Remove spaces and special characters with Regex so the phone number works correctly in the href="tel:" link
 $contact_phone_link = $contact_phone
@@ -135,7 +135,7 @@ $contact_phone_link = $contact_phone
 
                             <!-- Icon -->
                             <div class="contact-detail-icon" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" focusable="false">
                                     <path d="M0 0h32v32H0z" fill="none" />
                                     <path fill="#fff" d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2m-2.2 2L16 14.78L6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z" />
                                 </svg>
@@ -163,7 +163,7 @@ $contact_phone_link = $contact_phone
 
                             <!-- Icon -->
                             <div class="contact-detail-icon" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" focusable="false">
                                     <path fill="#fff" d="M26 29h-.17C6.18 27.87 3.39 11.29 3 6.23A3 3 0 0 1 5.76 3h5.51a2 2 0 0 1 1.86 1.26L14.65 8a2 2 0 0 1-.44 2.16l-2.13 2.15a9.37 9.37 0 0 0 7.58 7.6l2.17-2.15a2 2 0 0 1 2.17-.41l3.77 1.51A2 2 0 0 1 29 20.72V26a3 3 0 0 1-3 3M6 5a1 1 0 0 0-1 1v.08C5.46 12 8.41 26 25.94 27a1 1 0 0 0 1.06-.94v-5.34l-3.77-1.51l-2.87 2.85l-.48-.06c-8.7-1.09-9.88-9.79-9.88-9.88l-.06-.48l2.84-2.87L11.28 5Z" />
                                 </svg>
                             </div>
@@ -190,7 +190,7 @@ $contact_phone_link = $contact_phone
 
                             <!-- Icon -->
                             <div class="contact-detail-icon" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" focusable="false">
                                     <path d="M0 0h32v32H0z" fill="none" />
                                     <path fill="#fff" d="M16 18a5 5 0 1 1 5-5a5.006 5.006 0 0 1-5 5m0-8a3 3 0 1 0 3 3a3.003 3.003 0 0 0-3-3" />
                                     <path fill="#fff" d="m16 30l-8.436-9.949a35 35 0 0 1-.348-.451A10.9 10.9 0 0 1 5 13a11 11 0 0 1 22 0a10.9 10.9 0 0 1-2.215 6.597l-.001.003s-.3.394-.345.447ZM8.813 18.395s.233.308.286.374L16 26.908l6.91-8.15c.044-.055.278-.365.279-.366A8.9 8.9 0 0 0 25 13a9 9 0 1 0-18 0a8.9 8.9 0 0 0 1.813 5.395" />
@@ -219,7 +219,7 @@ $contact_phone_link = $contact_phone
 
                         <!-- Icon -->
                         <div class="contact-detail-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" focusable="false">
                                 <path d="M0 0h512v512H0z" fill="none" />
                                 <path fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="32" d="M256 64C150 64 64 150 64 256s86 192 192 192s192-86 192-192S362 64 256 64Z" />
                                 <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96" />
@@ -307,7 +307,7 @@ $contact_phone_link = $contact_phone
                             <!-- Icon -->
                             <div class="contact-success-icon">
 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 56 56" focusable="false">
                                     <path d="M0 0h56v56H0z" fill="none" />
                                     <path fill="#fff" d="M23.078 48.027c1.008 0 1.805-.445 2.367-1.312L47.594 11.84c.422-.68.61-1.195.61-1.735c0-1.289-.868-2.132-2.157-2.132c-.914 0-1.453.304-2.016 1.195L22.984 42.707L12.062 28.41c-.585-.82-1.148-1.148-2.015-1.148c-1.313 0-2.25.914-2.25 2.203c0 .539.234 1.148.68 1.71L20.64 46.669c.726.914 1.43 1.36 2.437 1.36" />
                                 </svg>
@@ -350,7 +350,7 @@ $contact_phone_link = $contact_phone
                                 </label>
 
                                 <input type="text" id="contact_person" name="contact_person" placeholder="Anna Jensen" autocomplete="name"
-                                    required aria-required="true" data-parsley-required-message="Please enter a contact person."
+                                    required data-parsley-required-message="Please enter a contact person."
                                 >
 
                             </div>
@@ -373,7 +373,7 @@ $contact_phone_link = $contact_phone
                                     Email <span class="required" aria-hidden="true">*</span>
                                 </label>
 
-                                <input type="email" id="email" name="email" placeholder="anna@company.dk" autocomplete="email" required aria-required="true"
+                                <input type="email" id="email" name="email" placeholder="anna@company.dk" autocomplete="email" required
                                     data-parsley-required-message="Please enter your email." data-parsley-type-message="Please enter a valid email address."
                                 >
 
@@ -386,8 +386,10 @@ $contact_phone_link = $contact_phone
                                     Phone <span class="required" aria-hidden="true">*</span>
                                 </label>
 
-                                <input type="tel" id="phone" name="phone" placeholder="+45 70 00 00 00" autocomplete="tel" required aria-required="true"
-                                    data-parsley-required-message="Please enter your phone number." data-parsley-type-message="Please enter a valid phone number."
+                                <input type="tel" id="phone" name="phone" placeholder="+45 70 00 00 00" autocomplete="tel"
+                                    required data-parsley-required-message="Please enter your phone number."
+                                    data-parsley-pattern="^(?:\+45[\s-]?)?(?:\d[\s-]?){7}\d$"
+                                    data-parsley-pattern-message="Please enter a valid Danish phone number."
                                 >
 
                             </div>
@@ -409,7 +411,7 @@ $contact_phone_link = $contact_phone
 
                                 <!-- Character Counter -->
                                 <span id="message-counter" class="contact-message-counter">
-                                    0 / 1000
+                                    0 / 500
                                 </span>
 
                             </div>
@@ -452,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Update character count while typing
     function updateCharacterCount() {
         const characterCount = message.value.length;
-        counter.textContent = `${characterCount} / 500`;
+        counter.textContent = `${characterCount} / ${message.maxLength}`;
     }
 
     message.addEventListener('input', updateCharacterCount);

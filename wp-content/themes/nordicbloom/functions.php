@@ -242,12 +242,9 @@ function nordicbloom_handle_contact_form(){
         ? sanitize_textarea_field(wp_unslash($_POST['message']))
         : '';
 
+    
     // Required Fields
-    if (
-        empty($contact_person) ||
-        empty($email) ||
-        empty($phone)
-    ) {
+    if (empty($contact_person) || empty($email) || empty($phone)) {
         wp_die('Please fill in all required fields.');
     }
 
@@ -255,6 +252,14 @@ function nordicbloom_handle_contact_form(){
     if (!is_email($email)) {
         wp_die('Invalid email address.');
     }
+
+    // Valid Danish Phone Number
+    $phone_digits = preg_replace('/[\s-]/', '', $phone);
+
+    if (!preg_match('/^(?:\+45)?[0-9]{8}$/', $phone_digits)) {
+        wp_die('Please enter a valid Danish phone number.');
+    }
+
 
     // Message Length Validation
     $message_length = preg_match_all('/./us', $message);
@@ -274,7 +279,7 @@ function nordicbloom_handle_contact_form(){
         "Company Name: " . $company_name . "\n" .
         "Contact Person: " . $contact_person . "\n" .
         "Email: " . $email . "\n" .
-        "Phone: " . ($phone ? $phone : 'Not provided') . "\n\n" .
+        "Phone: " . $phone . "\n\n" .
         "Message:\n" . ($message ? $message : 'No message provided');
 
     // Email Headers
