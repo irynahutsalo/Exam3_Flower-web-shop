@@ -58,15 +58,19 @@
   flex-direction: column;
 }
 
-.footer-links a {
+.footer-links a,
+.footer-link-text {
   min-width: 44px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
   color: #e2ddd5;
   font-size: 0.9rem;
-  text-decoration: none;
   overflow-wrap: anywhere;
+}
+
+.footer-links a {
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
@@ -134,7 +138,8 @@
     align-items: center;
   }
 
-  .footer-links a {
+  .footer-links a,
+  .footer-link-text {
     justify-content: center;
     text-align: center;
   }

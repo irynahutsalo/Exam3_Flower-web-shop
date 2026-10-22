@@ -1,6 +1,6 @@
 <?php
 // Get the front page ID to display footer content across the website
-$front_page_id = get_option('page_on_front');
+$front_page_id = (int) get_option('page_on_front');
 $footer_source = $front_page_id ?: false;
 
 // Footer ACF Fields
@@ -9,6 +9,46 @@ $brandAddress = get_field('footer_brand_address', $footer_source);
 $csTitle      = get_field('footer_customer_service_title', $footer_source);
 $socialTitle  = get_field('footer_social_media_title', $footer_source);
 $copyright    = get_field('footer_copyright_text', $footer_source);
+
+// Customer Service Links
+$customerLinks = get_field('footer_customer_service_links', $footer_source);
+
+// Social Media Links
+$socialLinks = get_field('footer_social_media_links', $footer_source);
+
+// Fallback for previously saved ACF repeater data
+if (empty($socialLinks) && $front_page_id) {
+    $socialLinks = get_post_meta(
+        $front_page_id,
+        'footer_social_links',
+        true
+    );
+
+    if (!empty($socialLinks) && !is_array($socialLinks)) {
+        $socialLinks = [];
+
+        $oldRows = (int) get_post_meta(
+            $front_page_id,
+            'footer_social_links',
+            true
+        );
+
+        for ($i = 0; $i < $oldRows; $i++) {
+            $socialLinks[] = [
+                'platform_name' => get_post_meta(
+                    $front_page_id,
+                    "footer_social_links_{$i}_platform_name",
+                    true
+                ),
+                'platform_url' => get_post_meta(
+                    $front_page_id,
+                    "footer_social_links_{$i}_platform_url",
+                    true
+                ),
+            ];
+        }
+    }
+}
 ?>
 
 <footer class="site-footer">
@@ -17,39 +57,57 @@ $copyright    = get_field('footer_copyright_text', $footer_source);
         <!-- Brand Column -->
         <div class="footer-col footer-brand-col">
             <?php if ($brandName) : ?>
-                <h3 class="footer-logo"><?= esc_html($brandName); ?></h3>
+                <h3 class="footer-logo">
+                    <?= esc_html($brandName); ?>
+                </h3>
             <?php endif; ?>
 
             <?php if ($brandAddress) : ?>
-                <p class="footer-address"><?= nl2br(esc_html($brandAddress)); ?></p>
+                <p class="footer-address">
+                    <?= nl2br(esc_html($brandAddress)); ?>
+                </p>
             <?php endif; ?>
         </div>
 
         <!-- Customer Service Column -->
         <div class="footer-col">
             <?php if ($csTitle) : ?>
-                <h4 class="footer-title"><?= esc_html($csTitle); ?></h4>
+                <h4 class="footer-title">
+                    <?= esc_html($csTitle); ?>
+                </h4>
             <?php endif; ?>
 
-            <?php if (have_rows('footer_customer_service_links', $footer_source)) : ?>
+            <?php if (!empty($customerLinks) && is_array($customerLinks)) : ?>
                 <ul class="footer-links">
-                    <?php while (have_rows('footer_customer_service_links', $footer_source)) : the_row();
-                        $delivery      = get_sub_field('delivery_item');
-                        $subscriptions = get_sub_field('subscriptions_item');
-                        $faq           = get_sub_field('faq_item');
-                        $contact       = get_sub_field('contact_us_item');
+                    <?php foreach ($customerLinks as $row) :
+                        $delivery      = $row['delivery_item'] ?? '';
+                        $subscriptions = $row['subscriptions_item'] ?? '';
+                        $faq           = $row['faq_item'] ?? '';
+                        $contact       = $row['contact_us_item'] ?? '';
                     ?>
 
                         <?php if ($delivery) : ?>
-                            <li><?= esc_html($delivery); ?></li>
+                            <li>
+                                <span class="footer-link-text">
+                                    <?= esc_html($delivery); ?>
+                                </span>
+                            </li>
                         <?php endif; ?>
 
                         <?php if ($subscriptions) : ?>
-                            <li><?= esc_html($subscriptions); ?></li>
+                            <li>
+                                <span class="footer-link-text">
+                                    <?= esc_html($subscriptions); ?>
+                                </span>
+                            </li>
                         <?php endif; ?>
 
                         <?php if ($faq) : ?>
-                            <li><?= esc_html($faq); ?></li>
+                            <li>
+                                <span class="footer-link-text">
+                                    <?= esc_html($faq); ?>
+                                </span>
+                            </li>
                         <?php endif; ?>
 
                         <?php if ($contact) : ?>
@@ -60,7 +118,7 @@ $copyright    = get_field('footer_copyright_text', $footer_source);
                             </li>
                         <?php endif; ?>
 
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
         </div>
@@ -68,15 +126,17 @@ $copyright    = get_field('footer_copyright_text', $footer_source);
         <!-- Social Media Column -->
         <div class="footer-col">
             <?php if ($socialTitle) : ?>
-                <h4 class="footer-title"><?= esc_html($socialTitle); ?></h4>
+                <h4 class="footer-title">
+                    <?= esc_html($socialTitle); ?>
+                </h4>
             <?php endif; ?>
 
-            <?php if (have_rows('footer_social_links', $footer_source)) : ?>
+            <?php if (!empty($socialLinks) && is_array($socialLinks)) : ?>
                 <ul class="footer-links">
-                    <?php while (have_rows('footer_social_links', $footer_source)) : the_row();
-                        $name  = get_sub_field('platform_name');
-                        $url   = get_sub_field('platform_url');
-                        $badge = get_sub_field('platform_badge');
+                    <?php foreach ($socialLinks as $row) :
+                        $name  = $row['platform_name'] ?? '';
+                        $url   = $row['platform_url'] ?? '';
+                        $badge = $row['platform_badge'] ?? '';
                     ?>
 
                         <?php if ($name && $url) : ?>
@@ -97,7 +157,7 @@ $copyright    = get_field('footer_copyright_text', $footer_source);
                             </li>
                         <?php endif; ?>
 
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 </ul>
             <?php endif; ?>
         </div>
