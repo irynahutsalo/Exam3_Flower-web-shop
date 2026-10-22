@@ -5,13 +5,14 @@ Version: 1.0
 Description: Web-shop for flowers
 */
 
-
 /* Variables */
 :root {
     --color-bg: #F6F2EC;
     --color-text: #1A1817;
     --color-text-secondary: #ffffff;
     --color-text-tertiary: #F8F5F0; /* for footer text*/
+    --color-text-subtle: #4f4f4f;
+    --color-text-placeholder: #69635d;
 
     --color-accent: #D4A39A;
     --color-accent-secondary: #e9bfb8;
@@ -20,7 +21,6 @@ Description: Web-shop for flowers
     --color-primary: #8d3c57;
     --color-secondary: #743047;
     --color-tertiary: #ffffff;
-
 
     --color-footer-bg: #1B2A22;
     --font-main: 'Inter', sans-serif;
@@ -42,7 +42,6 @@ html {
 body {
     margin: 0;
     padding: 0;
-
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-main);

@@ -1,13 +1,11 @@
-
 .contact-page {
   min-height: 100vh;
-  background-color: var(--color-bg);
-  font-family: var(--font-main);
 }
+
+/* ------------------------------------------------ Contact Hero ------------------------------------------ */
 
 .contact-hero {
   position: relative;
-  width: 100%;
   min-height: 360px;
   display: flex;
   align-items: center;
@@ -17,12 +15,10 @@
 .contact-hero-image {
   position: absolute;
   inset: 0;
-  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  display: block;
 }
 
 .contact-hero-overlay {
@@ -61,7 +57,6 @@
 /* ------------------------------------------------ Contact Section ------------------------------------------ */
 
 .contact-section {
-  width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 80px 40px;
@@ -69,7 +64,7 @@
 
 .contact-container {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 70px;
   align-items: start;
 }
@@ -89,13 +84,12 @@
 .contact-description {
   max-width: 500px;
   margin-bottom: 40px;
-  color: #4f4f4f;
+  color: var(--color-text-subtle);
   font-size: 1.05rem;
   line-height: 1.6;
 }
 
 /* Contact Details */
-
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -132,7 +126,7 @@
 }
 
 .contact-detail-label {
-  color: #4f4f4f;
+  color: var(--color-text-subtle);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -152,8 +146,14 @@ a.contact-detail-value:hover {
   color: var(--color-primary);
 }
 
-/* Working Hours */
+/* Contact Link Focus */
+a.contact-detail-value:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
 
+/* Working Hours */
 .contact-hours-section {
   display: flex;
   align-items: flex-start;
@@ -161,7 +161,8 @@ a.contact-detail-value:hover {
 }
 
 .contact-hours-content {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   max-width: 400px;
 }
 
@@ -189,29 +190,26 @@ a.contact-detail-value:hover {
 }
 
 .contact-hours-time {
-  color: #4f4f4f;
+  color: var(--color-text-subtle);
   white-space: nowrap;
   text-align: right;
 }
 
-/* --------------------------------------------------- Form ---------------------------------------------------- */
+/* ------------------------------------------------ Contact Form ------------------------------------------ */
 
 .contact-form-wrapper {
-  width: 100%;
   min-width: 0;
 }
 
 .contact-form {
-  width: 100%;
   padding: 55px 35px;
   background-color: var(--color-bg);
   overflow: hidden;
 }
 
-/* --------------------------------------------------- Success Message ---------------------------------------------------- */
+/* ------------------------------------------------ Success Message ------------------------------------------ */
 
 .contact-success {
-  width: 100%;
   padding: 55px 35px;
   display: flex;
   flex-direction: column;
@@ -223,13 +221,12 @@ a.contact-detail-value:hover {
   text-align: center;
 }
 
-.contact-succes-icon-wrapper {
+.contact-success-icon-wrapper {
   display: flex;
   justify-content: center;
 }
 
 /* Success Icon */
-
 .contact-success-icon {
   width: 60px;
   height: 60px;
@@ -248,7 +245,6 @@ a.contact-detail-value:hover {
 }
 
 /* Success Title */
-
 .contact-success-title {
   margin: 0 0 12px;
   color: #243d2c;
@@ -258,17 +254,15 @@ a.contact-detail-value:hover {
 }
 
 /* Success Description */
-
 .contact-success-text {
   max-width: 430px;
   margin: 0;
   color: #4f6253;
   font-size: 0.95rem;
-  font-weight: 400;
   line-height: 1.6;
 }
 
-/* --------------------------------------------------- Contact Form ---------------------------------------------------- */
+/* ------------------------------------------------ Contact Form Fields ------------------------------------------ */
 
 .contact-form-grid {
   display: grid;
@@ -283,7 +277,7 @@ a.contact-detail-value:hover {
 
 .contact-form-field label {
   margin-bottom: 9px;
-  color: #4f4f4f;
+  color: var(--color-text-subtle);
   font-size: 0.68rem;
   font-weight: 600;
   line-height: 1.5;
@@ -297,7 +291,6 @@ a.contact-detail-value:hover {
 }
 
 .contact-form-field .optional {
-  color: #4f4f4f;
   font-weight: 400;
 }
 
@@ -308,7 +301,6 @@ a.contact-detail-value:hover {
   border: 1px solid #d8d2c8;
   border-radius: 8px;
   color: var(--color-text);
-  font-family: var(--font-main);
   font-size: 0.9rem;
   line-height: 1.5;
   outline: none;
@@ -324,7 +316,7 @@ a.contact-detail-value:hover {
 
 .contact-form-field input::placeholder,
 .contact-form-field textarea::placeholder {
-  color: #69635d;
+  color: var(--color-text-placeholder); 
   opacity: 1;
 }
 
@@ -335,32 +327,23 @@ a.contact-detail-value:hover {
 }
 
 .contact-form-full {
-  width: 100%;
   margin-top: 20px;
 }
 
 .contact-form-field textarea {
   min-height: 100px;
   padding: 14px;
-  resize: vertical;
-}
-
-/* Disable Textarea Resizing */
-
-.contact-form textarea {
   resize: none;
 }
 
-/* --------------------------------------------------- Message Character Counter ---------------------------------------------------- */
+/* ------------------------------------------------ Message Character Counter ------------------------------------------ */
 
 .contact-message-wrapper {
   position: relative;
-  width: 100%;
 }
 
 .contact-message-wrapper textarea {
   display: block;
-  width: 100%;
   padding-bottom: 36px;
 }
 
@@ -368,13 +351,13 @@ a.contact-detail-value:hover {
   position: absolute;
   right: 15px;
   bottom: 12px;
-  color: #69635d;
-  font-family: var(--font-main);
+  color: var(--color-text-placeholder);
   font-size: 0.75rem;
-  font-weight: 400;
   line-height: 1.5;
   pointer-events: none;
 }
+
+/* ------------------------------------------------ Submit Button ------------------------------------------ */
 
 .contact-submit {
   width: 100%;
@@ -412,7 +395,7 @@ a.contact-detail-value:hover {
   text-align: center;
 }
 
-/* --------------------------------------------------- Form Validation ---------------------------------------------------- */
+/* ------------------------------------------------ Form Validation ------------------------------------------ */
 
 .contact-form .parsley-errors-list {
   margin: 6px 0 0;
@@ -436,8 +419,7 @@ a.contact-detail-value:hover {
   border-color: #7f8f80;
 }
 
-
-/* --------------------------------------------------- Responsiveness ---------------------------------------------------- */
+/* ------------------------------------------------ Responsiveness ------------------------------------------ */
 
 /* Small Laptops and Tablets */
 @media (max-width: 1100px) {
@@ -514,19 +496,9 @@ a.contact-detail-value:hover {
     gap: 24px;
   }
 
-  .contact-form-wrapper {
-    width: 100%;
-  }
-
   .contact-form {
-    width: 100%;
     margin: 0 auto;
-    padding: 35px 0px;
-  }
-
-  .contact-form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 18px;
+    padding: 35px 0;
   }
 
   .contact-success {
@@ -564,7 +536,6 @@ a.contact-detail-value:hover {
   .contact-hero-description {
     margin: 0 auto;
     font-size: 0.95rem;
-    line-height: 1.6;
   }
 
   .contact-section {
@@ -593,19 +564,14 @@ a.contact-detail-value:hover {
 
   /* Contact Details */
   .contact-details {
-    width: 100%;
     max-width: 440px;
     margin: 0 auto;
     align-items: stretch;
-    gap: 24px;
   }
 
   .contact-detail-item,
   .contact-hours-section {
-    width: 100%;
-    margin: 0;
     align-items: flex-start;
-    gap: 16px;
     text-align: left;
   }
 
@@ -617,12 +583,6 @@ a.contact-detail-value:hover {
   .contact-detail-icon svg {
     width: 20px;
     height: 20px;
-  }
-
-  .contact-detail-content,
-  .contact-hours-content {
-    min-width: 0;
-    text-align: left;
   }
 
   .contact-detail-value {
@@ -641,15 +601,8 @@ a.contact-detail-value:hover {
   }
 
   /* Contact Form */
-  .contact-form-wrapper {
-    display: block;
-    width: 100%;
-  }
-
   .contact-form {
-    width: 100%;
     max-width: 520px;
-    margin: 0 auto;
     padding: 24px 0;
     overflow: visible;
   }
@@ -668,10 +621,6 @@ a.contact-detail-value:hover {
     font-size: 16px;
   }
 
-  .contact-form-field input {
-    height: 48px;
-  }
-
   .contact-form-field textarea {
     min-height: 120px;
   }
@@ -687,7 +636,6 @@ a.contact-detail-value:hover {
 
   /* Success Message */
   .contact-success {
-    width: 100%;
     padding: 40px 24px;
   }
 
@@ -774,10 +722,6 @@ a.contact-detail-value:hover {
 
   .contact-form-grid {
     gap: 16px;
-  }
-
-  .contact-form-field label {
-    font-size: 0.68rem;
   }
 
   .contact-message-counter {

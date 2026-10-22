@@ -302,7 +302,7 @@ $contact_phone_link = $contact_phone
                     <div class="contact-success" role="status" aria-live="polite">
 
                         <!-- Icon Container -->
-                        <div class="contact-succes-icon-wrapper" aria-hidden="true">
+                        <div class="contact-success-icon-wrapper" aria-hidden="true">
 
                             <!-- Icon -->
                             <div class="contact-success-icon">
