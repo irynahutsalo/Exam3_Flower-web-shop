@@ -208,7 +208,6 @@ a.contact-detail-value:hover {
   overflow: hidden;
 }
 
-
 /* --------------------------------------------------- Success Message ---------------------------------------------------- */
 
 .contact-success {
@@ -230,6 +229,7 @@ a.contact-detail-value:hover {
 }
 
 /* Success Icon */
+
 .contact-success-icon {
   width: 60px;
   height: 60px;
@@ -248,6 +248,7 @@ a.contact-detail-value:hover {
 }
 
 /* Success Title */
+
 .contact-success-title {
   margin: 0 0 12px;
   color: #243d2c;
@@ -257,6 +258,7 @@ a.contact-detail-value:hover {
 }
 
 /* Success Description */
+
 .contact-success-text {
   max-width: 430px;
   margin: 0;
@@ -265,17 +267,6 @@ a.contact-detail-value:hover {
   font-weight: 400;
   line-height: 1.6;
 }
-
-@media (max-width: 600px) {
-  .contact-success {
-    padding: 40px 24px;
-  }
-
-  .contact-success-title {
-    font-size: 1.5rem;
-  }
-}
-
 
 /* --------------------------------------------------- Contact Form ---------------------------------------------------- */
 
@@ -301,8 +292,8 @@ a.contact-detail-value:hover {
 }
 
 .contact-form-field label .required {
-    color: #b42318;
-    font-weight: 700;
+  color: #b42318;
+  font-weight: 700;
 }
 
 .contact-form-field .optional {
@@ -355,6 +346,7 @@ a.contact-detail-value:hover {
 }
 
 /* Disable Textarea Resizing */
+
 .contact-form textarea {
   resize: none;
 }
@@ -420,6 +412,8 @@ a.contact-detail-value:hover {
   text-align: center;
 }
 
+/* --------------------------------------------------- Form Validation ---------------------------------------------------- */
+
 .contact-form .parsley-errors-list {
   margin: 6px 0 0;
   padding: 0;
@@ -429,23 +423,61 @@ a.contact-detail-value:hover {
   line-height: 1.5;
 }
 
-.contact-form .parsley-error {
+.contact-form .parsley-error,
+.contact-form .parsley-error:focus {
   border-color: #b42318;
+}
+
+.contact-form .parsley-error:focus {
+  box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12);
 }
 
 .contact-form .parsley-success {
   border-color: #7f8f80;
 }
 
+
 /* --------------------------------------------------- Responsiveness ---------------------------------------------------- */
 
+/* Small Laptops and Tablets */
+@media (max-width: 1100px) {
+  .contact-section {
+    padding: 70px 32px;
+  }
+
+  .contact-container {
+    gap: 40px;
+  }
+
+  .contact-title {
+    font-size: 2.2rem;
+  }
+
+  .contact-description {
+    font-size: 1rem;
+  }
+
+  .contact-form {
+    padding: 40px 20px;
+  }
+
+  .contact-form-grid {
+    gap: 18px 14px;
+  }
+
+  .contact-hours-row {
+    gap: 16px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 900px) {
   .contact-hero {
     min-height: 320px;
   }
 
   .contact-hero-content {
-    padding: 50px 24px;
+    padding: 50px 32px;
   }
 
   .contact-hero-title {
@@ -457,29 +489,54 @@ a.contact-detail-value:hover {
   }
 
   .contact-section {
-    padding: 65px 24px;
+    padding: 65px 32px;
   }
 
   .contact-container {
-    grid-template-columns: 1fr;
-    gap: 55px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 45px;
   }
 
   .contact-info {
     padding-top: 0;
   }
 
+  .contact-title {
+    font-size: 2.3rem;
+  }
+
   .contact-description {
     max-width: 650px;
+    margin-bottom: 35px;
+  }
+
+  .contact-details {
+    gap: 24px;
+  }
+
+  .contact-form-wrapper {
+    width: 100%;
   }
 
   .contact-form {
+    width: 100%;
     max-width: 700px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 35px 30px;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 18px;
+  }
+
+  .contact-success {
+    max-width: 700px;
+    margin: 0 auto;
   }
 }
 
+/* Large Mobile Devices and Small Tablets */
 @media (max-width: 600px) {
   .contact-hero {
     min-height: 300px;
@@ -494,7 +551,7 @@ a.contact-detail-value:hover {
   }
 
   .contact-hero-content {
-    padding: 45px 20px;
+    padding: 45px 24px;
     text-align: center;
   }
 
@@ -502,21 +559,22 @@ a.contact-detail-value:hover {
     max-width: 100%;
     margin: 0 auto 14px;
     font-size: 2.25rem;
+    line-height: 1.15;
   }
 
   .contact-hero-description {
-    max-width: 390px;
+    max-width: 420px;
     margin: 0 auto;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .contact-section {
-    padding: 50px 20px;
+    padding: 50px 24px;
   }
 
   .contact-container {
-    gap: 45px;
+    gap: 35px;
   }
 
   .contact-info {
@@ -529,29 +587,28 @@ a.contact-detail-value:hover {
   }
 
   .contact-description {
-    max-width: 520px;
+    max-width: 480px;
     margin: 0 auto 32px;
     font-size: 0.95rem;
+    line-height: 1.65;
   }
 
+  /* Contact Details */
+
   .contact-details {
-    align-items: center;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    align-items: stretch;
+    gap: 24px;
   }
 
   .contact-detail-item,
   .contact-hours-section {
-    width: min(100%, 420px);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .contact-detail-item {
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .contact-detail-content,
-  .contact-hours-content {
+    width: 100%;
+    margin: 0;
+    align-items: flex-start;
+    gap: 16px;
     text-align: left;
   }
 
@@ -565,33 +622,63 @@ a.contact-detail-value:hover {
     height: 20px;
   }
 
-  .contact-hours-section {
-    gap: 14px;
+  .contact-detail-content,
+  .contact-hours-content {
+    min-width: 0;
+    text-align: left;
   }
+
+  .contact-detail-value {
+    font-size: 0.95rem;
+  }
+
+  /* Working Hours */
 
   .contact-hours-content {
     max-width: none;
   }
 
   .contact-hours-row {
-    gap: 15px;
-    font-size: 0.88rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    font-size: 0.9rem;
   }
 
+  /* Contact Form */
+
   .contact-form-wrapper {
-    display: flex;
-    justify-content: center;
+    display: block;
+    width: 100%;
   }
 
   .contact-form {
-    width: min(100%, 560px);
+    width: 100%;
+    max-width: 520px;
     margin: 0 auto;
     padding: 24px 0;
+    overflow: visible;
   }
 
   .contact-form-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 18px;
+  }
+
+  .contact-form-field {
+    min-width: 0;
+  }
+
+  .contact-form-field input,
+  .contact-form-field textarea {
+    font-size: 16px;
+  }
+
+  .contact-form-field input {
+    height: 48px;
+  }
+
+  .contact-form-field textarea {
+    min-height: 120px;
   }
 
   .contact-form-full {
@@ -599,10 +686,27 @@ a.contact-detail-value:hover {
   }
 
   .contact-submit {
+    min-height: 48px;
     margin-top: 24px;
+  }
+
+  /* Success Message */
+
+  .contact-success {
+    width: 100%;
+    padding: 40px 24px;
+  }
+
+  .contact-success-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-success-text {
+    font-size: 0.9rem;
   }
 }
 
+/* Small Mobile Devices */
 @media (max-width: 480px) {
   .contact-hero {
     min-height: 280px;
@@ -613,7 +717,7 @@ a.contact-detail-value:hover {
   }
 
   .contact-hero-content {
-    padding: 40px 18px;
+    padding: 40px 20px;
   }
 
   .contact-hero-title {
@@ -625,19 +729,30 @@ a.contact-detail-value:hover {
   }
 
   .contact-section {
-    padding: 45px 18px;
+    padding: 45px 20px;
+  }
+
+  .contact-container {
+    gap: 30px;
   }
 
   .contact-title {
     font-size: 1.8rem;
   }
 
-  .contact-detail-item,
-  .contact-hours-section {
-    width: min(100%, 360px);
+  .contact-description {
+    margin-bottom: 28px;
+    font-size: 0.9rem;
   }
 
-  .contact-detail-item {
+  /* Contact Details */
+
+  .contact-details {
+    gap: 22px;
+  }
+
+  .contact-detail-item,
+  .contact-hours-section {
     gap: 14px;
   }
 
@@ -650,23 +765,139 @@ a.contact-detail-value:hover {
     font-size: 0.9rem;
   }
 
+  .contact-detail-label {
+    font-size: 0.7rem;
+  }
+
+  .contact-hours-row {
+    gap: 10px;
+    font-size: 0.85rem;
+  }
+
+  /* Contact Form */
+
   .contact-form {
     padding: 18px 0;
   }
+
+  .contact-form-grid {
+    gap: 16px;
+  }
+
+  .contact-form-field label {
+    font-size: 0.68rem;
+  }
+
+  .contact-message-counter {
+    right: 12px;
+    bottom: 10px;
+  }
+
+  .contact-submit {
+    margin-top: 22px;
+  }
+
+  /* Success Message */
+
+  .contact-success {
+    padding: 35px 20px;
+  }
+
+  .contact-success-icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .contact-success-title {
+    font-size: 1.4rem;
+  }
 }
 
+/* Extra Small Mobile Devices */
 @media (max-width: 380px) {
-  .contact-section {
-    padding-left: 15px;
-    padding-right: 15px;
+  .contact-hero {
+    min-height: 260px;
   }
+
+  .contact-hero-content {
+    padding: 35px 16px;
+  }
+
+  .contact-hero-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-hero-description {
+    font-size: 0.85rem;
+  }
+
+  .contact-section {
+    padding: 40px 16px;
+  }
+
+  .contact-title {
+    font-size: 1.65rem;
+  }
+
+  .contact-description {
+    font-size: 0.88rem;
+  }
+
+  /* Contact Details */
+
+  .contact-detail-item,
+  .contact-hours-section {
+    gap: 12px;
+  }
+
+  .contact-detail-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-detail-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .contact-detail-value {
+    font-size: 0.85rem;
+  }
+
+  .contact-hours-row {
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  /* Contact Form */
 
   .contact-form {
     padding: 15px 0;
   }
 
-  .contact-hours-row {
-    gap: 8px;
-    font-size: 0.82rem;
+  .contact-form-field input {
+    height: 46px;
+  }
+
+  .contact-form-field textarea {
+    min-height: 110px;
+  }
+
+  .contact-submit {
+    min-height: 46px;
+  }
+
+  /* Success Message */
+
+  .contact-success {
+    padding: 30px 16px;
+  }
+
+  .contact-success-title {
+    font-size: 1.3rem;
+  }
+
+  .contact-success-text {
+    font-size: 0.85rem;
   }
 }
