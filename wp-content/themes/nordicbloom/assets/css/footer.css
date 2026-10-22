@@ -165,21 +165,14 @@
 
   .footer-logo {
     margin-bottom: 18px;
-    font-size: 1.1rem;
   }
 
   .footer-address {
     margin-bottom: 15px;
   }
 
-  .footer-address,
-  .footer-slogan {
-    font-size: 0.82rem;
-  }
-
   .footer-title {
     margin-bottom: 16px;
-    font-size: 0.72rem;
   }
 
   .footer-links {
@@ -188,10 +181,6 @@
 
   .footer-bottom {
     margin-top: 42px;
-  }
-
-  .footer-bottom p {
-    font-size: 0.72rem;
   }
 }
 
@@ -203,23 +192,6 @@
   .footer-container {
     padding-inline: 18px;
     gap: 32px;
-  }
-
-  .footer-logo {
-    font-size: 1rem;
-  }
-
-  .footer-address,
-  .footer-slogan {
-    font-size: 0.78rem;
-  }
-
-  .footer-title {
-    font-size: 0.68rem;
-  }
-
-  .footer-links a {
-    font-size: 0.84rem;
   }
 
   .footer-bottom {
