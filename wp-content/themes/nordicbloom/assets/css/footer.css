@@ -1,7 +1,7 @@
 .site-footer {
   background-color: var(--color-footer-bg);
   color: #f8f5f0;
-  padding: 80px 20px 40px;
+  padding: 80px 40px 40px;
   font-family: var(--font-main);
 }
 
@@ -125,7 +125,7 @@
 
 @media (max-width: 1100px) {
   .site-footer {
-    padding: 70px 30px 35px;
+    padding: 70px 40px 35px;
   }
 
   .footer-container {
