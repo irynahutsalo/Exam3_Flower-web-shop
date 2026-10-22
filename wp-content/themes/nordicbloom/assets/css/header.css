@@ -95,6 +95,7 @@ body.admin-bar .site-header {
 
 .main-navigation {
   margin-left: auto;
+  margin-right: 0;
 }
 
 .main-navigation ul {
