@@ -1,18 +1,17 @@
+
 .site-footer {
   background-color: var(--color-footer-bg);
   color: #f8f5f0;
-  padding: 80px 40px 40px;
+  padding: 80px 56px 40px;
   font-family: var(--font-main);
 }
 
 .footer-container {
-  width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1.5fr 1fr 1fr;
   gap: 50px;
-  align-items: start;
 }
 
 .footer-col {
@@ -20,39 +19,38 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: left;
 }
 
 .footer-logo {
   margin: 0 0 25px;
+  color: #ffffff;
   font-size: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #ffffff;
 }
 
 .footer-address {
   margin: 0 0 20px;
+  color: #c0bbb3;
   font-size: 0.85rem;
   line-height: 1.6;
-  color: #c0bbb3;
 }
 
 .footer-slogan {
   margin: 0;
+  color: #b5b0a8;
   font-size: 0.85rem;
   line-height: 1.5;
-  color: #b5b0a8;
 }
 
 .footer-title {
   margin: 0 0 25px;
+  color: #c0bbb3;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #c0bbb3;
 }
 
 .footer-links {
@@ -62,17 +60,11 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-}
-
-.footer-links li {
-  max-width: 100%;
 }
 
 .footer-links a {
-  min-width: 44px;
   min-height: 44px;
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
   color: #e2ddd5;
@@ -93,25 +85,19 @@
 }
 
 .footer-badge {
-  display: inline-block;
   margin-left: 6px;
   padding: 2px 6px;
   border-radius: 3px;
   background-color: rgba(212, 163, 154, 0.2);
   color: var(--color-accent);
   font-size: 0.6rem;
-  line-height: 1.5;
 }
 
 .footer-bottom {
-  width: 100%;
   max-width: var(--max-width);
   margin: 60px auto 0;
   padding-top: 25px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
@@ -129,16 +115,12 @@
   }
 
   .footer-container {
-    grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1.3fr 1fr 1fr;
     gap: 35px;
   }
 
   .footer-logo {
     font-size: 1.15rem;
-  }
-
-  .footer-links a {
-    font-size: 0.86rem;
   }
 }
 
@@ -149,8 +131,7 @@
 
   .footer-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 40px;
-    row-gap: 45px;
+    gap: 45px 40px;
     justify-items: center;
   }
 
@@ -158,20 +139,16 @@
     grid-column: 1 / -1;
     width: 100%;
     max-width: 500px;
-    align-items: center;
-    text-align: center;
   }
 
-  .footer-brand-col .footer-address,
-  .footer-brand-col .footer-slogan {
+  .footer-col {
+    width: 100%;
+    align-items: center;
     text-align: center;
   }
 
   .footer-col:not(.footer-brand-col) {
-    width: 100%;
     max-width: 260px;
-    align-items: center;
-    text-align: center;
   }
 
   .footer-links {
@@ -179,7 +156,6 @@
   }
 
   .footer-links li {
-    width: 100%;
     text-align: center;
   }
 
@@ -194,31 +170,23 @@
 
   .footer-bottom {
     margin-top: 50px;
-    padding-top: 22px;
   }
 }
 
 @media (max-width: 600px) {
   .site-footer {
     padding: 50px 20px 28px;
-    text-align: center;
   }
 
   .footer-container {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
     gap: 38px;
-    justify-items: center;
   }
 
   .footer-col,
-  .footer-brand-col,
   .footer-col:not(.footer-brand-col) {
     grid-column: auto;
-    width: 100%;
     max-width: 420px;
-    margin: 0 auto;
-    align-items: center;
-    text-align: center;
   }
 
   .footer-logo {
@@ -232,11 +200,7 @@
 
   .footer-address,
   .footer-slogan {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 0.82rem;
-    text-align: center;
   }
 
   .footer-title {
@@ -245,21 +209,10 @@
   }
 
   .footer-links {
-    width: 100%;
-    align-items: center;
     gap: 6px;
   }
 
-  .footer-links li {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
-
   .footer-links a {
-    justify-content: center;
-    text-align: center;
     font-size: 0.88rem;
   }
 
@@ -269,7 +222,6 @@
   }
 
   .footer-bottom p {
-    width: 100%;
     font-size: 0.72rem;
   }
 }
@@ -295,7 +247,6 @@
 
   .footer-title {
     font-size: 0.68rem;
-    letter-spacing: 0.16em;
   }
 
   .footer-links a {
@@ -304,7 +255,6 @@
 
   .footer-badge {
     font-size: 0.55rem;
-    padding: 2px 5px;
   }
 
   .footer-bottom {
