@@ -10,6 +10,7 @@
 /* Blog Hero Section */
 .blog-hero {
   position: relative;
+  min-height: 360px;
   background-color: var(--color-accent);
   background-size: cover;
   background-position: center;
