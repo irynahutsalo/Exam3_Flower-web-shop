@@ -28,6 +28,8 @@ $blog_query = new WP_Query($blog_args);
 
   <!-- Hero section via ACF -->
   <section class="blog-hero" <?php if($heroBgUrl): ?> style="background-image: url(<?= esc_url($heroBgUrl); ?>);" <?php endif; ?>>
+    
+    
     <div class="blog-hero-content">
       <h1><?= esc_html($blogTitle ? $blogTitle : 'Our Blog'); ?></h1>
       <?php if ($blogDescription): ?>
@@ -63,7 +65,15 @@ $blog_query = new WP_Query($blog_args);
                         class="card-image-wrap"
                         aria-label="<?php echo esc_attr('Read article: ' . get_the_title()); ?>">
                           <?php if ( has_post_thumbnail() ) : ?>
-                              <?php the_post_thumbnail('medium'); ?>
+                              <?php
+                                  // Help the browser choose an image size for the current screen.
+                                  the_post_thumbnail('medium', [
+                                      'sizes' => '(max-width: 600px) calc(100vw - 40px),
+                                                  (max-width: 900px) calc((100vw - 72px) / 2),
+                                                  (max-width: 1200px) calc((100vw - 100px) / 3),
+                                                  367px',
+                                  ]);
+                                  ?>
                           <?php else : ?>
                               <img src="https://via.placeholder.com/400x280" alt="<?php the_title_attribute(); ?>">
                           <?php endif; ?>
