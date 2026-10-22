@@ -1,3 +1,5 @@
+/* --------------------------------------------- Skip Link --------------------------------------------- */
+
 .skip-link {
   position: absolute;
   width: 1px;
@@ -29,13 +31,15 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* --------------------------------------------- Header --------------------------------------------- */
+
 .site-header {
-  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--color-bg);
   z-index: 9998;
+  width: 100%;
+  background-color: var(--color-bg);
 }
 
 body {
@@ -52,22 +56,21 @@ body.admin-bar .site-header {
   min-height: 72px;
   margin: 0 auto;
   padding: 0 40px;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
 }
 
-/* --------------------------------------------- Logo ------------------------------------------------- */
+/* --------------------------------------------- Logo --------------------------------------------- */
 
 .site-logo {
   flex-shrink: 0;
 }
 
 .site-logo a {
-  min-height: 44px;
   min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   color: var(--color-text);
@@ -85,10 +88,21 @@ body.admin-bar .site-header {
   max-height: 38px;
 }
 
+.site-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-bg);
+  z-index: 9998;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
 /* --------------------------------------------- Desktop Navigation --------------------------------------------- */
 
 .main-navigation {
   margin-left: auto;
+  margin-right: 48px;
 }
 
 .main-navigation ul {
@@ -137,7 +151,56 @@ body.admin-bar .site-header {
   width: 100%;
 }
 
-/* --------------------------------------------- Hamburger Icon ------------------------------------------------- */
+.main-navigation a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* --------------------------------------------- Account And Cart --------------------------------------------- */
+
+/* Applies when My Account and Cart are inside a separate .header-actions container in header.php. */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.header-actions a {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.header-actions a:hover {
+  color: var(--color-primary);
+}
+
+.header-actions a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/*
+  Alternative: If My Account and Cart are inside the same
+  .main-navigation list, add class="account-link" to
+  the My Account <li> and remove the .main-navigation
+  margin-right above.
+*/
+
+.main-navigation .account-link {
+  margin-left: 32px;
+}
+
+/* --------------------------------------------- Hamburger Icon --------------------------------------------- */
 
 .menu-toggle {
   display: none;
@@ -159,21 +222,25 @@ body.admin-bar .site-header {
   height: 28px;
 }
 
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
 /* --------------------------------------------- Mobile Navigation --------------------------------------------- */
 
 .mobile-navigation {
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 10000;
   width: 320px;
   max-width: 85vw;
   height: 100vh;
-  box-sizing: border-box;
   padding: 90px 35px 40px;
   background-color: var(--color-bg);
   transform: translateX(100%);
   transition: transform 0.35s ease;
-  z-index: 10000;
   box-shadow: -8px 0 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -208,12 +275,22 @@ body.admin-bar .mobile-navigation {
   text-transform: uppercase;
 }
 
-/* --------------------------------------------- Close Button ------------------------------------------------- */
+.mobile-navigation a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* --------------------------------------------- Close Button --------------------------------------------- */
 
 .mobile-menu-close {
   position: absolute;
   top: 25px;
   right: 25px;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   background: transparent;
   color: var(--color-text);
@@ -222,18 +299,23 @@ body.admin-bar .mobile-navigation {
   cursor: pointer;
 }
 
-/* --------------------------------------------- Dark Overlay ------------------------------------------------- */
+.mobile-menu-close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* --------------------------------------------- Dark Overlay --------------------------------------------- */
 
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
+  z-index: 9999;
   background-color: rgba(0, 0, 0, 0.35);
   opacity: 0;
   visibility: hidden;
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
-  z-index: 9999;
 }
 
 .mobile-menu-overlay.is-open {
@@ -242,6 +324,7 @@ body.admin-bar .mobile-navigation {
 }
 
 /* --------------------------------------------- Responsiveness --------------------------------------------- */
+
 @media (max-width: 900px) {
   body {
     padding-top: 68px;
@@ -257,8 +340,13 @@ body.admin-bar .mobile-navigation {
     display: none;
   }
 
+  .header-actions {
+    display: none;
+  }
+
   .menu-toggle {
     display: flex;
+    margin-left: auto;
   }
 
   .site-logo a {
@@ -272,7 +360,7 @@ body.admin-bar .mobile-navigation {
 
 @media (max-width: 782px) {
   body.admin-bar .site-header {
-    top: 0px;
+    top: 0;
   }
 
   body.admin-bar .mobile-navigation {
@@ -291,5 +379,16 @@ body.admin-bar .mobile-navigation {
     max-width: 85vw;
     padding-left: 28px;
     padding-right: 28px;
+  }
+}
+
+/* --------------------------------------------- Reduced Motion --------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .main-navigation a,
+  .main-navigation a::after,
+  .mobile-navigation,
+  .mobile-menu-overlay {
+    transition: none;
   }
 }
