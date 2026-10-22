@@ -333,14 +333,12 @@ a.contact-detail-value:hover {
   justify-content: center;
   background-color: var(--color-primary);
   border: none;
-  border-radius: 8px;
-  color: #ffffff;
-  font-family: var(--font-main);
+  border-radius: 999px;
+  color: #fff;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
