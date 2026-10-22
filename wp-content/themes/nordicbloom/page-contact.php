@@ -343,11 +343,6 @@ $contact_phone_link = $contact_phone
                         <!-- Name Fields -->
                         <div class="contact-form-grid">
 
-                            <!-- Required Fields Note -->
-                            <p class="contact-required-note">
-                                Fields marked with <span class="required" aria-hidden="true">*</span> are required.
-                            </p>
-
                             <!-- Contact Person -->
                             <div class="contact-form-field">
 
@@ -410,7 +405,7 @@ $contact_phone_link = $contact_phone
                             <!-- Message Textarea with Character Counter -->
                             <div class="contact-message-wrapper">
 
-                                <textarea id="message" name="message" rows="5" maxlength="1000" aria-describedby="message-counter"
+                                <textarea id="message" name="message" rows="5" maxlength="500" aria-describedby="message-counter"
                                     placeholder="Tell us about your request, preferences, or anything else we should know.">
                                 </textarea>
 
@@ -459,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Update character count while typing
     function updateCharacterCount() {
         const characterCount = message.value.length;
-        counter.textContent = `${characterCount} / 1000`;
+        counter.textContent = `${characterCount} / 500`;
     }
 
     message.addEventListener('input', updateCharacterCount);

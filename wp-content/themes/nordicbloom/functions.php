@@ -257,18 +257,11 @@ function nordicbloom_handle_contact_form(){
     }
 
     // Message Length Validation
-    if (mb_strlen($message) > 1000) {
-        wp_die('Your message must not exceed 1000 characters.');
-    }
+    $message_length = preg_match_all('/./us', $message);
 
-    // Temporary mbstring check
-    add_action('admin_notices', function () {
-        if (current_user_can('manage_options')) {
-            echo function_exists('mb_strlen')
-                ? '<div class="notice notice-success"><p>mbstring is enabled!</p></div>'
-                : '<div class="notice notice-error"><p>mbstring is NOT enabled!</p></div>';
-        }
-    });
+    if ($message_length === false || $message_length > 500) {
+        wp_die('Your message must not exceed 500 characters.');
+    }
 
     // Email Receiver
     $to = get_option('admin_email');

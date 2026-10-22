@@ -208,15 +208,18 @@ a.contact-detail-value:hover {
   overflow: hidden;
 }
 
-/* Success */
 
+/* Success */
 .contact-success {
   width: 100%;
-  padding: 45px 35px;
+  padding: 55px 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 12px;
   background-color: #5f795f;
+  border-radius: 8px;
   text-align: center;
 }
 
@@ -228,30 +231,36 @@ a.contact-detail-value:hover {
 .contact-success-icon {
   width: 52px;
   height: 52px;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--color-primary);
   border-radius: 50%;
-  font-size: 1.4rem;
+}
+
+.contact-success-icon svg {
+  width: 26px;
+  height: 26px;
 }
 
 .contact-success-title {
-  margin-bottom: 8px;
-  color: var(--color-text);
+  margin: 0;
+  color: #ffffff;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
 }
 
 .contact-success-text {
   max-width: 460px;
   margin: 0;
-  color: #6f7068;
+  color: #ffffff;
   font-size: 0.95rem;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.6;
 }
+
 
 /* --------------------------------------------------- Contact Form ---------------------------------------------------- */
 
@@ -274,11 +283,6 @@ a.contact-detail-value:hover {
   line-height: 1.5;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.required {
-  color: #b42318;
-  font-weight: 600;
 }
 
 .contact-form-field .optional {
