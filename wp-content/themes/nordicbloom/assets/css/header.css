@@ -1,3 +1,4 @@
+
 /* --------------------------------------------- Skip Link --------------------------------------------- */
 
 .skip-link {
@@ -120,17 +121,8 @@ body.admin-bar .site-header {
   transition: color 0.25s ease;
 }
 
-.site-header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: var(--color-bg);
-  z-index: 9998;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
 /* Underline For Hover */
+
 .main-navigation a::after {
   content: "";
   position: absolute;
