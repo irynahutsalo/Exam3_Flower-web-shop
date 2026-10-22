@@ -88,7 +88,7 @@
 .contact-description {
   max-width: 500px;
   margin-bottom: 40px;
-  color: #4F4F4F;
+  color: #4f4f4f;
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -131,7 +131,7 @@
 }
 
 .contact-detail-label {
-  color: #4F4F4F;
+  color: #4f4f4f;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -188,7 +188,7 @@ a.contact-detail-value:hover {
 }
 
 .contact-hours-time {
-  color: #4F4F4F;
+  color: #4f4f4f;
   white-space: nowrap;
   text-align: right;
 }
@@ -267,7 +267,7 @@ a.contact-detail-value:hover {
 
 .contact-form-field label {
   margin-bottom: 9px;
-  color: #4F4F4F;
+  color: #4f4f4f;
   font-size: 0.68rem;
   font-weight: 600;
   line-height: 1.5;
@@ -275,8 +275,14 @@ a.contact-detail-value:hover {
   text-transform: uppercase;
 }
 
+.required {
+  color: #b42318;
+  font-weight: 600;
+  margin-left: 3px;
+}
+
 .contact-form-field .optional {
-  color: #4F4F4F;
+  color: #4f4f4f;
   font-weight: 400;
 }
 
@@ -322,6 +328,11 @@ a.contact-detail-value:hover {
   min-height: 100px;
   padding: 14px;
   resize: vertical;
+}
+
+/* Disable Textarea Resizing */
+.contact-form textarea {
+  resize: none;
 }
 
 .contact-submit {

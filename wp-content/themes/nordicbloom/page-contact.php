@@ -346,7 +346,7 @@ $contact_phone_link = $contact_phone
                             <div class="contact-form-field">
 
                                 <label for="contact_person">
-                                    Contact Person
+                                    Contact Person <span class="required" aria-hidden="true">*</span>
                                 </label>
 
                                 <input type="text" id="contact_person" name="contact_person" placeholder="Anna Jensen" autocomplete="name"
@@ -370,7 +370,7 @@ $contact_phone_link = $contact_phone
                             <div class="contact-form-field">
 
                                 <label for="email">
-                                    Email
+                                    Email <span class="required" aria-hidden="true">*</span>
                                 </label>
 
                                 <input type="email" id="email" name="email" placeholder="anna@company.dk" autocomplete="email" required aria-required="true"
@@ -383,7 +383,7 @@ $contact_phone_link = $contact_phone
                             <div class="contact-form-field">
 
                                 <label for="phone">
-                                    Phone
+                                    Phone <span class="required" aria-hidden="true">*</span>
                                 </label>
 
                                 <input type="tel" id="phone" name="phone" placeholder="+45 70 00 00 00" autocomplete="tel" required aria-required="true"
