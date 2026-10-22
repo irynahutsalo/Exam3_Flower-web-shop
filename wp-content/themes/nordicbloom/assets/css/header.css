@@ -41,7 +41,7 @@
   z-index: 9998;
   width: 100%;
   background-color: var(--color-bg);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -131,6 +131,7 @@ body.admin-bar .site-header {
 }
 
 /* Underline For Hover */
+
 .main-navigation a::after {
   content: "";
   position: absolute;
@@ -159,6 +160,7 @@ body.admin-bar .site-header {
 /* --------------------------------------------- Account And Cart --------------------------------------------- */
 
 /* Adds extra space between Contact and My Account */
+
 .main-navigation .account-link {
   margin-left: 48px;
 }
@@ -291,6 +293,18 @@ body.admin-bar .mobile-navigation {
 
 /* --------------------------------------------- Responsiveness --------------------------------------------- */
 
+/* Switch to hamburger before desktop navigation becomes crowded */
+@media (max-width: 1250px) {
+  .main-navigation {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 900px) {
   body {
     padding-top: 68px;
@@ -300,15 +314,6 @@ body.admin-bar .mobile-navigation {
     min-height: 68px;
     padding: 0 24px;
     gap: 20px;
-  }
-
-  .main-navigation {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: flex;
-    margin-left: auto;
   }
 
   .site-logo a {
