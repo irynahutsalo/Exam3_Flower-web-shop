@@ -331,7 +331,7 @@ $contact_phone_link = $contact_phone
 
                     <!-- Form -->
                     <!-- Sends the form data to WordPress for processing -->
-                    <form class="contact-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" data-parsley-validate aria-label="Request a quote form">
+                    <form class="contact-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" data-parsley-validate aria-label="Contact form">
 
                         <!-- This tells WordPress which function should handle the form submission -->
                         <input type="hidden" name="action" value="submit_contact_form">
@@ -341,6 +341,11 @@ $contact_phone_link = $contact_phone
 
                         <!-- Name Fields -->
                         <div class="contact-form-grid">
+
+                            <!-- Required Fields Note -->
+                            <p class="contact-required-note">
+                                Fields marked with <span class="required" aria-hidden="true">*</span> are required.
+                            </p>
 
                             <!-- Contact Person -->
                             <div class="contact-form-field">
@@ -407,12 +412,12 @@ $contact_phone_link = $contact_phone
 
                         <!-- Submit Button -->
                         <button type="submit" class="contact-submit">
-                            Submit
+                            Send message
                         </button>
 
                         <!-- Form Note -->
                         <p class="contact-form-note">
-                            No commitment. We'll contact you to discuss your space and needs.
+                            We'll get back to you as soon as possible during our working hours.
                         </p>
 
                     </form>
