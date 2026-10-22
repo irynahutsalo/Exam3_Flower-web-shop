@@ -425,7 +425,7 @@ $contact_phone_link = $contact_phone
 
                         <!-- Form Note -->
                         <p class="contact-form-note">
-                            We'll get back to you as soon as possible during our working hours.
+                            Thank you for reaching out! We typically respond within one business day.
                         </p>
 
                     </form>

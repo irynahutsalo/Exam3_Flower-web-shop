@@ -286,7 +286,7 @@ a.contact-detail-value:focus-visible {
 }
 
 .contact-form-field label .required {
-  color: #b42318;
+  color: #AA0000;
   font-weight: 700;
 }
 
@@ -401,18 +401,18 @@ a.contact-detail-value:focus-visible {
   margin: 6px 0 0;
   padding: 0;
   list-style: none;
-  color: #b42318;
+  color: #AA0000;
   font-size: 0.75rem;
   line-height: 1.5;
 }
 
 .contact-form .parsley-error,
 .contact-form .parsley-error:focus {
-  border-color: #b42318;
+  border-color: #AA0000;
 }
 
 .contact-form .parsley-error:focus {
-  box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.12);
+  box-shadow: 0 0 0 2px rgba(170, 0, 0, 0.12);
 }
 
 .contact-form .parsley-success {
