@@ -66,6 +66,23 @@ body.woocommerce-account #primary address {
 body.woocommerce-account #primary .woocommerce-Address .title h3 {
   margin-top: 16px;
 }
+
+/* Lost Password Link - Accessibility */
+body.woocommerce-account #primary .woocommerce-LostPassword a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body.woocommerce-account #primary .woocommerce-LostPassword a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 @media (max-width: 768px) {
   body.woocommerce-account
     #primary
