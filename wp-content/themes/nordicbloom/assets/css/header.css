@@ -40,7 +40,6 @@
   z-index: 9998;
   width: 100%;
   background-color: var(--color-bg);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 body {
@@ -53,13 +52,13 @@ body.admin-bar .site-header {
 
 .header-container {
   width: 100%;
-  max-width: none;
+  max-width: var(--max-width);
   min-height: 72px;
   margin: 0 auto;
-  padding: 0 36px;
-  box-sizing: border-box;
+  padding: 0 40px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 40px;
 }
 
@@ -92,23 +91,15 @@ body.admin-bar .site-header {
 /* --------------------------------------------- Desktop Navigation --------------------------------------------- */
 
 .main-navigation {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
+  margin-left: auto;
+  margin-right: 48px;
 }
 
 .main-navigation ul {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
+  gap: 32px;
   list-style: none;
-}
-
-.main-navigation li {
-  flex-shrink: 0;
 }
 
 .main-navigation a {
@@ -126,8 +117,17 @@ body.admin-bar .site-header {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1;
-  white-space: nowrap;
   transition: color 0.25s ease;
+}
+
+.site-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-bg);
+  z-index: 9998;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* Underline For Hover */
@@ -158,11 +158,46 @@ body.admin-bar .site-header {
 
 /* --------------------------------------------- Account And Cart --------------------------------------------- */
 
-/* Creates extra separation between Contact and My Account */
-@media (min-width: 901px) {
-  .main-navigation .account-link {
-    margin-left: 48px;
-  }
+/* Applies when My Account and Cart are inside a separate .header-actions container in header.php. */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.header-actions a {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.header-actions a:hover {
+  color: var(--color-primary);
+}
+
+.header-actions a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/*
+  Alternative: If My Account and Cart are inside the same
+  .main-navigation list, add class="account-link" to
+  the My Account <li> and remove the .main-navigation
+  margin-right above.
+*/
+
+.main-navigation .account-link {
+  margin-left: 32px;
 }
 
 /* --------------------------------------------- Hamburger Icon --------------------------------------------- */
@@ -202,7 +237,6 @@ body.admin-bar .site-header {
   width: 320px;
   max-width: 85vw;
   height: 100vh;
-  box-sizing: border-box;
   padding: 90px 35px 40px;
   background-color: var(--color-bg);
   transform: translateX(100%);
@@ -223,8 +257,6 @@ body.admin-bar .mobile-navigation {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
@@ -305,6 +337,10 @@ body.admin-bar .mobile-navigation {
   }
 
   .main-navigation {
+    display: none;
+  }
+
+  .header-actions {
     display: none;
   }
 
