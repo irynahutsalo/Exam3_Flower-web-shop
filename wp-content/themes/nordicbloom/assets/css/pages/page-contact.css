@@ -520,9 +520,8 @@ a.contact-detail-value:hover {
 
   .contact-form {
     width: 100%;
-    max-width: 700px;
     margin: 0 auto;
-    padding: 35px 30px;
+    padding: 35px 0px;
   }
 
   .contact-form-grid {
@@ -563,7 +562,6 @@ a.contact-detail-value:hover {
   }
 
   .contact-hero-description {
-    max-width: 420px;
     margin: 0 auto;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -594,7 +592,6 @@ a.contact-detail-value:hover {
   }
 
   /* Contact Details */
-
   .contact-details {
     width: 100%;
     max-width: 440px;
@@ -633,7 +630,6 @@ a.contact-detail-value:hover {
   }
 
   /* Working Hours */
-
   .contact-hours-content {
     max-width: none;
   }
@@ -645,7 +641,6 @@ a.contact-detail-value:hover {
   }
 
   /* Contact Form */
-
   .contact-form-wrapper {
     display: block;
     width: 100%;
@@ -691,7 +686,6 @@ a.contact-detail-value:hover {
   }
 
   /* Success Message */
-
   .contact-success {
     width: 100%;
     padding: 40px 24px;
@@ -746,7 +740,6 @@ a.contact-detail-value:hover {
   }
 
   /* Contact Details */
-
   .contact-details {
     gap: 22px;
   }
@@ -775,7 +768,6 @@ a.contact-detail-value:hover {
   }
 
   /* Contact Form */
-
   .contact-form {
     padding: 18px 0;
   }
@@ -798,7 +790,6 @@ a.contact-detail-value:hover {
   }
 
   /* Success Message */
-
   .contact-success {
     padding: 35px 20px;
   }
@@ -844,7 +835,6 @@ a.contact-detail-value:hover {
   }
 
   /* Contact Details */
-
   .contact-detail-item,
   .contact-hours-section {
     gap: 12px;
@@ -870,7 +860,6 @@ a.contact-detail-value:hover {
   }
 
   /* Contact Form */
-
   .contact-form {
     padding: 15px 0;
   }
@@ -888,7 +877,6 @@ a.contact-detail-value:hover {
   }
 
   /* Success Message */
-
   .contact-success {
     padding: 30px 16px;
   }
