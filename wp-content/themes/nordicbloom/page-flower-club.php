@@ -60,6 +60,11 @@ $faq_title = get_field('flower_club_faq_title', $page_id);
     >
 
         <?php if ($hero_image_id) : ?>
+    <!-- Display the hero image.
+    'eager' loads the image immediately instead of lazy loading.
+    This is useful because the hero image is visible when the page opens.
+    'high' gives the image a high loading priority.
+    '100vw' tells the browser that the image uses the full viewport width. -->
             <?php
             echo wp_get_attachment_image(
                 $hero_image_id,
