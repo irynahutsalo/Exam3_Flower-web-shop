@@ -209,7 +209,8 @@ a.contact-detail-value:hover {
 }
 
 
-/* Success */
+/* --------------------------------------------------- Success Message ---------------------------------------------------- */
+
 .contact-success {
   width: 100%;
   padding: 55px 35px;
@@ -217,9 +218,9 @@ a.contact-detail-value:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  background-color: #5f795f;
-  border-radius: 8px;
+  background-color: #f0f3eb;
+  border: 1px solid #d7e1d4;
+  border-radius: 12px;
   text-align: center;
 }
 
@@ -228,37 +229,51 @@ a.contact-detail-value:hover {
   justify-content: center;
 }
 
+/* Success Icon */
 .contact-success-icon {
-  width: 52px;
-  height: 52px;
-  margin-bottom: 16px;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary);
+  background-color: #42664c;
   border-radius: 50%;
 }
 
 .contact-success-icon svg {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
+/* Success Title */
 .contact-success-title {
-  margin: 0;
-  color: #ffffff;
-  font-size: 2rem;
+  margin: 0 0 12px;
+  color: #243d2c;
+  font-size: 1.8rem;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
+/* Success Description */
 .contact-success-text {
-  max-width: 460px;
+  max-width: 430px;
   margin: 0;
-  color: #ffffff;
+  color: #4f6253;
   font-size: 0.95rem;
   font-weight: 400;
   line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .contact-success {
+    padding: 40px 24px;
+  }
+
+  .contact-success-title {
+    font-size: 1.5rem;
+  }
 }
 
 
@@ -283,6 +298,11 @@ a.contact-detail-value:hover {
   line-height: 1.5;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.contact-form-field label .required {
+    color: #b42318;
+    font-weight: 700;
 }
 
 .contact-form-field .optional {
