@@ -278,7 +278,6 @@ a.contact-detail-value:hover {
 .required {
   color: #b42318;
   font-weight: 600;
-  margin-left: 3px;
 }
 
 .contact-form-field .optional {
