@@ -41,6 +41,7 @@
   z-index: 9998;
   width: 100%;
   background-color: var(--color-bg);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 body {
@@ -57,6 +58,7 @@ body.admin-bar .site-header {
   min-height: 72px;
   margin: 0 auto;
   padding: 0 40px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,14 +95,20 @@ body.admin-bar .site-header {
 
 .main-navigation {
   margin-left: auto;
-  margin-right: 48px;
+  margin-right: 0;
 }
 
 .main-navigation ul {
   display: flex;
   align-items: center;
   gap: 32px;
+  margin: 0;
+  padding: 0;
   list-style: none;
+}
+
+.main-navigation li {
+  flex-shrink: 0;
 }
 
 .main-navigation a {
@@ -118,6 +126,7 @@ body.admin-bar .site-header {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1;
+  white-space: nowrap;
   transition: color 0.25s ease;
 }
 
@@ -150,46 +159,10 @@ body.admin-bar .site-header {
 
 /* --------------------------------------------- Account And Cart --------------------------------------------- */
 
-/* Applies when My Account and Cart are inside a separate .header-actions container in header.php. */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-shrink: 0;
-}
-
-.header-actions a {
-  min-width: 44px;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.header-actions a:hover {
-  color: var(--color-primary);
-}
-
-.header-actions a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
-}
-
-/*
-  Alternative: If My Account and Cart are inside the same
-  .main-navigation list, add class="account-link" to
-  the My Account <li> and remove the .main-navigation
-  margin-right above.
-*/
+/* Adds extra space between Contact and My Account */
 
 .main-navigation .account-link {
-  margin-left: 32px;
+  margin-left: 48px;
 }
 
 /* --------------------------------------------- Hamburger Icon --------------------------------------------- */
@@ -229,6 +202,7 @@ body.admin-bar .site-header {
   width: 320px;
   max-width: 85vw;
   height: 100vh;
+  box-sizing: border-box;
   padding: 90px 35px 40px;
   background-color: var(--color-bg);
   transform: translateX(100%);
@@ -249,6 +223,8 @@ body.admin-bar .mobile-navigation {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -329,10 +305,6 @@ body.admin-bar .mobile-navigation {
   }
 
   .main-navigation {
-    display: none;
-  }
-
-  .header-actions {
     display: none;
   }
 
