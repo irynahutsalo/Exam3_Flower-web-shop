@@ -261,6 +261,15 @@ function nordicbloom_handle_contact_form(){
         wp_die('Your message must not exceed 1000 characters.');
     }
 
+    // Temporary mbstring check
+    add_action('admin_notices', function () {
+        if (current_user_can('manage_options')) {
+            echo function_exists('mb_strlen')
+                ? '<div class="notice notice-success"><p>mbstring is enabled!</p></div>'
+                : '<div class="notice notice-error"><p>mbstring is NOT enabled!</p></div>';
+        }
+    });
+
     // Email Receiver
     $to = get_option('admin_email');
 
