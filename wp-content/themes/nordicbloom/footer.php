@@ -1,54 +1,17 @@
+
 <?php
-// Get the front page ID to display footer content across the website
+// Get the front page ID for global footer content
 $front_page_id = (int) get_option('page_on_front');
 $footer_source = $front_page_id ?: false;
 
 // Footer ACF Fields
-$brandName    = get_field('footer_brand_name', $footer_source);
-$brandAddress = get_field('footer_brand_address', $footer_source);
-$csTitle      = get_field('footer_customer_service_title', $footer_source);
-$socialTitle  = get_field('footer_social_media_title', $footer_source);
-$copyright    = get_field('footer_copyright_text', $footer_source);
-
-// Customer Service Links
+$brandName     = get_field('footer_brand_name', $footer_source);
+$brandAddress  = get_field('footer_brand_address', $footer_source);
+$csTitle       = get_field('footer_customer_service_title', $footer_source);
+$socialTitle   = get_field('footer_social_media_title', $footer_source);
+$copyright     = get_field('footer_copyright_text', $footer_source);
 $customerLinks = get_field('footer_customer_service_links', $footer_source);
-
-// Social Media Links
-$socialLinks = get_field('footer_social_media_links', $footer_source);
-
-// Fallback for previously saved ACF repeater data
-if (empty($socialLinks) && $front_page_id) {
-    $socialLinks = get_post_meta(
-        $front_page_id,
-        'footer_social_links',
-        true
-    );
-
-    if (!empty($socialLinks) && !is_array($socialLinks)) {
-        $socialLinks = [];
-
-        $oldRows = (int) get_post_meta(
-            $front_page_id,
-            'footer_social_links',
-            true
-        );
-
-        for ($i = 0; $i < $oldRows; $i++) {
-            $socialLinks[] = [
-                'platform_name' => get_post_meta(
-                    $front_page_id,
-                    "footer_social_links_{$i}_platform_name",
-                    true
-                ),
-                'platform_url' => get_post_meta(
-                    $front_page_id,
-                    "footer_social_links_{$i}_platform_url",
-                    true
-                ),
-            ];
-        }
-    }
-}
+$socialLinks   = get_field('footer_social_media_links', $footer_source);
 ?>
 
 <footer class="site-footer">
@@ -57,9 +20,9 @@ if (empty($socialLinks) && $front_page_id) {
         <!-- Brand Column -->
         <div class="footer-col footer-brand-col">
             <?php if ($brandName) : ?>
-                <h3 class="footer-logo">
+                <p class="footer-logo">
                     <?= esc_html($brandName); ?>
-                </h3>
+                </p>
             <?php endif; ?>
 
             <?php if ($brandAddress) : ?>
@@ -72,93 +35,75 @@ if (empty($socialLinks) && $front_page_id) {
         <!-- Customer Service Column -->
         <div class="footer-col">
             <?php if ($csTitle) : ?>
-                <h4 class="footer-title">
+                <h2 class="footer-title" id="footer-customer-service-title">
                     <?= esc_html($csTitle); ?>
-                </h4>
+                </h2>
             <?php endif; ?>
 
-            <?php if (!empty($customerLinks) && is_array($customerLinks)) : ?>
-                <ul class="footer-links">
-                    <?php foreach ($customerLinks as $row) :
-                        $delivery      = $row['delivery_item'] ?? '';
-                        $subscriptions = $row['subscriptions_item'] ?? '';
-                        $faq           = $row['faq_item'] ?? '';
-                        $contact       = $row['contact_us_item'] ?? '';
-                    ?>
+            <?php if (is_array($customerLinks) && $customerLinks) : ?>
+                <nav
+                    <?php if ($csTitle) : ?>
+                        aria-labelledby="footer-customer-service-title"
+                    <?php else : ?>
+                        aria-label="Footer customer service"
+                    <?php endif; ?>
+                >
+                    <ul class="footer-links">
+                        <?php foreach ($customerLinks as $row) : ?>
+                            <?php foreach (['delivery_item', 'subscriptions_item', 'faq_item'] as $field) : ?>
+                                <?php if (!empty($row[$field])) : ?>
+                                    <li>
+                                        <span class="footer-link-text">
+                                            <?= esc_html($row[$field]); ?>
+                                        </span>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
 
-                        <?php if ($delivery) : ?>
-                            <li>
-                                <span class="footer-link-text">
-                                    <?= esc_html($delivery); ?>
-                                </span>
-                            </li>
-                        <?php endif; ?>
-
-                        <?php if ($subscriptions) : ?>
-                            <li>
-                                <span class="footer-link-text">
-                                    <?= esc_html($subscriptions); ?>
-                                </span>
-                            </li>
-                        <?php endif; ?>
-
-                        <?php if ($faq) : ?>
-                            <li>
-                                <span class="footer-link-text">
-                                    <?= esc_html($faq); ?>
-                                </span>
-                            </li>
-                        <?php endif; ?>
-
-                        <?php if ($contact) : ?>
-                            <li>
-                                <a href="<?= esc_url(home_url('/contact/')); ?>">
-                                    <?= esc_html($contact); ?>
-                                </a>
-                            </li>
-                        <?php endif; ?>
-
-                    <?php endforeach; ?>
-                </ul>
+                            <?php if (!empty($row['contact_us_item'])) : ?>
+                                <li>
+                                    <a href="<?= esc_url(home_url('/contact/')); ?>">
+                                        <?= esc_html($row['contact_us_item']); ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </nav>
             <?php endif; ?>
         </div>
 
         <!-- Social Media Column -->
         <div class="footer-col">
             <?php if ($socialTitle) : ?>
-                <h4 class="footer-title">
+                <h2 class="footer-title" id="footer-social-media-title">
                     <?= esc_html($socialTitle); ?>
-                </h4>
+                </h2>
             <?php endif; ?>
 
-            <?php if (!empty($socialLinks) && is_array($socialLinks)) : ?>
-                <ul class="footer-links">
-                    <?php foreach ($socialLinks as $row) :
-                        $name  = $row['platform_name'] ?? '';
-                        $url   = $row['platform_url'] ?? '';
-                        $badge = $row['platform_badge'] ?? '';
-                    ?>
-
-                        <?php if ($name && $url) : ?>
-                            <li>
-                                <a
-                                    href="<?= esc_url($url); ?>"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <?= esc_html($name); ?>
-
-                                    <?php if ($badge) : ?>
-                                        <span class="footer-badge">
-                                            <?= esc_html($badge); ?>
-                                        </span>
-                                    <?php endif; ?>
-                                </a>
-                            </li>
-                        <?php endif; ?>
-
-                    <?php endforeach; ?>
-                </ul>
+            <?php if (is_array($socialLinks) && $socialLinks) : ?>
+                <nav
+                    <?php if ($socialTitle) : ?>
+                        aria-labelledby="footer-social-media-title"
+                    <?php else : ?>
+                        aria-label="Footer social media"
+                    <?php endif; ?>
+                >
+                    <ul class="footer-links">
+                        <?php foreach ($socialLinks as $row) :
+                            $name = $row['platform_name'] ?? '';
+                            $url  = $row['platform_url'] ?? '';
+                        ?>
+                            <?php if ($name && $url) : ?>
+                                <li>
+                                    <a href="<?= esc_url($url); ?>" target="_blank"  rel="noopener noreferrer">
+                                        <?= esc_html($name); ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </nav>
             <?php endif; ?>
         </div>
 
