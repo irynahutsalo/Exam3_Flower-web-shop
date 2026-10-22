@@ -36,7 +36,8 @@ Description: Web-shop for flowers
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  background-color: var(--color-footer-bg);
 }
 
 body {
