@@ -95,7 +95,6 @@ body.admin-bar .site-header {
 
 .main-navigation {
   margin-left: auto;
-  margin-right: 0;
 }
 
 .main-navigation ul {
@@ -131,7 +130,6 @@ body.admin-bar .site-header {
 }
 
 /* Underline For Hover */
-
 .main-navigation a::after {
   content: "";
   position: absolute;
@@ -160,7 +158,6 @@ body.admin-bar .site-header {
 /* --------------------------------------------- Account And Cart --------------------------------------------- */
 
 /* Adds extra space between Contact and My Account */
-
 .main-navigation .account-link {
   margin-left: 48px;
 }
