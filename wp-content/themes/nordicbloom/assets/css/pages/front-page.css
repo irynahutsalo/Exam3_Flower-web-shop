@@ -1085,6 +1085,7 @@
 
 @media (max-width: 380px) {
   .hero-section {
+    min-height: 320px;
     background-position: 72% center;
   }
 
