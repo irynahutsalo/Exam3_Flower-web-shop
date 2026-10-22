@@ -1,7 +1,7 @@
 .site-footer {
   background-color: var(--color-footer-bg);
   color: #f8f5f0;
-  padding: 80px 0 40px;
+  padding: 80px 0 25px;
   font-family: var(--font-main);
 }
 
