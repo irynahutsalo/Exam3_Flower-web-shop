@@ -6,19 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Meta Description -->
-  <?php $meta_description = get_field('meta_desc', get_queried_object_id()); ?>
-
+  <?php $meta_description = get_field('meta_desc', get_queried_object_id());?>
+  
   <?php if ($meta_description) : ?>
-    <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
+   <meta name="description" content="<?php echo esc_attr($meta_description); ?>">
   <?php endif; ?>
 
   <?php wp_head(); ?>
 </head>
 
-<!-- Adds WordPress Classes to the body -->
+<!-- Adds Wordpress Classes to the body -->
 <body <?php body_class(); ?>>
 
-<!-- Allows WordPress and plugins to add content after the body opens -->
+<!-- This allows WordPress and plugins to add content after the body opens -->
 <?php wp_body_open(); ?>
 
 <nav class="skip-navigation" aria-label="Skip navigation">
@@ -26,6 +26,7 @@
 </nav>
 
 <?php
+
 // ACF
 $front_page_id = get_option('page_on_front');
 $logo = get_field('header_logo', $front_page_id);
@@ -33,7 +34,8 @@ $logo = get_field('header_logo', $front_page_id);
 // Gets the Logo URL from the ACF image array
 $logo_url = is_array($logo) ? ($logo['url'] ?? '') : $logo;
 
-// Stores Navigation Links for Desktop and Mobile
+
+// Stores the Navigation Links so they can be reused for both Desktop and Mobile Navigation
 $navigation_items = [];
 
 if (have_rows('header_navigation', $front_page_id)) {
@@ -49,11 +51,12 @@ if (have_rows('header_navigation', $front_page_id)) {
         }
 
         // Gets the selected page ID
-        $page_id = is_object($page) ? $page->ID : (int) $page;
+        $page_id = $page->ID;
 
         // Gets the page title
         $custom_nav_label = get_field('nav_label', $page_id);
         $page_title = $custom_nav_label ? $custom_nav_label : get_the_title($page_id);
+
 
         // Gets the page URL
         $page_url = get_permalink($page_id);
@@ -66,14 +69,12 @@ if (have_rows('header_navigation', $front_page_id)) {
     }
 }
 
-// Assumes My Account and Cart are the final two navigation items
-$account_start_index = count($navigation_items) - 2;
 ?>
 
 <!-- Navigation -->
 <header class="site-header">
 
-  <!-- Navigation Container -->
+  <!-- Navigation Container-->
   <div class="header-container">
 
     <!-- Logo -->
@@ -85,7 +86,7 @@ $account_start_index = count($navigation_items) - 2;
         <!-- Checks for the image -->
         <?php if ($logo_url) : ?>
           <img src="<?php echo esc_url($logo_url); ?>" alt="Nordic Bloom">
-        <?php else : ?>
+          <?php else : ?>
           <span>NORDIC BLOOM</span>
         <?php endif; ?>
 
@@ -93,17 +94,18 @@ $account_start_index = count($navigation_items) - 2;
 
     </div>
 
+
     <!-- Desktop Navigation -->
     <?php if (!empty($navigation_items)) : ?>
 
       <!-- Main Navigation -->
       <nav class="main-navigation" aria-label="Primary navigation">
         <ul>
-
           <!-- Loops through each Navigation Item -->
-          <?php foreach ($navigation_items as $index => $item) : ?>
+          <?php foreach ($navigation_items as $item) : ?>
 
-            <li<?php if ($index === $account_start_index && $account_start_index > 0) : ?> class="account-link"<?php endif; ?>>
+            <li>
+              <!-- Displays the URL and Page Title -->
               <a href="<?php echo esc_url($item['url']); ?>">
                 <?php echo esc_html($item['title']); ?>
               </a>
@@ -112,14 +114,16 @@ $account_start_index = count($navigation_items) - 2;
           <?php endforeach; ?>
 
         </ul>
+
       </nav>
 
     <?php endif; ?>
 
+
     <!-- Mobile Menu Button - Hamburger Icon -->
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-navigation">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 0h16v16H0z" fill="none" />
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5m-10.5-4h10.5"/>
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5"/>
         </svg>
     </button>
 
@@ -128,33 +132,36 @@ $account_start_index = count($navigation_items) - 2;
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu-overlay"></div>
 
-  <!-- Mobile Navigation -->
-  <nav id="mobile-navigation" class="mobile-navigation" aria-label="Mobile navigation">
+    <!-- Mobile Navigation -->
+    <nav id="mobile-navigation" class="mobile-navigation" aria-label="Mobile navigation">
 
-    <!-- Close Button -->
-    <button class="mobile-menu-close" type="button" aria-label="Close navigation">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 18l-6-6m0 0L6 6m6 6l6-6l-6 6" />
-      </svg>
-    </button>
+      <!-- Close Button -->
+      <button class="mobile-menu-close" type="button" aria-label="Close navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 18l-6-6m0 0L6 6m6 6l6-6m-6 6l-6 6" />
+        </svg>
+      </button>
 
-    <?php if (!empty($navigation_items)) : ?>
-      <ul>
-        <!-- Loops through each Navigation Item -->
-        <?php foreach ($navigation_items as $item) : ?>
-          <li>
-            <a href="<?php echo esc_url($item['url']); ?>">
-              <?php echo esc_html($item['title']); ?>
-            </a>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-    <?php endif; ?>
+      <?php if (!empty($navigation_items)) : ?>
+        <ul>
+          <!-- Loops thorugh each Navigation Item -->
+          <?php foreach ($navigation_items as $item) : ?>
+            <li>
+              <a href="<?php echo esc_url($item['url']); ?>">
+                  <?php echo esc_html($item['title']); ?>
+              </a>
+            </li>
 
-  </nav>
+          <?php endforeach; ?>
+        </ul>
+
+      <?php endif; ?>
+
+    </nav>
 
 </header>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
