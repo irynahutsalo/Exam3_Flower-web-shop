@@ -9,6 +9,11 @@ add_filter('pre_get_document_title', function($title) {
         if ($seo_title) {
             return $seo_title;
         }
+    } elseif (is_home()) {
+        $seo_title = get_field('seo_title', get_option('page_for_posts'));
+        if ($seo_title) {
+            return $seo_title;
+        }
     }
     return $title;
 });
