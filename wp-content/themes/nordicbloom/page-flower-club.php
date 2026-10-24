@@ -226,7 +226,7 @@ $faq_title = get_field('flower_club_faq_title', $page_id);
                     <ol class="flower-club-how__steps">
 
                         <?php
-                        // Start the step number at 1. This will be used to display the step number in the list.
+                        // Начинаем нумерацию с первого шага.
                         $step_number = 1;
 
                         while (have_rows('flower_club_steps', $page_id)) :
@@ -264,7 +264,7 @@ $faq_title = get_field('flower_club_faq_title', $page_id);
                                 </li>
 
                                 <?php
-                                // Increase the step number after displaying the step.
+                                // Увеличиваем номер после выведенного шага.
                                 $step_number++;
                                 ?>
                             <?php endif; ?>
