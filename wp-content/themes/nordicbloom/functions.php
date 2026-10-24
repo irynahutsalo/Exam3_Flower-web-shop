@@ -185,7 +185,18 @@ if (
 
 add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_styles');
 
+// Disable default WooCommerce styles on pages without shop content.
+add_filter('woocommerce_enqueue_styles', function ($styles) {
+    if (
+        is_front_page()
+        || is_home()
+        || is_page(['sustainability', 'flower-club'])
+    ) {
+        return [];
+    }
 
+    return $styles;
+});
 
 // ------------------------------------------------------------- Parsley Script ----------------------------------------------
 function nordicbloom_enqueue_scripts(){
