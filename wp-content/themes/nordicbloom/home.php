@@ -1,23 +1,11 @@
-<?php
+<?php 
+get_header(); 
 
-$blog_page_id     = get_option('page_for_posts');
+$blog_page_id    = get_option('page_for_posts');
 $blogTitle       = get_field('blog_title', $blog_page_id);
 $blogDescription = get_field('blog_description', $blog_page_id);
-$blogHeroImage    = get_field('blog_hero_image', $blog_page_id);
-$heroBgUrl        = is_array($blogHeroImage) ? $blogHeroImage['url'] : $blogHeroImage;
-
-// Preload the blog hero image with high priority.
-if ($heroBgUrl) {
-    add_action('wp_head', function () use ($heroBgUrl) {
-        ?>
-        <link rel="preload" as="image"
-              href="<?php echo esc_url($heroBgUrl); ?>"
-              fetchpriority="high">
-        <?php
-    });
-}
-
-get_header();
+$blogHeroImage   = get_field('blog_hero_image', $blog_page_id);
+$heroBgUrl       = is_array($blogHeroImage) ? $blogHeroImage['url'] : $blogHeroImage;
 
 // Check what the user selected in the dropdown filter (default to DESC - newest first)
 $current_sort = isset($_GET['sort']) ? sanitize_text_field($_GET['sort']) : 'desc';
