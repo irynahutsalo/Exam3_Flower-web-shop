@@ -141,13 +141,13 @@ function nordicbloom_enqueue_styles()
     }
 
     // Front Page
-    if (is_front_page()) {
-        wp_enqueue_style(
-            'nordicbloom-home',
-            get_template_directory_uri() . '/assets/css/pages/home.css',
-            ['nordicbloom-base']
-        );
-    }
+    // if (is_front_page()) {
+    //     wp_enqueue_style(
+    //         'nordicbloom-home',
+    //         get_template_directory_uri() . '/assets/css/pages/home.css',
+    //         ['nordicbloom-base']
+    //     );
+    // }
 
 // ----------------------------------------- WooCommerce styles --------------------------------------------
 if (
