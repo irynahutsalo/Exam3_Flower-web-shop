@@ -28,13 +28,28 @@ $newsletter_image       = get_field('newsletter_image');
 <!-- Entire Main Page -->
 <main id="primary" class="front-page">
 
-    <!-- Hero Section -->
-    <section class="hero-section"
-        <?php if ($heroBg) : ?> style="background-image: url('<?= esc_url($heroBg['url']); ?>');"
-        <?php endif;
-        ?>>
+<!-- Hero Section -->
+<section class="hero-section">
 
-        <!-- Hero Container  -->
+    <?php if (!empty($heroBg['ID'])) : ?>
+        <?php
+        // Let the browser choose an appropriate image size for the hero.
+        echo wp_get_attachment_image(
+            $heroBg['ID'],
+            'full',
+            false,
+            [
+                'class'         => 'hero-image',
+                'alt'           => '',
+                'loading'       => 'eager',
+                'fetchpriority' => 'high',
+                'sizes'         => '100vw',
+            ]
+        );
+        ?>
+    <?php endif; ?>
+
+    <!-- Hero Container -->
         <div class="hero-container">
 
             <!-- Hero Content -->
@@ -159,6 +174,7 @@ $newsletter_image       = get_field('newsletter_image');
 
         </div>
     </section>
+
 
 
 
