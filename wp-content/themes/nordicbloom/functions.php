@@ -179,12 +179,23 @@ function nordicbloom_enqueue_styles()
     // Load styles for individual blog posts, including their comments section.
     // This condition does not include WooCommerce product pages.
     if (is_singular('post')) {
+        // Single blog post styles
         wp_enqueue_style(
             'nordicbloom-single',
             get_template_directory_uri() . '/assets/css/pages/single.css',
-            ['nordicbloom-base']
+            ['nordicbloom-base'],
+            filemtime(get_template_directory() . '/assets/css/pages/single.css')
+        );
+
+        // Blog comments styles
+        wp_enqueue_style(
+            'nordicbloom-comments',
+            get_template_directory_uri() . '/assets/css/pages/comments.css',
+            ['nordicbloom-single'],
+            filemtime(get_template_directory() . '/assets/css/pages/comments.css')
         );
     }
+
 
 
 // ----------------------------------------- WooCommerce styles --------------------------------------------
