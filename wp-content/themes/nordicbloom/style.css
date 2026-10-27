@@ -253,7 +253,6 @@
      2. SINGLE POST PAGE (single.php)
      -------------------------------------------------------------------------- */
 
-
 /* ==========================================================================
    COMMENTS SECTION STYLES (comments.php)
    ========================================================================== */
@@ -262,79 +261,6 @@
 /* ==========================================================================
    COMMENT FORM STYLES (comment_form)
    ========================================================================== */
-
-.comment-respond {
-  margin-top: 40px;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  border: 1px solid #eae5dd;
-}
-
-.comment-reply-title {
-  font-family: var(--font-main, serif);
-  font-size: 1.4rem;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-.comment-form p {
-  margin-bottom: 16px;
-}
-
-.comment-form label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #333333;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.comment-form textarea,
-.comment-form input[type='text'],
-.comment-form input[type='email'] {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background-color: #fafafa;
-  font-size: 0.95rem;
-  color: #1f2937;
-  outline: none;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
-}
-
-.comment-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.comment-form textarea:focus,
-.comment-form input:focus {
-  border-color: var(--color-accent);
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(212, 163, 154, 0.15);
-}
-
-.form-submit input[type='submit'] {
-  background-color: var(--color-accent);
-  color: #ffffff;
-  border: none;
-  padding: 12px 28px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.form-submit input[type='submit']:hover {
-  background-color: #c28e85;
-}
 
 /* ==========================================================================
      BRAND MESSAGE SECTION (Front Page)
