@@ -6,7 +6,7 @@ $heroBg       = get_field('hero_bg_image');
 $heroTitle    = get_field('hero_title');
 $heroSubtitle = get_field('hero_subtitle');
 
-// Brand Section ACF (NEEDS TO BE ADJUSTED)
+// Brand Section ACF
 $tagline      = get_field('brand_tagline');
 $heading      = get_field('brand_heading');
 $description  = get_field('brand_description');
