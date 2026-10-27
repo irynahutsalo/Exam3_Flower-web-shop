@@ -28,13 +28,28 @@ $newsletter_image       = get_field('newsletter_image');
 <!-- Entire Main Page -->
 <main id="primary" class="front-page">
 
-    <!-- Hero Section -->
-    <section class="hero-section"
-        <?php if ($heroBg) : ?> style="background-image: url('<?= esc_url($heroBg['url']); ?>');"
-        <?php endif;
-        ?>>
+<!-- Hero Section -->
+<section class="hero-section">
 
-        <!-- Hero Container  -->
+    <?php if (!empty($heroBg['ID'])) : ?>
+        <?php
+        // Let the browser choose an appropriate image size for the hero.
+        echo wp_get_attachment_image(
+            $heroBg['ID'],
+            'full',
+            false,
+            [
+                'class'         => 'hero-image',
+                'alt'           => '',
+                'loading'       => 'eager',
+                'fetchpriority' => 'high',
+                'sizes'         => '100vw',
+            ]
+        );
+        ?>
+    <?php endif; ?>
+
+    <!-- Hero Container -->
         <div class="hero-container">
 
             <!-- Hero Content -->
@@ -159,6 +174,7 @@ $newsletter_image       = get_field('newsletter_image');
 
         </div>
     </section>
+
 
 
 
@@ -400,16 +416,27 @@ $i = 0;
 
 
             <!-- Right Side -->
-            <?php if ($newsletter_image) : ?>
-
-                <!-- Checks for the image -->
-                <?php $newsletter_image_url = is_array($newsletter_image) ? ($newsletter_image['url'] ?? ''): $newsletter_image;?>
-
-                <!-- Imaage -->
+            <?php if (!empty($newsletter_image['ID'])) : ?>
                 <div class="newsletter-image">
-                    <img src="<?php echo esc_url($newsletter_image_url); ?>" alt="Nordic Bloom flower arrangement">
+                    <?php
+                    // Help the browser choose an image size for the current screen.
+                    echo wp_get_attachment_image(
+                        $newsletter_image['ID'],
+                         // Use the large image size as the default source.
+                        'large',
+                        // Display the actual image, not an attachment icon.
+                        false,
+                        [
+                             // Describe the image for screen reader users.
+                            'alt'     => 'Nordic Bloom flower arrangement',
+                            // Delay loading until the image is near the viewport.
+                            'loading' => 'lazy',
+                            // Image width: full viewport up to 900px, then 45%.
+                            'sizes'   => '(max-width: 900px) 100vw, 45vw',
+                        ]
+                    );
+                    ?>
                 </div>
-
             <?php endif; ?>
 
         </div>

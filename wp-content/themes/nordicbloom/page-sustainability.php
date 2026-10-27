@@ -11,7 +11,7 @@ $sustainability_hero_image       = get_field('sustainability_hero_image');
 $sustainability_hero_description = get_field('sustainability_hero_description');
 
 // Get the hero image URL from the ACF image array
-$hero_image_url = $sustainability_hero_image['url'] ?? '';
+$hero_image_url = $sustainability_hero_image['url'] ?? ''; //?? `` means take it if it's not a null, so if image exists
 
 // Our Impact content from ACF 
 $impact_label       = get_field('sustainability_impact_label');
