@@ -8,44 +8,51 @@
 .blog-hero {
   position: relative;
   min-height: 360px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
   background-color: var(--color-accent);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  text-align: center;
-  padding: 80px 20px;
   margin-bottom: 50px;
-  color: #ffffff;
+  color: var(--color-text-secondary);
 }
 
 .blog-hero::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.15);
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.32);
 }
 
 .blog-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 600px;
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
+  padding: 60px 40px;
+  text-align: left;
 }
 
 .blog-hero-content h1 {
-  font-family: var(--font-main, serif);
-  font-size: 3rem;
+  max-width: 650px;
+  margin: 0 0 18px;
+  color: var(--color-text-secondary);
+  font-family: var(--font-main);
+  font-size: 3.5rem;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 15px 0;
+  line-height: 1.1;
 }
 
 .blog-hero-content p {
-  font-size: 1.05rem;
-  color: #f9f9f9;
-  line-height: 1.6;
+  max-width: 650px;
   margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
 /* Blog Layout Container */
@@ -251,36 +258,7 @@
    Blog: responsive layout
 -------------------------------------------------- */
 
-.blog-page .blog-main,
-.blog-page .blog-card {
-  min-width: 0;
-}
-
-.blog-page .blog-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.blog-page .card-title,
-.blog-page .card-category,
-.blog-page .card-excerpt {
-  overflow-wrap: anywhere;
-}
-
-.blog-page .blog-filter-bar form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-.blog-page .blog-filter-bar select {
-  max-width: 100%;
-  min-height: 44px;
-  font: inherit;
-}
-
-/* Tablet: two columns */
+/* Tablets */
 @media (max-width: 900px) {
   .blog-page .blog-container {
     width: 100%;
@@ -293,19 +271,24 @@
   }
 
   .blog-page .blog-hero {
-    height: auto;
-    min-height: 360px;
-    padding: 64px 24px;
+    min-height: 320px;
     margin-bottom: 36px;
   }
 
+  .blog-page .blog-hero-content {
+    padding: 50px 32px;
+  }
+
   .blog-page .blog-hero-content h1 {
-    font-size: 2.5rem;
-    line-height: 1.15;
+    font-size: 2.8rem;
+  }
+
+  .blog-page .blog-hero-content p {
+    font-size: 1.05rem;
   }
 }
 
-/* Mobile: one column */
+/* Large Mobile Devices */
 @media (max-width: 600px) {
   .blog-page {
     padding-bottom: 48px;
@@ -321,24 +304,30 @@
   }
 
   .blog-page .blog-hero {
-    min-height: 320px;
-    padding: 56px 20px;
+    min-height: 300px;
     margin-bottom: 28px;
   }
 
+  .blog-page .blog-hero::before {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .blog-page .blog-hero-content {
-    width: 100%;
+    padding: 45px 24px;
+    text-align: center;
   }
 
   .blog-page .blog-hero-content h1 {
-    margin-bottom: 18px;
-    font-size: 2rem;
-    line-height: 1.2;
+    max-width: 100%;
+    margin: 0 auto 14px;
+    font-size: 2.25rem;
+    line-height: 1.15;
     overflow-wrap: anywhere;
   }
 
   .blog-page .blog-hero-content p {
-    font-size: 1rem;
+    margin: 0 auto;
+    font-size: 0.95rem;
     line-height: 1.6;
   }
 
@@ -386,5 +375,43 @@
     justify-content: center;
     min-width: 44px;
     min-height: 44px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .blog-page .blog-hero {
+    min-height: 280px;
+  }
+
+  .blog-page .blog-hero-content {
+    padding: 40px 20px;
+  }
+
+  .blog-page .blog-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .blog-page .blog-hero-content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 380px) {
+  .blog-page .blog-hero {
+    min-height: 260px;
+  }
+
+  .blog-page .blog-hero-content {
+    padding: 35px 16px;
+  }
+
+  .blog-page .blog-hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .blog-page .blog-hero-content p {
+    font-size: 0.85rem;
   }
 }
