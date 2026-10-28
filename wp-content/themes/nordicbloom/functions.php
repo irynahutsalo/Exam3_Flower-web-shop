@@ -25,6 +25,19 @@ add_filter('pre_get_document_title', function($title) {
         }
     }
     return $title;
+    
+    //adds title tag to shop since it is not concidered a page
+
+    if (function_exists('is_shop') && is_shop()) {
+        $shop_page_id = wc_get_page_id('shop');
+        $seo_title = get_field('seo_title', $shop_page_id);
+
+        if ($seo_title) {
+            return $seo_title;
+        }
+    }
+
+    return $title;
 });
 
 
