@@ -366,6 +366,8 @@ $newsletter_image       = get_field('newsletter_image');
                             data-parsley-errors-container="#newsletter-errors"
                         />
 
+                        <p id="newsletter-success" class="newsletter-success" role="status" hidden></p>
+
                         <button type="submit" class="newsletter-button">
                             Subscribe
                         </button>
@@ -376,12 +378,7 @@ $newsletter_image       = get_field('newsletter_image');
                     <p class="newsletter-privacy">
                         We respect your privacy. Your email will be sent to our team as a subscription request.
                     </p>
-
-                    <?php if (isset($_GET['newsletter']) && $_GET['newsletter'] === 'success') : ?>
-                        <p class="newsletter-success" role="status">
-                            Thank you! Your subscription request has been received.
-                        </p>
-                    <?php endif; ?>
+                    
                 </form>
 
             </div>

@@ -257,7 +257,6 @@ add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_styles');
  * Initialize newsletter validation on the homepage.
  * Validate user input in the browser and again in PHP for security.
  */
-
 function nordicbloom_enqueue_scripts() {
 
     if (is_page('contact') || is_front_page()) {
@@ -278,15 +277,53 @@ function nordicbloom_enqueue_scripts() {
 
                     if (newsletterForm.length && $.fn.parsley) {
                         newsletterForm.parsley();
+
+                        newsletterForm.on('submit', async function (event) {
+                            event.preventDefault();
+
+                            if (!newsletterForm.parsley().validate()) {
+                                return;
+                            }
+
+                            const successMessage = $('#newsletter-success');
+                            const submitButton = newsletterForm.find('button[type=\"submit\"]');
+
+                            successMessage.prop('hidden', true);
+                            submitButton.prop('disabled', true);
+
+                            try {
+                                const response = await fetch(newsletterForm.attr('action'), {
+                                    method: 'POST',
+                                    body: new FormData(newsletterForm[0])
+                                });
+
+                                const result = await response.json();
+
+                                if (!response.ok || !result.success) {
+                                    throw new Error('Submission failed');
+                                }
+
+                                successMessage
+                                    .text(result.data.message)
+                                    .prop('hidden', false);
+
+                                newsletterForm[0].reset();
+                                newsletterForm.parsley().reset();
+
+                            } catch (error) {
+                                successMessage
+                                    .text('Unable to submit your request. Please try again.')
+                                    .prop('hidden', false);
+                            } finally {
+                                submitButton.prop('disabled', false);
+                            }
+                        });
                     }
                 });"
             );
         }
     }
 }
-
-add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_scripts');
-
 
 // --------------------------------------------------------------- Contact Form Handler ---------------------------------------------
 
@@ -420,9 +457,9 @@ function nordicbloom_handle_newsletter() {
         }
     }
 
-    // Redirect to homepage with success message
-    wp_safe_redirect(home_url('/?newsletter=success#newsletter-form'));
-    exit;   
+        wp_send_json_success(array(
+        'message' => 'Thank you! Your subscription request has been received.'
+    ));
 }
 
 add_action('admin_post_nopriv_nordicbloom_newsletter', 'nordicbloom_handle_newsletter');

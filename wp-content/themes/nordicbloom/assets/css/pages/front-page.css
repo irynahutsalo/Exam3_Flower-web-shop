@@ -630,6 +630,10 @@
   line-height: 1.5;
 }
 
+.newsletter-success[hidden] {
+  display: none;
+}
+
 .newsletter-privacy {
   margin: 10px 0 0;
   color: #5c5046; /* new */
