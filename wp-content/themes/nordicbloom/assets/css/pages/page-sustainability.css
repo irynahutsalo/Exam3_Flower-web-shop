@@ -246,7 +246,7 @@
     background-color: var(--color-accent-secondary);
 }
 
-.approach-image {
+/* .approach-image {
     overflow: hidden;
 }
 
@@ -254,8 +254,21 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+} */
+.approach-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 430px;
 }
 
+.approach-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* test */
 .approach-content {
     display: flex;
     flex-direction: column;
