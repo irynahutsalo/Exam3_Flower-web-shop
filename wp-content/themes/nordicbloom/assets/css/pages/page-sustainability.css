@@ -239,20 +239,12 @@
 }
 
 /* ------------------------------------------------------ Our Approach -------------------------------------------------- */
-/* .sustainability-approach {
+.sustainability-approach {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 430px;
     background-color: var(--color-accent-secondary);
-} */
-.sustainability-approach {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 480px;
-    max-width: 1600px;
-    margin: 0 auto;
-    background-color: var(--color-accent-secondary);
-}
+} 
 
 .approach-image img {
     position: absolute;
