@@ -369,7 +369,14 @@ function nordicbloom_handle_contact_form(){
     }
 
     // Email Receiver
-    $to = get_option('admin_email');
+    //$to = get_option('admin_email');
+
+
+    $page = get_page_by_path('contact');
+    $to = $page ? get_field('contact_email', $page->ID) : '';
+    if (!is_email($to)) {
+        $to = get_option('admin_email'); // fallback
+    }
 
     // Email Subject
     // Include the contact person's name in the email subject.
