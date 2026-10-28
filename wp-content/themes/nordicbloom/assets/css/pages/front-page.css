@@ -596,6 +596,40 @@
   border-color: var(--color-secondary);
 }
 
+/* Newsletter Validation */
+#newsletter-errors {
+  margin-top: 8px;
+}
+
+#newsletter-errors .parsley-errors-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #b42318;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.newsletter-input.parsley-error {
+  border-color: #b42318;
+}
+
+.newsletter-input.parsley-success {
+  border-color: #50835a;
+}
+
+/* Newsletter Success */
+.newsletter-success {
+  margin: 14px 0 0;
+  padding: 12px 16px;
+  background-color: #e8f3e8;
+  border: 1px solid #a7c9a7;
+  border-radius: 8px;
+  color: #285c35;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
 .newsletter-privacy {
   margin: 10px 0 0;
   color: #5c5046; /* new */

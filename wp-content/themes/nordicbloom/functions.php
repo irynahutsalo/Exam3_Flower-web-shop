@@ -252,21 +252,16 @@ add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_styles');
 
 // ------------------------------------------------------------- Parsley Script ----------------------------------------------
 /*
- * Load the contact form validation library only on the Contact page.
- * Load jQuery because Parsley depends on it.
- * Request Parsley in the footer using the final true argument.
- * This function loads the library; the form must initialise it separately.
- * Browser validation helps users, but PHP must also validate submitted data.
+ * Load Parsley.js validation on the Contact page and homepage newsletter form.
+ * Include jQuery as a dependency and load Parsley in the footer.
+ * Initialize newsletter validation on the homepage.
+ * Validate user input in the browser and again in PHP for security.
  */
 
-function nordicbloom_enqueue_scripts(){
+function nordicbloom_enqueue_scripts() {
 
-    if (is_page('contact')) {
+    if (is_page('contact') || is_front_page()) {
 
-        // jQuery
-        wp_enqueue_script('jquery');
-
-        // Parsley validation
         wp_enqueue_script(
             'parsley',
             'https://cdn.jsdelivr.net/npm/parsleyjs@2.9.2/dist/parsley.min.js',
@@ -274,13 +269,24 @@ function nordicbloom_enqueue_scripts(){
             '2.9.2',
             true
         );
+
+        if (is_front_page()) {
+            wp_add_inline_script(
+                'parsley',
+                "jQuery(function ($) {
+                    const newsletterForm = $('#newsletter-form');
+
+                    if (newsletterForm.length && $.fn.parsley) {
+                        newsletterForm.parsley();
+                    }
+                });"
+            );
+        }
     }
 }
 
-add_action(
-    'wp_enqueue_scripts',
-    'nordicbloom_enqueue_scripts'
-);
+add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_scripts');
+
 
 // --------------------------------------------------------------- Contact Form Handler ---------------------------------------------
 
@@ -358,8 +364,6 @@ add_action('admin_post_submit_contact_form', 'nordicbloom_handle_contact_form');
 
 
 // -------------------------------- Newsletter Form Handler --------------------------------
-
-
 function nordicbloom_handle_newsletter() {
 
     // Verify nonce
@@ -384,7 +388,7 @@ function nordicbloom_handle_newsletter() {
         wp_die('Please enter a valid email address.');
     }
 
-    // Skip duplicates: if this email is already saved, just show success
+    // Check for existing subscriber
     $existing = get_posts(array(
         'post_type'      => 'newsletter',
         'post_status'    => array('pending', 'publish', 'draft'),
@@ -395,14 +399,14 @@ function nordicbloom_handle_newsletter() {
 
     if (empty($existing)) {
 
-        // Save to the Newsletter post type
+        // Save subscription request
         $post_id = wp_insert_post(array(
             'post_title'  => $email,
             'post_status' => 'pending',
             'post_type'   => 'newsletter',
         ), true);
 
-        if (is_wp_error($post_id)) {
+        if (is_wp_error($post_id) || !$post_id) {
             wp_die(
                 'Sorry, your request could not be saved. Please try again later.',
                 'Error',
@@ -410,7 +414,7 @@ function nordicbloom_handle_newsletter() {
             );
         }
 
-        // Save SCF field (only if you created an "email" field)
+        // Save SCF email field
         if (function_exists('update_field')) {
             update_field('email', $email, $post_id);
         }

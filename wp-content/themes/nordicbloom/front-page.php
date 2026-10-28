@@ -352,23 +352,26 @@ $newsletter_image       = get_field('newsletter_image');
                         <?php echo esc_html($newsletter_description); ?>
                     </p>
                 <?php endif; ?>
-
-
+                
                 <!-- Newsletter Subscription -->
-                <form class="newsletter-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post">
-                    <input type="hidden" name="action"value="nordicbloom_newsletter"/>
+                <form class="newsletter-form" id="newsletter-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" data-parsley-validate novalidate>
+                    <input type="hidden" name="action" value="nordicbloom_newsletter"/>
 
                     <?php wp_nonce_field('newsletter_action', 'newsletter_nonce'); ?>
 
                     <div class="newsletter-form-row">
                         <input type="email" name="newsletter_email" class="newsletter-input" placeholder="Your email address"
-                            aria-label="Your email address" required
+                            aria-label="Your email address" required  data-parsley-required-message="Please enter your email address."
+                            data-parsley-type-message="Please enter a valid email address."
+                            data-parsley-errors-container="#newsletter-errors"
                         />
 
                         <button type="submit" class="newsletter-button">
                             Subscribe
                         </button>
                     </div>
+
+                    <div id="newsletter-errors" aria-live="polite"></div>
 
                     <p class="newsletter-privacy">
                         We respect your privacy. Your email will be sent to our team as a subscription request.
