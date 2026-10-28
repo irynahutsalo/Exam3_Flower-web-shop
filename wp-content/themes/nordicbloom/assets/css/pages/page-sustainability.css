@@ -239,13 +239,29 @@
 }
 
 /* ------------------------------------------------------ Our Approach -------------------------------------------------- */
-.sustainability-approach {
+/* .sustainability-approach {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 430px;
     background-color: var(--color-accent-secondary);
+} */
+.sustainability-approach {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: var(--color-accent-secondary);
 }
 
+.approach-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 30% 20%;  /* keeps her face in frame */
+}
 /* .approach-image {
     overflow: hidden;
 }
@@ -261,13 +277,7 @@
     min-height: 430px;
 }
 
-.approach-image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
 /* test */
 .approach-content {
     display: flex;
