@@ -358,57 +358,7 @@ add_action('admin_post_submit_contact_form', 'nordicbloom_handle_contact_form');
 
 
 // -------------------------------- Newsletter Form Handler --------------------------------
-// function nordicbloom_handle_newsletter()
-// {
-//     // Verify nonce
-//     if (
-//         !isset($_POST['newsletter_nonce']) ||
-//         !is_string($_POST['newsletter_nonce']) ||
-//         !wp_verify_nonce(
-//             sanitize_text_field(wp_unslash($_POST['newsletter_nonce'])),
-//             'newsletter_action'
-//         )
-//     ) {
-//         wp_die('Security check failed.');
-//     }
 
-//     // Sanitize email
-//     $email = isset($_POST['newsletter_email']) && is_string($_POST['newsletter_email'])
-//         ? sanitize_email(wp_unslash($_POST['newsletter_email']))
-//         : '';
-
-//     // Validate email
-//     if (!is_email($email)) {
-//         wp_die('Please enter a valid email address.');
-//     }
-
-//     // Send subscription request to administrator
-//     $to = get_option('admin_email');
-//     $subject = 'New Nordic Bloom Newsletter Subscription';
-//     $message = 'New newsletter subscription request from: ' . $email;
-
-//     $mail_sent = wp_mail($to, $subject, $message);
-
-//     if (!$mail_sent) {
-//         wp_die('Sorry, your request could not be sent. Please try again.');
-//     }
-
-//     // Redirect to homepage with success message
-//     wp_safe_redirect(
-//         add_query_arg('newsletter', 'success', home_url('/'))
-//     );
-//     exit;
-// }
-
-// add_action(
-//     'admin_post_nopriv_nordicbloom_newsletter',
-//     'nordicbloom_handle_newsletter'
-// );
-
-// add_action(
-//     'admin_post_nordicbloom_newsletter',
-//     'nordicbloom_handle_newsletter'
-// );
 
 function nordicbloom_handle_newsletter() {
 
