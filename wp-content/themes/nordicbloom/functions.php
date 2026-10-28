@@ -346,6 +346,7 @@ function nordicbloom_handle_contact_form() {
     update_field('company_name', $company_name, $post_id);
     update_field('email', $email, $post_id);
     update_field('contact_phone', $phone, $post_id);
+    update_field('company_name', $company_name, $post_id);
 
     // Redirect back to the contact page
     wp_safe_redirect(add_query_arg('sent', '1', home_url('/contact/')));
