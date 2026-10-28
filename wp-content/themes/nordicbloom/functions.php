@@ -275,50 +275,58 @@ function nordicbloom_enqueue_scripts() {
                 "jQuery(function ($) {
                     const newsletterForm = $('#newsletter-form');
 
-                    if (newsletterForm.length && $.fn.parsley) {
-                        newsletterForm.parsley();
-
-                        newsletterForm.on('submit', async function (event) {
-                            event.preventDefault();
-
-                            if (!newsletterForm.parsley().validate()) {
-                                return;
-                            }
-
-                            const successMessage = $('#newsletter-success');
-                            const submitButton = newsletterForm.find('button[type=\"submit\"]');
-
-                            successMessage.prop('hidden', true);
-                            submitButton.prop('disabled', true);
-
-                            try {
-                                const response = await fetch(newsletterForm.attr('action'), {
-                                    method: 'POST',
-                                    body: new FormData(newsletterForm[0])
-                                });
-
-                                const result = await response.json();
-
-                                if (!response.ok || !result.success) {
-                                    throw new Error('Submission failed');
-                                }
-
-                                successMessage
-                                    .text(result.data.message)
-                                    .prop('hidden', false);
-
-                                newsletterForm[0].reset();
-                                newsletterForm.parsley().reset();
-
-                            } catch (error) {
-                                successMessage
-                                    .text('Unable to submit your request. Please try again.')
-                                    .prop('hidden', false);
-                            } finally {
-                                submitButton.prop('disabled', false);
-                            }
-                        });
+                    if (!newsletterForm.length) {
+                        return;
                     }
+
+                    const parsley = $.fn.parsley
+                        ? newsletterForm.parsley()
+                        : null;
+
+                    newsletterForm.on('submit', async function (event) {
+                        event.preventDefault();
+
+                        if (!parsley) {
+                            return;
+                        }
+
+                        if (!parsley.validate()) {
+                            return;
+                        }
+
+                        const successMessage = $('#newsletter-success');
+                        const submitButton = newsletterForm.find('button[type=\"submit\"]');
+
+                        successMessage.prop('hidden', true);
+                        submitButton.prop('disabled', true);
+
+                        try {
+                            const response = await fetch(newsletterForm.attr('action'), {
+                                method: 'POST',
+                                body: new FormData(newsletterForm[0])
+                            });
+
+                            const result = await response.json();
+
+                            if (!response.ok || !result.success) {
+                                throw new Error('Submission failed');
+                            }
+
+                            successMessage
+                                .text(result.data.message)
+                                .prop('hidden', false);
+
+                            newsletterForm[0].reset();
+                            parsley.reset();
+
+                        } catch (error) {
+                            successMessage
+                                .text('Unable to submit your request. Please try again.')
+                                .prop('hidden', false);
+                        } finally {
+                            submitButton.prop('disabled', false);
+                        }
+                    });
                 });"
             );
         }

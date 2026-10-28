@@ -366,8 +366,6 @@ $newsletter_image       = get_field('newsletter_image');
                             data-parsley-errors-container="#newsletter-errors"
                         />
 
-                        <p id="newsletter-success" class="newsletter-success" role="status" hidden></p>
-
                         <button type="submit" class="newsletter-button">
                             Subscribe
                         </button>
@@ -375,10 +373,12 @@ $newsletter_image       = get_field('newsletter_image');
 
                     <div id="newsletter-errors" aria-live="polite"></div>
 
+                    <p id="newsletter-success" class="newsletter-success" role="status" hidden></p>
+
                     <p class="newsletter-privacy">
                         We respect your privacy. Your email will be sent to our team as a subscription request.
                     </p>
-                    
+
                 </form>
 
             </div>
