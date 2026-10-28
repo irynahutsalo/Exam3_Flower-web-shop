@@ -4,7 +4,7 @@ Nordic Bloom is a flower webshop developed as part of our 3rd semester Multimedi
 
 The project combines custom WordPress theme development with PHP, Advanced Custom Fields (ACF), HTML, CSS, and JavaScript to create a flexible and maintainable website.
 
-**🌐 Live Website:** [View Nordic Bloom](YOUR-LIVE-WEBSITE-URL)
+**🌐 Live Website:** [https://flowerswebshop.dk/]
 ## 🛠️ Technologies Used
 
 - **WordPress** – Content management system
