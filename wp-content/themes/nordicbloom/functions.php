@@ -18,13 +18,22 @@ add_filter('pre_get_document_title', function($title) {
         if ($seo_title) {
             return $seo_title;
         }
-    } elseif (is_home()) {
+    } elseif (is_home()) { //adds title to the blog as well since it's not considered page but a home.php page
         $seo_title = get_field('seo_title', get_option('page_for_posts'));
         if ($seo_title) {
             return $seo_title;
         }
+    } elseif (function_exists('is_shop') && is_shop()) { //adds title to shop since it is also not a regular page but a woocommerce
+        $shop_page_id = wc_get_page_id('shop');
+        $seo_title = get_field('seo_title', $shop_page_id);
+        if ($seo_title) {
+            return $seo_title;
+        }
+    } else {
+        $seo_title = '';
     }
-    return $title;
+
+    return $seo_title ?: $title;
 });
 
 

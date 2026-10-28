@@ -244,7 +244,7 @@
     grid-template-columns: 1fr 1fr;
     height: 340px;
     background-color: var(--color-accent-secondary);
-}
+} 
 
 .approach-image {
     overflow: hidden;
@@ -254,8 +254,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} 
 
+/* test */
 .approach-content {
     display: flex;
     flex-direction: column;
