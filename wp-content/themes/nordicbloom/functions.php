@@ -332,6 +332,7 @@ function nordicbloom_enqueue_scripts() {
         }
     }
 }
+add_action('wp_enqueue_scripts', 'nordicbloom_enqueue_scripts');
 
 // --------------------------------------------------------------- Contact Form Handler ---------------------------------------------
 
