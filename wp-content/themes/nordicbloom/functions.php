@@ -23,23 +23,17 @@ add_filter('pre_get_document_title', function($title) {
         if ($seo_title) {
             return $seo_title;
         }
-    }
-    return $title;
-
-    //adds title tag to shop since it is not concidered a page
-
-    if (function_exists('is_shop') && is_shop()) {
-        error_log('IS_SHOP CHECK: TRUE');
-
+    } elseif (function_exists('is_shop') && is_shop()) { //adds title to shop since it is also not a regular page but a woocommerce
         $shop_page_id = wc_get_page_id('shop');
         $seo_title = get_field('seo_title', $shop_page_id);
-
         if ($seo_title) {
             return $seo_title;
         }
+    } else {
+        $seo_title = '';
     }
 
-    return $title;
+    return $seo_title ?: $title;
 });
 
 
