@@ -610,7 +610,7 @@
 }
 
 .newsletter-image img {
-  width: 100%;
+  width: auto;
   height: 100%;
   display: block;
   object-fit: cover;
