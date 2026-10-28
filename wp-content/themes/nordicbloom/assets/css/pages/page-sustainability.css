@@ -242,7 +242,7 @@
 .sustainability-approach {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 430px;
+    height: 340px;
     background-color: var(--color-accent-secondary);
 }
 
@@ -260,7 +260,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 70px 9%;
+    padding: 35px 9%;
 }
 
 .approach-content p:not(.eyebrow) {
@@ -407,12 +407,14 @@
 
     .sustainability-approach {
         grid-template-columns: 1fr;
+        height: auto;
     }
 
     .approach-image {
-        min-height: 340px;
+        height: 280px;
+        min-height: 0;
     }
-
+    
     .future-cards {
         width: 100%;
         max-width: none;
