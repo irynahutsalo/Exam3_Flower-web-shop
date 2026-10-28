@@ -1,4 +1,3 @@
-
 <?php
 // Get the front page ID for global footer content
 $front_page_id = (int) get_option('page_on_front');
@@ -118,6 +117,3 @@ $socialLinks   = get_field('footer_social_media_links', $footer_source);
 </footer>
 
 <?php wp_footer(); ?>
-
-</body>
-</html>
