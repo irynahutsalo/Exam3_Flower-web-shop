@@ -246,29 +246,15 @@
     background-color: var(--color-accent-secondary);
 } 
 
-.approach-image img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 30% 20%;  /* keeps her face in frame */
-}
-/* .approach-image {
-    overflow: hidden;
-}
-
-.approach-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-} */
 .approach-image {
-    position: relative;
     overflow: hidden;
-    min-height: 430px;
 }
 
+.approach-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} 
 
 /* test */
 .approach-content {
