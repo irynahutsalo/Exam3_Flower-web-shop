@@ -292,175 +292,241 @@ add_action(
  * Stop processing and display an error if a check fails.
  */
 
-function nordicbloom_handle_contact_form(){
 
-    // Security Check
-    // Check that the form nonce exists, is a string and is valid.
-    // The nonce helps protect against unwanted cross-site form submissions.
-    // It does not replace spam protection or user authentication.
+function nordicbloom_handle_contact_form() {
+
+    // Security check
     if (
         !isset($_POST['contact_form_nonce']) ||
         !is_string($_POST['contact_form_nonce']) ||
         !wp_verify_nonce(
-        sanitize_text_field(wp_unslash($_POST['contact_form_nonce'])),
-        'contact_form_action'
+            sanitize_text_field(wp_unslash($_POST['contact_form_nonce'])),
+            'contact_form_action'
         )
     ) {
         wp_die('Security check failed.');
     }
 
-    // Sanitize Data
-    // Accept string values only and use an empty string for missing fields.
-    // Remove slashes added by WordPress before cleaning the values.
-    // Clean single-line text, email and multiline message fields appropriately.
-    // Cleaning the data does not replace the validation checks below.
-    $company_name = isset($_POST['company_name']) && is_string($_POST['company_name'])
-        ? sanitize_text_field(wp_unslash($_POST['company_name']))
-        : '';
+    // Sanitize
+    $company_name   = isset($_POST['company_name'])   && is_string($_POST['company_name'])   ? sanitize_text_field(wp_unslash($_POST['company_name']))   : '';
+    $contact_person = isset($_POST['contact_person']) && is_string($_POST['contact_person']) ? sanitize_text_field(wp_unslash($_POST['contact_person'])) : '';
+    $email          = isset($_POST['email'])          && is_string($_POST['email'])          ? sanitize_email(wp_unslash($_POST['email']))              : '';
+    $phone          = isset($_POST['phone'])          && is_string($_POST['phone'])          ? sanitize_text_field(wp_unslash($_POST['phone']))         : '';
+    $message        = isset($_POST['message'])        && is_string($_POST['message'])        ? sanitize_textarea_field(wp_unslash($_POST['message']))   : '';
 
-    $contact_person = isset($_POST['contact_person']) && is_string($_POST['contact_person'])
-        ? sanitize_text_field(wp_unslash($_POST['contact_person']))
-        : '';
-
-    $email = isset($_POST['email']) && is_string($_POST['email'])
-        ? sanitize_email(wp_unslash($_POST['email']))
-        : '';
-
-    $phone = isset($_POST['phone']) && is_string($_POST['phone'])
-        ? sanitize_text_field(wp_unslash($_POST['phone']))
-        : '';
-
-    $message = isset($_POST['message']) && is_string($_POST['message'])
-        ? sanitize_textarea_field(wp_unslash($_POST['message']))
-        : '';
-
-    
-    // Required Fields
-    // Require a contact name, email address and phone number.
-    // Company name and message are optional in this handler.
+    // Validate
     if (empty($contact_person) || empty($email) || empty($phone)) {
         wp_die('Please fill in all required fields.');
     }
 
-    // Valid Email
-    // Check the email address format.
-    // This does not confirm that the mailbox exists.
     if (!is_email($email)) {
         wp_die('Invalid email address.');
     }
 
-    // Valid Danish Phone Number
-    // Remove whitespace and hyphens before checking the phone number.
-    // Accept eight digits, optionally preceded by +45.
-    // This checks the format, not whether the number is active.
     $phone_digits = preg_replace('/[\s-]/', '', $phone);
-
     if (!preg_match('/^(?:\+45)?[0-9]{8}$/', $phone_digits)) {
         wp_die('Please enter a valid Danish phone number.');
     }
 
-    // Message Length Validation
-    // Count Unicode characters, including line breaks.
-    // Reject invalid UTF-8 text or messages longer than 500 characters.
     $message_length = preg_match_all('/./us', $message);
-
     if ($message_length === false || $message_length > 500) {
         wp_die('Your message must not exceed 500 characters.');
     }
 
-    // Email Receiver
-    //$to = get_option('admin_email');
-
-
-    $page = get_page_by_path('contact');
-    $to = $page ? get_field('contact_email', $page->ID) : '';
-    if (!is_email($to)) {
-        $to = get_option('admin_email'); // fallback
-    }
-
-    // Email Subject
-    // Include the contact person's name in the email subject.
-    $mail_subject = 'New contact message from ' . $contact_person;
-
-    // Email Body
-    // Build a plain-text email containing the submitted contact details.
-    // Add a fallback message when the optional message field is empty.
-    $mail_message =
-        "Company Name: " . $company_name . "\n" .
-        "Contact Person: " . $contact_person . "\n" .
-        "Email: " . $email . "\n" .
-        "Phone: " . $phone . "\n\n" .
-        "Message:\n" . ($message ? $message : 'No message provided');
-
-    // Email Headers
-    // Send the email as plain text with UTF-8 encoding.
-    // Set Reply-To so the administrator can reply to the visitor.
-    $headers = array(
-        'Content-Type: text/plain; charset=UTF-8',
-        'Reply-To: ' . $email
+    // Save to the Contacts post type
+    $post_data = array(
+        'post_title'   => $contact_person,
+        'post_content' => $message,
+        'post_status'  => 'pending',
+        'post_type'    => 'contact',
     );
 
-    // Send Email
-    // Ask WordPress to send the email.
-    // A true result means the mail system accepted the sending request.
-    // It does not guarantee delivery to the recipient's inbox.
-    $mail_sent = wp_mail(
-        $to,
-        $mail_subject,
-        $mail_message,
-        $headers
-    );
+    $post_id = wp_insert_post($post_data, true);
 
-    // Check if the email was successfully accepted for sending
-    if (!$mail_sent) {
+    if (is_wp_error($post_id)) {
         wp_die(
-            'Sorry, your message could not be sent. Please try again later.',
-            'Email Error',
+            'Sorry, your message could not be saved. Please try again later.',
+            'Error',
             array('response' => 500)
         );
     }
 
-    // Redirect Back to Contact Page
-    // Redirect to the Contact page after the sending request is accepted.
-    // Add sent=1 so the page can display a success message.
-    // Stop PHP execution after the redirect.
-    $redirect_url = home_url('/contact/');
+    // Save SCF fields
+    update_field('company_name', $company_name, $post_id);
+    update_field('email', $email, $post_id);
+    update_field('phone', $phone, $post_id);
 
-    wp_safe_redirect(
-        add_query_arg(
-            'sent',
-            '1',
-            $redirect_url
-        )
-    );
-
+    // Redirect back to the contact page
+    wp_safe_redirect(add_query_arg('sent', '1', home_url('/contact/')));
     exit;
-
 }
+
+add_action('admin_post_nopriv_submit_contact_form', 'nordicbloom_handle_contact_form');
+add_action('admin_post_submit_contact_form', 'nordicbloom_handle_contact_form');
+// function nordicbloom_handle_contact_form(){
+
+//     // Security Check
+//     // Check that the form nonce exists, is a string and is valid.
+//     // The nonce helps protect against unwanted cross-site form submissions.
+//     // It does not replace spam protection or user authentication.
+//     if (
+//         !isset($_POST['contact_form_nonce']) ||
+//         !is_string($_POST['contact_form_nonce']) ||
+//         !wp_verify_nonce(
+//         sanitize_text_field(wp_unslash($_POST['contact_form_nonce'])),
+//         'contact_form_action'
+//         )
+//     ) {
+//         wp_die('Security check failed.');
+//     }
+
+//     // Sanitize Data
+//     // Accept string values only and use an empty string for missing fields.
+//     // Remove slashes added by WordPress before cleaning the values.
+//     // Clean single-line text, email and multiline message fields appropriately.
+//     // Cleaning the data does not replace the validation checks below.
+//     $company_name = isset($_POST['company_name']) && is_string($_POST['company_name'])
+//         ? sanitize_text_field(wp_unslash($_POST['company_name']))
+//         : '';
+
+//     $contact_person = isset($_POST['contact_person']) && is_string($_POST['contact_person'])
+//         ? sanitize_text_field(wp_unslash($_POST['contact_person']))
+//         : '';
+
+//     $email = isset($_POST['email']) && is_string($_POST['email'])
+//         ? sanitize_email(wp_unslash($_POST['email']))
+//         : '';
+
+//     $phone = isset($_POST['phone']) && is_string($_POST['phone'])
+//         ? sanitize_text_field(wp_unslash($_POST['phone']))
+//         : '';
+
+//     $message = isset($_POST['message']) && is_string($_POST['message'])
+//         ? sanitize_textarea_field(wp_unslash($_POST['message']))
+//         : '';
+
+    
+//     // Required Fields
+//     // Require a contact name, email address and phone number.
+//     // Company name and message are optional in this handler.
+//     if (empty($contact_person) || empty($email) || empty($phone)) {
+//         wp_die('Please fill in all required fields.');
+//     }
+
+//     // Valid Email
+//     // Check the email address format.
+//     // This does not confirm that the mailbox exists.
+//     if (!is_email($email)) {
+//         wp_die('Invalid email address.');
+//     }
+
+//     // Valid Danish Phone Number
+//     // Remove whitespace and hyphens before checking the phone number.
+//     // Accept eight digits, optionally preceded by +45.
+//     // This checks the format, not whether the number is active.
+//     $phone_digits = preg_replace('/[\s-]/', '', $phone);
+
+//     if (!preg_match('/^(?:\+45)?[0-9]{8}$/', $phone_digits)) {
+//         wp_die('Please enter a valid Danish phone number.');
+//     }
+
+//     // Message Length Validation
+//     // Count Unicode characters, including line breaks.
+//     // Reject invalid UTF-8 text or messages longer than 500 characters.
+//     $message_length = preg_match_all('/./us', $message);
+
+//     if ($message_length === false || $message_length > 500) {
+//         wp_die('Your message must not exceed 500 characters.');
+//     }
+
+//     // Email Receiver
+//     $to = get_option('admin_email');
+
+
+   
+//     // Email Subject
+//     // Include the contact person's name in the email subject.
+//     $mail_subject = 'New contact message from ' . $contact_person;
+
+//     // Email Body
+//     // Build a plain-text email containing the submitted contact details.
+//     // Add a fallback message when the optional message field is empty.
+//     $mail_message =
+//         "Company Name: " . $company_name . "\n" .
+//         "Contact Person: " . $contact_person . "\n" .
+//         "Email: " . $email . "\n" .
+//         "Phone: " . $phone . "\n\n" .
+//         "Message:\n" . ($message ? $message : 'No message provided');
+
+//     // Email Headers
+//     // Send the email as plain text with UTF-8 encoding.
+//     // Set Reply-To so the administrator can reply to the visitor.
+//     $headers = array(
+//         'Content-Type: text/plain; charset=UTF-8',
+//         'Reply-To: ' . $email
+//     );
+
+//     // Send Email
+//     // Ask WordPress to send the email.
+//     // A true result means the mail system accepted the sending request.
+//     // It does not guarantee delivery to the recipient's inbox.
+//     $mail_sent = wp_mail(
+//         $to,
+//         $mail_subject,
+//         $mail_message,
+//         $headers
+//     );
+
+//     // Check if the email was successfully accepted for sending
+//     if (!$mail_sent) {
+//         wp_die(
+//             'Sorry, your message could not be sent. Please try again later.',
+//             'Email Error',
+//             array('response' => 500)
+//         );
+//     }
+
+//     // Redirect Back to Contact Page
+//     // Redirect to the Contact page after the sending request is accepted.
+//     // Add sent=1 so the page can display a success message.
+//     // Stop PHP execution after the redirect.
+//     $redirect_url = home_url('/contact/');
+
+//     wp_safe_redirect(
+//         add_query_arg(
+//             'sent',
+//             '1',
+//             $redirect_url
+//         )
+//     );
+
+//     exit;
+
+// }
 
 
 //  --------------------------------------------------------- Contact Form Actions ----------------------------------------------
 
-/* Not logged in */
-/*
- * Handle form submissions from visitors who are not logged in.
- * The submitted action field must contain submit_contact_form.
- */
-add_action(
-    'admin_post_submit_contact_form',
-    'nordicbloom_handle_contact_form'
-);
+// /* Not logged in */
+// /*
+//  * Handle form submissions from visitors who are not logged in.
+//  * The submitted action field must contain submit_contact_form.
+//  */
+// add_action(
+//     'admin_post_nopriv_submit_contact_form',
+//     'nordicbloom_handle_contact_form'
+// );
 
 
-/* Logged in */
-/*
- * Handle the same form submissions from logged-in users.
- * Both hooks use the same validation and email-sending function.
- */
-add_action(
-    'admin_post_submit_contact_form',
-    'nordicbloom_handle_contact_form'
-);
+// /* Logged in */
+// /*
+//  * Handle the same form submissions from logged-in users.
+//  * Both hooks use the same validation and email-sending function.
+//  */
+// add_action(
+//     'admin_post_submit_contact_form',
+//     'nordicbloom_handle_contact_form'
+// );
 
 
 // -------------------------------- Newsletter Form Handler --------------------------------
