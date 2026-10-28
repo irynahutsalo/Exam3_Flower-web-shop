@@ -421,8 +421,8 @@ function nordicbloom_handle_newsletter() {
     }
 
     // Redirect to homepage with success message
-    wp_safe_redirect(add_query_arg('newsletter', 'success', home_url('/')));
-    exit;
+    wp_safe_redirect(home_url('/?newsletter=success#newsletter-form'));
+    exit;   
 }
 
 add_action('admin_post_nopriv_nordicbloom_newsletter', 'nordicbloom_handle_newsletter');
