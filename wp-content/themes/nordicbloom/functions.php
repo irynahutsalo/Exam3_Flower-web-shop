@@ -447,7 +447,7 @@ function nordicbloom_handle_contact_form(){
  * The submitted action field must contain submit_contact_form.
  */
 add_action(
-    'admin_post_nopriv_submit_contact_form',
+    'admin_post_submit_contact_form',
     'nordicbloom_handle_contact_form'
 );
 
