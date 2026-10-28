@@ -279,16 +279,19 @@ function nordicbloom_enqueue_scripts() {
                         return;
                     }
 
-                    const parsley = $.fn.parsley
-                        ? newsletterForm.parsley()
-                        : null;
+                    newsletterForm.on('submit', function (event) {
+                        event.preventDefault();
+                    });
+
+                    if (!$.fn.parsley) {
+                        return;
+                    }
+
+                    const parsley = newsletterForm.parsley();
 
                     newsletterForm.on('submit', async function (event) {
                         event.preventDefault();
-
-                        if (!parsley) {
-                            return;
-                        }
+                        event.stopImmediatePropagation();
 
                         if (!parsley.validate()) {
                             return;
@@ -309,7 +312,7 @@ function nordicbloom_enqueue_scripts() {
                             const result = await response.json();
 
                             if (!response.ok || !result.success) {
-                                throw new Error('Submission failed');
+                                throw new Error(result.data?.message || 'Submission failed');
                             }
 
                             successMessage
@@ -321,7 +324,7 @@ function nordicbloom_enqueue_scripts() {
 
                         } catch (error) {
                             successMessage
-                                .text('Unable to submit your request. Please try again.')
+                                .text(error.message || 'Unable to submit your request.')
                                 .prop('hidden', false);
                         } finally {
                             submitButton.prop('disabled', false);
@@ -329,6 +332,7 @@ function nordicbloom_enqueue_scripts() {
                     });
                 });"
             );
+                
         }
     }
 }
